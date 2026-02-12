@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شاهکار هخامنشی | تخت جمشید</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ انیمیشن‌های ظریف ================ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-up {
+            animation: fadeUp 1s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی هخامنشی ================ */
+        .achaemenid-logo {
+            width: 80px;
+            height: 80px;
+            transition: all 0.3s ease;
+        }
+        
+        .achaemenid-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        /* ================ استایل‌های اختصاصی تخت جمشید ================ */
+        .persepolis-card {
+            background: white;
+            border-radius: 30px;
+            padding: 45px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            border: 1px solid rgba(204, 153, 51, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .persepolis-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #c99a3b, #8b5a2b, #c99a3b);
+        }
+        
+        .persepolis-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 70px rgba(201, 154, 59, 0.15);
+            border-color: rgba(201, 154, 59, 0.3);
+        }
+        
+        .gold-badge {
+            display: inline-block;
+            padding: 8px 25px;
+            background: linear-gradient(135deg, #c99a3b, #8b5a2b);
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+        }
+        
+        .gold-border {
+            border-bottom: 3px solid #c99a3b;
+            width: 100px;
+            margin: 25px 0;
+        }
+        
+        .gold-title {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #c99a3b, #8b5a2b, #c99a3b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 15px rgba(201, 154, 59, 0.3);
+        }
+        
+        .stat-card-gold {
+            background: rgba(201, 154, 59, 0.03);
+            padding: 25px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(201, 154, 59, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card-gold:hover {
+            background: rgba(201, 154, 59, 0.06);
+            border-color: rgba(201, 154, 59, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: #8b5a2b;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .timeline-gold {
+            position: relative;
+            padding: 35px;
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border-right: 5px solid #c99a3b;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-gold:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 15px 40px rgba(201, 154, 59, 0.1);
+        }
+        
+        .persepolis-img {
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+            width: 100%;
+            height: auto;
+            border: 5px solid rgba(201, 154, 59, 0.2);
+        }
+        
+        .persepolis-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 35px 70px rgba(201, 154, 59, 0.25);
+            border-color: rgba(201, 154, 59, 0.4);
+        }
+        
+        .pillar-icon {
+            font-size: 40px;
+            color: #c99a3b;
+            margin-bottom: 20px;
+        }
+        
+        .contact-card-gold {
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.05);
+            border: 1px solid rgba(201, 154, 59, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card-gold:before {
+            content: '𐎧𐏁𐏂';
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            font-size: 150px;
+            opacity: 0.03;
+            color: #c99a3b;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        .heritage-badge {
+            background: #fbf7f0;
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            color: #8b5a2b;
+            border: 1px solid #c99a3b;
+            font-weight: 600;
+        }
+        
+        .cuneiform {
+            font-family: 'Times New Roman', serif;
+            font-size: 18px;
+            letter-spacing: 5px;
+            color: #8b5a2b;
+        }
+    </style>
+</head>
+<body class="inner-pag" style="background: #fefcf7;">
+
+    <!-- ================ هدر با عکس تخت جمشید و بک‌گراند طلایی ================ -->
+    <header id="inner-header" class="inner-header parallax" style="height: 100vh; position: relative; z-index: 2;">
+        <!-- ✅ بکگراند طلایی-نارنجی هخامنشی -->
+        <div class="overlay" style="background: radial-gradient(circle at 30% 50%, #8b5a2b, #5a3a1e, #2c1e0f); opacity: 0.92; box-shadow: inset 0 0 150px rgba(201,154,59,0.3);"></div>
+        
+        <!-- ✅ لایه دوم با نقش‌های هخامنشی -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                    background: repeating-linear-gradient(45deg, rgba(201,154,59,0.05) 0px, rgba(201,154,59,0.05) 2px, transparent 2px, transparent 10px);
+                    z-index: 1;"></div>
+        
+        <!-- ناوبری با لوگوی هخامنشی -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <!-- لوگوی اختصاصی هخامنشی - شیر بالدار -->
+                    <svg width="80" height="80" viewBox="0 0 100 100" class="achaemenid-logo">
+                        <!-- دایره بیرونی طلایی -->
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="#c99a3b" stroke-width="2" stroke-dasharray="5 3"/>
+                        
+                        <!-- شیر بالدار هخامنشی (ساده‌شده) -->
+                        <circle cx="50" cy="45" r="12" fill="#c99a3b" opacity="0.2"/>
+                        <path d="M35 45 L20 30 L25 45 L20 60 L35 45" fill="#c99a3b" opacity="0.4"/>
+                        <path d="M65 45 L80 30 L75 45 L80 60 L65 45" fill="#c99a3b" opacity="0.4"/>
+                        
+                        <!-- سر شیر -->
+                        <circle cx="50" cy="40" r="8" fill="#c99a3b"/>
+                        <circle cx="45" cy="37" r="2" fill="white"/>
+                        <circle cx="55" cy="37" r="2" fill="white"/>
+                        <circle cx="46" cy="38" r="1" fill="black"/>
+                        <circle cx="54" cy="38" r="1" fill="black"/>
+                        
+                        <!-- تاج هخامنشی -->
+                        <path d="M50 20 L55 32 L45 32 Z" fill="gold"/>
+                        <circle cx="50" cy="28" r="3" fill="white" opacity="0.8"/>
+                        
+                        <!-- ستاره -->
+                        <path d="M50 15 L53 22 L61 22 L55 27 L58 35 L50 30 L42 35 L45 27 L39 22 L47 22 Z" 
+                              fill="white" transform="scale(0.5) translate(50, 20)"/>
+                    </svg>
+                    <span style="color: white; font-weight: 700; margin-right: 15px; font-size: 20px; text-shadow: 0 0 15px rgba(201,154,59,0.5);">شاهکار هخامنشی</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="#home">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#persepolis">تخت جمشید</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#history">تاریخچه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#architecture">معماری</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up" style="position: relative; z-index: 4;">
+                    <span class="cuneiform" style="color: rgba(255,255,255,0.8); font-size: 24px; letter-spacing: 8px; margin-bottom: 20px; display: inline-block; background: rgba(0,0,0,0.2); padding: 10px 30px; border-radius: 50px; backdrop-filter: blur(5px);">
+                        𐎱𐎠𐎼𐎿
+                    </span>
+                    <h1 style="font-size: 90px; font-weight: 900; color: white; text-shadow: 0 0 40px #c99a3b, 2px 2px 20px black; margin-top: 20px; letter-spacing: 4px;" class="fade-up delay-1">
+                        تخت جمشید
+                    </h1>
+                    <p style="font-size: 36px; color: rgba(255,255,255,0.95); font-weight: 400; letter-spacing: 6px; text-shadow: 0 0 25px #c99a3b;" class="fade-up delay-2">
+                        پارسه، پایتخت باشکوه هخامنشیان
+                    </p>
+                    <div style="width: 200px; height: 4px; background: linear-gradient(90deg, #c99a3b, #ffd700, #c99a3b); margin: 35px auto; box-shadow: 0 0 30px #c99a3b;" class="fade-up delay-3"></div>
+                    <p style="font-size: 24px; color: rgba(255,255,255,0.9); max-width: 900px; margin: 35px auto; line-height: 1.8; text-shadow: 1px 1px 15px black; font-weight: 400;" class="fade-up delay-3">
+                        «ای اهورامزدا، این کشور را از دشمن، از خشکسالی، از دروغ دور نگه دار»
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================ بخش تخت جمشید ================ -->
+    <section id="persepolis" class="blog-pp single-pp" style="position: relative; z-index: 3; background: white; padding: 120px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up">
+                    <div style="position: relative;">
+                        <img src="img/shahkar-hakamanesh.webp" 
+                             alt="تخت جمشید" 
+                             class="persepolis-img img-fluid"
+                             onerror="this.src='img/persepolis.jpg'">
+                        <div style="position: absolute; bottom: -20px; left: 30px; background: white; padding: 15px 30px; border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-right: 5px solid #c99a3b;">
+                            <span style="font-weight: 700; color: #8b5a2b;">𐎤𐎠𐎼𐎫𐎠𐎱</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up delay-2">
+                    <div class="persepolis-card">
+                        <span class="gold-badge">🏛️ میراث جهانی یونسکو</span>
+                        <h2 style="font-size: 48px; font-weight: 700; color: #8b5a2b; margin-bottom: 15px;">تخت جمشید</h2>
+                        <div class="gold-border"></div>
+                        <p style="font-size: 16px; line-height: 2; color: #4a4a4a; margin-bottom: 30px;">
+                            تخت جمشید یا پارسه، پایتخت تشریفاتی امپراتوری هخامنشی است که در دامنه کوه رحمت و در نزدیکی شیراز قرار دارد. ساخت این بنای باشکوه در سال ۵۱۸ پیش از میلاد به دستور داریوش بزرگ آغاز شد و جانشینان او خشایارشا و اردشیر یکم آن را تکمیل کردند.
+                        </p>
+                        <p style="font-size: 16px; line-height: 2; color: #4a4a4a; margin-bottom: 30px;">
+                            این مجموعه عظیم شامل کاخ‌ها، تالارها، پلکان‌ها و نقش‌برجسته‌های بی‌نظیری است که شکوه و عظمت تمدن هخامنشی را به نمایش می‌گذارد.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <div class="stat-card-gold">
+                                    <span class="stat-number">۵۱۸</span>
+                                    <p style="font-size: 14px; color: #666; margin-top: 8px;">پ.م آغاز ساخت</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-card-gold">
+                                    <span class="stat-number">۱۲۵</span>
+                                    <p style="font-size: 14px; color: #666; margin-top: 8px;">هکتار وسعت</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-card-gold">
+                                    <span class="stat-number">۲۵۰۰</span>
+                                    <p style="font-size: 14px; color: #666; margin-top: 8px;">سال قدمت</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش معماری ================ -->
+    <section id="architecture" class="services" style="position: relative; z-index: 3; background: #fdfaf5; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up">
+                <span style="color: #c99a3b;">🏛️ معماری هخامنشی</span>
+                <h2 style="font-size: 48px; font-weight: 700; color: #8b5a2b; margin-top: 20px;">شاهکارهای معماری</h2>
+                <p style="color: #666; max-width: 700px; margin: 20px auto;">تلفیق هنر ملت‌های زیر سایه هخامنشیان</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 fade-up delay-1">
+                    <div class="timeline-gold" style="height: 100%; text-align: center;">
+                        <div class="pillar-icon">🏛️</div>
+                        <h4 class="co-purple" style="color: #8b5a2b; font-size: 26px;">تالار آپادانا</h4>
+                        <p style="color: #999; font-size: 14px;">۷۲ ستون</p>
+                        <p style="margin-top: 20px;">باشکوه‌ترین تالار تخت جمشید با ۷۲ ستون سنگی که نماد قدرت و شکوه هخامنشیان است.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up delay-2">
+                    <div class="timeline-gold" style="height: 100%; text-align: center;">
+                        <div class="pillar-icon">🦁</div>
+                        <h4 class="co-purple" style="color: #8b5a2b; font-size: 26px;">نقش‌برجسته‌ها</h4>
+                        <p style="color: #999; font-size: 14px;">هنر هخامنشی</p>
+                        <p style="margin-top: 20px;">صحنه‌های پذیرش ملل، شیر در حال گاو دریدن و نمادهای قدرت و باروری.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up delay-3">
+                    <div class="timeline-gold" style="height: 100%; text-align: center;">
+                        <div class="pillar-icon">👑</div>
+                        <h4 class="co-purple" style="color: #8b5a2b; font-size: 26px;">کاخ تچر</h4>
+                        <p style="color: #999; font-size: 14px;">کاخ اختصاصی داریوش</p>
+                        <p style="margin-top: 20px;">کاخی با سنگ‌های صیقل‌خورده و کتیبه‌هایی به خط میخی پارسی باستان.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تاریخچه ================ -->
+    <section id="history" class="random-post" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up">
+                <span style="color: #c99a3b;">📜 تاریخچه</span>
+                <h2 style="font-size: 48px; font-weight: 700; color: #8b5a2b; margin-top: 20px;">گاهشمار تخت جمشید</h2>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up">
+                    <div class="timeline-gold">
+                        <h3 style="color: #c99a3b; font-size: 28px;">۵۱۸ پ.م</h3>
+                        <h4 style="font-size: 22px; margin: 15px 0;">آغاز ساخت</h4>
+                        <p>داریوش بزرگ دستور ساخت تخت جمشید را در دامنه کوه رحمت صادر کرد. این مکان به عنوان پایتخت تشریفاتی امپراتوری هخامنشی انتخاب شد.</p>
+                    </div>
+                    <div class="timeline-gold">
+                        <h3 style="color: #c99a3b; font-size: 28px;">۴۸۶-۴۶۵ پ.م</h3>
+                        <h4 style="font-size: 22px; margin: 15px 0;">دوران خشایارشا</h4>
+                        <p>تکمیل تالار آپادانا، دروازه ملل و کاخ هدیش. تخت جمشید به اوج شکوه خود رسید.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up delay-2">
+                    <div class="timeline-gold">
+                        <h3 style="color: #c99a3b; font-size: 28px;">۳۳۰ پ.م</h3>
+                        <h4 style="font-size: 22px; margin: 15px 0;">حمله اسکندر</h4>
+                        <p>تخت جمشید به دست اسکندر مقدونی به آتش کشیده شد. این واقعه یکی از غم‌انگیزترین لحظات تاریخ ایران است.</p>
+                    </div>
+                    <div class="timeline-gold">
+                        <h3 style="color: #c99a3b; font-size: 28px;">۱۹۷۹ میلادی</h3>
+                        <h4 style="font-size: 22px; margin: 15px 0;">ثبت در یونسکو</h4>
+                        <p>تخت جمشید به عنوان میراث جهانی یونسکو به ثبت رسید و در فهرست باارزش‌ترین آثار تاریخی جهان قرار گرفت.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش ویژگی‌های منحصر به فرد ================ -->
+    <section style="position: relative; z-index: 3; background: linear-gradient(135deg, #8b5a2b, #5a3a1e); padding: 100px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up">
+                    <span style="font-size: 60px; color: rgba(255,215,0,0.3); display: block; margin-bottom: 20px;">⚜️</span>
+                    <h2 style="font-size: 42px; font-weight: 700; margin-bottom: 30px; color: #ffd700; text-shadow: 0 0 20px rgba(0,0,0,0.5);">ویژگی‌های منحصر به فرد</h2>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 50px;">
+                        <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 20px; width: 200px; backdrop-filter: blur(5px); border: 1px solid rgba(255,215,0,0.3);">
+                            <span style="font-size: 40px;">🏛️</span>
+                            <h4 style="margin-top: 15px;">سکوی عظیم</h4>
+                            <p style="font-size: 14px; opacity: 0.9;">۱۲۵,۰۰۰ متر مربع</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 20px; width: 200px; backdrop-filter: blur(5px); border: 1px solid rgba(255,215,0,0.3);">
+                            <span style="font-size: 40px;">🗿</span>
+                            <h4 style="margin-top: 15px;">نقش‌برجسته</h4>
+                            <p style="font-size: 14px; opacity: 0.9;">۳۰ ملت در حال هدیه آوردن</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 20px; width: 200px; backdrop-filter: blur(5px); border: 1px solid rgba(255,215,0,0.3);">
+                            <span style="font-size: 40px;">💎</span>
+                            <h4 style="margin-top: 15px;">سنگ‌های صیقل خورده</h4>
+                            <p style="font-size: 14px; opacity: 0.9;">بدون ملات</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش نقل قول ================ -->
+    <section style="position: relative; z-index: 3; background: #fdfaf5; padding: 100px 0; border-top: 1px solid rgba(201,154,59,0.2); border-bottom: 1px solid rgba(201,154,59,0.2);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up">
+                    <span style="font-size: 100px; line-height: 0.8; color: rgba(139,90,43,0.1); display: block; margin-bottom: 30px;">"</span>
+                    <h2 style="font-size: 38px; font-weight: 600; line-height: 1.7; margin-bottom: 40px; color: #5a3a1e; font-style: italic;">
+                        اگر سنگ‌ها می‌توانستند سخن بگویند، تخت جمشید بلندترین فریاد تاریخ را سر می‌داد.
+                    </h2>
+                    <p style="font-size: 22px; color: #c99a3b;">— هرتسفلد، باستان‌شناس آلمانی</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="contact-card-gold fade-up">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <span style="display: inline-block; width: 60px; height: 60px; background: rgba(201,154,59,0.1); border-radius: 50%; line-height: 60px; font-size: 30px; color: #c99a3b; margin-bottom: 20px;">🏛️</span>
+                            <h2 style="font-size: 42px; font-weight: 700; color: #8b5a2b; margin-top: 10px;">هانیه کریمی</h2>
+                            <p style="font-size: 18px; color: #666; margin-top: 10px;">پژوهشگر تاریخ هخامنشی | طراح و توسعه‌دهنده وب</p>
+                            <div style="width: 80px; height: 3px; background: #c99a3b; margin: 25px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #fdfaf5; padding: 35px; border-radius: 20px; height: 100%; border: 1px solid rgba(201,154,59,0.2); text-align: center;">
+                                    <span style="font-size: 45px; color: #c99a3b;">📧</span>
+                                    <div style="direction: ltr; text-align: left; font-size: 16px; color: #333; margin: 20px 0 10px; font-family: monospace; background: white; padding: 12px; border-radius: 10px; border: 1px solid #eee;">
+                                        hanieh.karimii1389@gmail.com
+                                    </div>
+                                    <div style="direction: ltr; text-align: left; font-size: 20px; color: #8b5a2b; margin: 15px 0; font-weight: 700;">
+                                        ۰۹۹۳۲۳۰۹۴۹۲
+                                    </div>
+                                    <div style="font-size: 16px; color: #666;">
+                                        مشهد، ایران
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #fdfaf5; padding: 35px; border-radius: 20px; height: 100%; border: 1px solid rgba(201,154,59,0.2); text-align: center;">
+                                    <span style="font-size: 45px; color: #c99a3b;">🏛️</span>
+                                    <p style="font-size: 16px; line-height: 1.9; color: #4a4a4a; margin-top: 20px; text-align: justify;">
+                                        این وبسایت به پاس گرامیداشت میراث فرهنگی ایران زمین و با افتخار به تمدن هخامنشی طراحی شده است. تخت جمشید نماد هویت و افتخار ایرانیان است.
+                                    </p>
+                                    <div style="margin-top: 25px; padding: 12px; background: rgba(201,154,59,0.1); border-radius: 10px;">
+                                        <span style="color: #8b5a2b; font-weight: 600;">𐎱𐎠𐎼𐎿</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر -->
+                        <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(201,154,59,0.2);">
+                            <span class="heritage-badge">
+                                🏛️ تخت جمشید - میراث جهانی یونسکو
+                            </span>
+                            <p style="color: #999; margin-top: 25px; font-size: 15px;">
+                                طراحی شده با افتخار توسط هانیه کریمی © ۲۰۲۶
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>

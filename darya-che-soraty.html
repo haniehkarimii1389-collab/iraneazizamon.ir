@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دریاچه صورتی | مهارلو - ارومیه</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ انیمیشن‌های دریاچه صورتی ================ */
+        @keyframes fadeUpPink {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pinkWave {
+            0% { transform: translateY(0) scale(1); opacity: 0.5; }
+            50% { transform: translateY(-10px) scale(1.05); opacity: 0.8; }
+            100% { transform: translateY(0) scale(1); opacity: 0.5; }
+        }
+        
+        @keyframes pinkGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(255,105,180,0.3)); }
+            50% { filter: drop-shadow(0 0 30px rgba(255,182,193,0.7)); }
+            100% { filter: drop-shadow(0 0 5px rgba(255,105,180,0.3)); }
+        }
+        
+        @keyframes floatDuck {
+            0% { transform: translateX(-10px) rotate(-2deg); }
+            50% { transform: translateX(10px) rotate(2deg); }
+            100% { transform: translateX(-10px) rotate(-2deg); }
+        }
+        
+        .fade-up-pink {
+            animation: fadeUpPink 1.2s ease forwards;
+        }
+        
+        .pink-wave {
+            animation: pinkWave 6s ease-in-out infinite;
+        }
+        
+        .pink-glow {
+            animation: pinkGlow 5s infinite;
+        }
+        
+        .float-duck {
+            animation: floatDuck 8s ease-in-out infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-6 { animation-delay: 1.2s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی دریاچه صورتی ================ */
+        .pink-lake-logo {
+            width: 80px;
+            height: 80px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 10px rgba(255,105,180,0.4));
+        }
+        
+        .pink-lake-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 0 30px rgba(255,182,193,0.8));
+        }
+        
+        /* ================ استایل‌های اختصاصی دریاچه صورتی ================ */
+        .pink-pattern {
+            background: repeating-linear-gradient(45deg, 
+                rgba(255,182,193,0.03) 0px, 
+                rgba(255,182,193,0.03) 10px,
+                transparent 10px, 
+                transparent 30px);
+        }
+        
+        .pink-card {
+            background: linear-gradient(145deg, #fff0f5, #ffe4e1);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(255,105,180,0.1);
+            border: 1px solid rgba(255,182,193,0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        
+        .pink-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 80px rgba(255,105,180,0.2);
+            border-color: rgba(255,182,193,0.6);
+        }
+        
+        .pink-card:after {
+            content: '🦩';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.03;
+            color: #ff69b4;
+            transform: rotate(-5deg);
+        }
+        
+        .pink-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(255,105,180,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 25px;
+        }
+        
+        .pink-title {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff69b4, #ffb6c1, #ff1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 20px rgba(255,105,180,0.2);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .pink-border {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff69b4, #ffb6c1, #ff69b4);
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255,182,193,0.3);
+        }
+        
+        .stat-pink {
+            background: rgba(255,105,180,0.03);
+            padding: 30px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,105,180,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .stat-pink:hover {
+            background: rgba(255,105,180,0.06);
+            border-color: rgba(255,105,180,0.3);
+            transform: translateY(-8px);
+        }
+        
+        .stat-number-pink {
+            font-size: 48px;
+            font-weight: 900;
+            color: #ff69b4;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .timeline-pink {
+            position: relative;
+            padding: 35px;
+            background: white;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border-right: 6px solid #ff69b4;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-pink:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 20px 50px rgba(255,105,180,0.1);
+            border-right-width: 10px;
+        }
+        
+        .timeline-pink h3 {
+            color: #ff69b4;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .pink-image-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(255,105,180,0.25);
+            border: 8px solid rgba(255,182,193,0.4);
+            transition: all 0.6s ease;
+            background: #ffe4e1;
+        }
+        
+        .pink-image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 90px rgba(255,105,180,0.3);
+            border-color: rgba(255,182,193,0.7);
+        }
+        
+        .pink-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.8s ease;
+        }
+        
+        .pink-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .flamingo-icon {
+            font-size: 70px;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: floatDuck 7s ease-in-out infinite;
+        }
+        
+        .salt-icon {
+            font-size: 50px;
+            color: white;
+            text-shadow: 0 0 10px #ffb6c1;
+        }
+        
+        .lake-quote {
+            font-family: 'Times New Roman', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: #ff1493;
+            line-height: 2;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .cuneiform-pink {
+            font-family: 'Times New Roman', serif;
+            font-size: 22px;
+            color: #ff69b4;
+            letter-spacing: 6px;
+            background: rgba(255,105,180,0.05);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(255,105,180,0.15);
+        }
+        
+        .quote-section-pink {
+            background: linear-gradient(135deg, #8b1e3f, #c71585, #8b1e3f);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .salt-flat {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, rgba(255,255,255,0.2), transparent);
+            clip-path: polygon(0% 80%, 5% 60%, 10% 70%, 15% 50%, 20% 60%, 25% 40%, 30% 50%, 35% 30%, 40% 40%, 45% 20%, 50% 30%, 55% 10%, 60% 20%, 65% 5%, 70% 15%, 75% 0%, 80% 10%, 85% 5%, 90% 15%, 95% 0%, 100% 10%, 100% 100%, 0% 100%);
+            opacity: 0.2;
+        }
+        
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 100px;
+            background: rgba(255,182,193,0.1);
+            border-radius: 1000px;
+            animation: pinkWave 10s infinite linear;
+        }
+    </style>
+</head>
+<body class="inner-pag pink-pattern" style="background: linear-gradient(to bottom, #ffe4ec, #fff0f5);">
+
+    <!-- ================ امواج صورتی ================ -->
+    <div class="wave" style="top: 20%; left: -50%; opacity: 0.1;"></div>
+    <div class="wave" style="bottom: 10%; right: -50%; opacity: 0.1; animation-delay: 3s;"></div>
+
+    <!-- ================ هدر با عکس دریاچه صورتی ================ -->
+    <header id="inner-header" class="inner-header parallax" style="height: 100vh; position: relative; z-index: 2; overflow: hidden;">
+        <!-- ✅ بکگراند صورتی جادویی -->
+        <div class="overlay" style="background: radial-gradient(circle at 30% 50%, #8b1e3f, #c71585, #4a0e2a); opacity: 0.85; box-shadow: inset 0 0 180px rgba(255,105,180,0.5);"></div>
+        
+        <!-- ✅ لایه کریستال نمک -->
+        <div class="salt-flat" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1; opacity: 0.2;"></div>
+        
+        <!-- ناوبری با لوگوی دریاچه صورتی -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up-pink">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <!-- لوگوی اختصاصی دریاچه صورتی -->
+                    <svg width="80" height="80" viewBox="0 0 100 100" class="pink-lake-logo">
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="#ff69b4" stroke-width="2" stroke-dasharray="6 4"/>
+                        <!-- دریاچه صورتی -->
+                        <ellipse cx="50" cy="55" rx="35" ry="15" fill="#ffb6c1" opacity="0.5"/>
+                        <ellipse cx="50" cy="50" rx="30" ry="12" fill="#ff69b4" opacity="0.4"/>
+                        <ellipse cx="50" cy="45" rx="25" ry="10" fill="#ff1493" opacity="0.3"/>
+                        <!-- فلامینگو -->
+                        <path d="M30,40 Q25,30 20,35" stroke="#ff69b4" stroke-width="4" fill="none"/>
+                        <circle cx="28" cy="38" r="5" fill="#ff69b4"/>
+                        <circle cx="25" cy="35" r="2" fill="white"/>
+                        <!-- خورشید -->
+                        <circle cx="75" cy="25" r="12" fill="#ffd700" opacity="0.3" class="pink-glow"/>
+                    </svg>
+                    <span style="color: white; font-weight: 800; margin-right: 15px; font-size: 22px; text-shadow: 0 0 20px rgba(255,105,180,0.7);">دریاچه صورتی</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#pink-lake">دریاچه صورتی</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#maharloo">مهارلو</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#urmia">ارومیه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر - دریاچه صورتی -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up-pink" style="position: relative; z-index: 4;">
+                    <div class="cuneiform-pink" style="color: white; border-color: rgba(255,255,255,0.4); background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); margin-bottom: 25px;">
+                        🦩 دریاچه صورتی 🦩
+                    </div>
+                    <h1 style="font-size: 90px; font-weight: 900; color: white; text-shadow: 0 0 50px #ff69b4, 0 0 100px rgba(255,105,180,0.5), 2px 2px 20px black; margin-top: 15px; letter-spacing: 6px;" class="fade-up-pink delay-1">
+                        دریاچه صورتی
+                    </h1>
+                    <p style="font-size: 38px; color: rgba(255,255,255,0.98); font-weight: 400; letter-spacing: 8px; text-shadow: 0 0 35px #ffb6c1, 2px 2px 15px black;" class="fade-up-pink delay-2">
+                        مهارلو - ارومیه - پریشان
+                    </p>
+                    <div style="width: 200px; height: 6px; background: linear-gradient(90deg, #ffb6c1, #ff69b4, #ff1493, #ff69b4, #ffb6c1); margin: 40px auto; box-shadow: 0 0 40px #ff69b4; border-radius: 10px;" class="fade-up-pink delay-3"></div>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.95); max-width: 1000px; margin: 40px auto; line-height: 1.8; text-shadow: 2px 2px 20px black; font-weight: 500; background: rgba(0,0,0,0.2); padding: 20px 40px; border-radius: 80px; backdrop-filter: blur(5px); border: 1px solid rgba(255,182,193,0.4);" class="fade-up-pink delay-4">
+                        «دریاچه صورتی، یکی از شگفت‌انگیزترین پدیده‌های طبیعی ایران؛ جایی که آب و خورشید، رنگ عشق را به نمایش می‌گذارند»
+                    </p>
+                    <div class="mt-5 fade-up-pink delay-5">
+                        <a href="#maharloo" class="bttn" style="background: linear-gradient(135deg, #ff69b4, #c71585); color: white; padding: 18px 50px; font-size: 20px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); border: 2px solid #ffb6c1; margin-left: 20px; font-weight: 700;">دریاچه مهارلو</a>
+                        <a href="#urmia" class="bttn" style="background: transparent; color: white; padding: 18px 45px; font-size: 20px; border-radius: 60px; border: 2px solid #ffb6c1; font-weight: 700;">دریاچه ارومیه</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- نمک‌زار -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;">
+            <svg viewBox="0 0 1440 320" style="width: 100%; height: auto; opacity: 0.15;">
+                <path fill="white" fill-opacity="1" d="M0,256L60,234.7C120,213,240,171,360,160C480,149,600,171,720,181.3C840,192,960,192,1080,176C1200,160,1320,128,1380,112L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- ================ بخش دریاچه صورتی - عکس ================ -->
+    <section id="pink-lake" class="blog-pp single-pp" style="position: relative; z-index: 3; background: #fff0f5; padding: 130px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-pink">
+                    <div class="pink-image-frame">
+                        <img src="img/darya-che-sorati.jpg" 
+                             alt="دریاچه صورتی - مهارلو" 
+                             class="pink-image img-fluid"
+                             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Maharloo_Lake_Pink_Color.jpg/800px-Maharloo_Lake_Pink_Color.jpg'">
+                        <div style="position: absolute; bottom: -20px; left: 30px; background: white; padding: 18px 35px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-right: 6px solid #ff69b4; direction: ltr;">
+                            <span style="font-weight: 700; color: #c71585; font-size: 18px;">دریاچه مهارلو - نگین صورتی فارس</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-pink delay-2">
+                    <div class="pink-card">
+                        <span class="pink-badge">🦩 پدیده نادر طبیعی</span>
+                        <h2 class="pink-title">دریاچه صورتی</h2>
+                        <div class="pink-border"></div>
+                        <p style="font-size: 17px; line-height: 2.1; color: #8b1e3f; margin-bottom: 30px;">
+                            <span style="font-size: 32px; color: #ff69b4; font-weight: 800; float: right; margin-left: 15px;">🦩</span>
+                            دریاچه‌های صورتی ایران از شگفت‌انگیزترین پدیده‌های طبیعی جهان هستند. رنگ صورتی این دریاچه‌ها ناشی از وجود جلبک‌های قرمز و میکروارگانیسم‌های خاص در آب شور است.
+                        </p>
+                        <p style="font-size: 17px; line-height: 2.1; color: #8b1e3f; margin-bottom: 35px;">
+                            دریاچه مهارلو در شیراز، دریاچه ارومیه در آذربایجان غربی و دریاچه پریشان در کازرون، معروفترین دریاچه‌های صورتی ایران هستند.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <div class="stat-pink">
+                                    <span class="stat-number-pink">۶</span>
+                                    <p style="font-size: 15px; color: #ff69b4; margin-top: 12px; font-weight: 600;">دریاچه صورتی</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-pink">
+                                    <span class="stat-number-pink">۱۵۰۰</span>
+                                    <p style="font-size: 15px; color: #ff69b4; margin-top: 12px; font-weight: 600;">کیلومتر مربع</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-pink">
+                                    <span class="stat-number-pink">۵۰+</span>
+                                    <p style="font-size: 15px; color: #ff69b4; margin-top: 12px; font-weight: 600;">گونه پرنده</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش فلامینگوها ================ -->
+    <section style="position: relative; z-index: 3; background: #ffe4ec; padding: 80px 0;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 fade-up-pink">
+                    <div class="flamingo-icon">🦩🦩🦩</div>
+                    <h3 style="font-size: 36px; font-weight: 700; color: #c71585; margin-top: 20px;">بهشت فلامینگوها</h3>
+                    <p style="font-size: 20px; color: #8b1e3f; max-width: 800px; margin: 20px auto;">
+                        دریاچه‌های صورتی ایران، زیستگاه هزاران فلامینگوی زیباست که با بال‌های صورتی‌شان، تماشایی‌ترین منظره طبیعت را خلق می‌کنند.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش دریاچه مهارلو ================ -->
+    <section id="maharloo" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-pink text-center">
+                    <div style="font-size: 80px; color: #ff69b4; opacity: 0.5;" class="pink-wave">🌊🌸🌊</div>
+                </div>
+                <div class="col-lg-6 fade-up-pink">
+                    <span style="color: #ff69b4; font-size: 18px; letter-spacing: 3px;">🏞️ نگین فارس</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #c71585; margin-top: 20px; margin-bottom: 25px;">دریاچه مهارلو</h2>
+                    <div style="width: 100px; height: 3px; background: #ff69b4; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #8b1e3f; margin-bottom: 25px;">
+                        دریاچه مهارلو در ۲۵ کیلومتری جنوب شرقی شیراز قرار دارد. این دریاچه فصلی با وسعت ۶۰۰ کیلومتر مربع، در تابستان خشک و به صورت شوره‌زار صورتی درمی‌آید.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #8b1e3f;">
+                        بهترین زمان بازدید از این دریاچه، فصل بهار است که آب دریاچه صورتی رنگ و مملو از فلامینگوها می‌شود.
+                    </p>
+                    <div class="lake-quote mt-4">
+                        "مهارلو، دریای صورتی عشق"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش دریاچه ارومیه ================ -->
+    <section id="urmia" style="position: relative; z-index: 3; background: #fff0f5; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-pink order-lg-2 text-center">
+                    <div style="font-size: 80px; color: #ff69b4; opacity: 0.5;">🦩🏝️🦩</div>
+                </div>
+                <div class="col-lg-6 fade-up-pink order-lg-1">
+                    <span style="color: #ff69b4; font-size: 18px; letter-spacing: 3px;">💧 بزرگترین دریاچه داخلی ایران</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #c71585; margin-top: 20px; margin-bottom: 25px;">دریاچه ارومیه</h2>
+                    <div style="width: 100px; height: 3px; background: #ff69b4; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #8b1e3f; margin-bottom: 25px;">
+                        دریاچه ارومیه، بزرگترین دریاچه داخلی ایران و دومین دریاچه شور جهان است. رنگ صورتی آن در فصول پرباران به زیباترین شکل خود دیده می‌شود.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #8b1e3f;">
+                        جزیره‌های اشک، کبودان و اسپیر از مهمترین جزایر این دریاچه هستند که زیستگاه قوچ و میش ارمنی و فلامینگوهاست.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش دریاچه پریشان ================ -->
+    <section style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-pink text-center">
+                    <div style="font-size: 80px; color: #ff69b4; opacity: 0.5;">🏞️🌸🏞️</div>
+                </div>
+                <div class="col-lg-6 fade-up-pink">
+                    <span style="color: #ff69b4; font-size: 18px; letter-spacing: 3px;">🌿 بهشت کازرون</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #c71585; margin-top: 20px; margin-bottom: 25px;">دریاچه پریشان</h2>
+                    <div style="width: 100px; height: 3px; background: #ff69b4; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #8b1e3f; margin-bottom: 25px;">
+                        دریاچه پریشان در استان فارس، بزرگترین دریاچه آب شیرین ایران است که در فصل‌های پرآب به رنگ صورتی کم رنگ دیده می‌شود.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #8b1e3f;">
+                        این دریاچه زیستگاه بیش از ۵۰ گونه پرنده مهاجر و بومی است و به عنوان منطقه حفاظت شده ثبت شده است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش علم دریاچه صورتی ================ -->
+    <section style="position: relative; z-index: 3; background: #ffe4ec; padding: 100px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-pink">
+                    <div style="font-size: 50px; color: #ff69b4; margin-bottom: 20px;">🔬🧪🔬</div>
+                    <span style="background: #c71585; color: white; padding: 8px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 2px;">رمز و راز رنگ صورتی</span>
+                    <h2 style="font-size: 42px; font-weight: 800; color: #8b1e3f; margin-top: 35px; margin-bottom: 30px;">چرا دریاچه صورتی است؟</h2>
+                    <p style="font-size: 20px; line-height: 1.9; color: #5a3e1e; max-width: 800px; margin: 0 auto;">
+                        رنگ صورتی دریاچه‌ها به دلیل وجود جلبک‌های سبز-آبی به نام دونالیلا سالینا و باکتری‌های هالوباکتریوم است. این میکروارگانیسم‌ها در آب فوق‌العاده شور زندگی می‌کنند و رنگدانه قرمز تولید می‌کنند.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تاریخچه ================ -->
+    <section id="history" style="position: relative; z-index: 3; background: white; padding: 120px 0;">
+        <div class="container">
+            <div class="section-title fade-up-pink">
+                <span style="color: #ff69b4;">📜 میلیون‌ها سال زیبایی</span>
+                <h2 style="font-size: 58px; font-weight: 800; color: #c71585; margin-top: 20px;">گاهشمار دریاچه‌های صورتی</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto; font-size: 20px;">از گذشته‌های دور تا امروز</p>
+                <div style="width: 120px; height: 4px; background: #ff69b4; margin: 25px auto;"></div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up-pink">
+                    <div class="timeline-pink">
+                        <h3>۵ میلیون سال پیش</h3>
+                        <h4 style="font-size: 24px; color: #c71585; margin-bottom: 15px;">تکوین دریاچه ارومیه</h4>
+                        <p style="line-height: 1.9;">دریاچه ارومیه در دوران پلیوسن شکل گرفت.</p>
+                    </div>
+                    <div class="timeline-pink">
+                        <h3>۲۰۰۰ سال پیش</h3>
+                        <h4 style="font-size: 24px; color: #c71585; margin-bottom: 15px;">نام دریاچه در متون کهن</h4>
+                        <p style="line-height: 1.9;">بطلمیوس و مورخان یونانی از دریاچه ارومیه با نام «ماتیانوس» یاد کرده‌اند.</p>
+                    </div>
+                    <div class="timeline-pink">
+                        <h3>۱۹۷۰ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #c71585; margin-bottom: 15px;">پارک ملی دریاچه ارومیه</h4>
+                        <p style="line-height: 1.9;">دریاچه ارومیه به عنوان پارک ملی ثبت شد.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-pink delay-2">
+                    <div class="timeline-pink">
+                        <h3>۲۰۰۸ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #c71585; margin-bottom: 15px;">ثبت در یونسکو</h4>
+                        <p style="line-height: 1.9;">دریاچه ارومیه در فهرست میراث طبیعی یونسکو به ثبت رسید.</p>
+                    </div>
+                    <div class="timeline-pink">
+                        <h3>۲۰۱۸ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #c71585; margin-bottom: 15px;">احیا دریاچه</h4>
+                        <p style="line-height: 1.9;">پروژه احیای دریاچه ارومیه با افزایش تراز آب نتایج مثبتی داشت.</p>
+                    </div>
+                    <div class="timeline-pink">
+                        <h3>۲۰۲۶ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #c71585; margin-bottom: 15px;">مقصد گردشگران جهان</h4>
+                        <p style="line-height: 1.9;">دریاچه‌های صورتی ایران به یکی از محبوب‌ترین مقاصد گردشگری تبدیل شده‌اند.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش نقل قول ================ -->
+    <section class="quote-section-pink" style="position: relative; z-index: 3; padding: 120px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-pink">
+                    <span style="font-size: 80px; line-height: 0.6; color: rgba(255,255,255,0.2); display: block; margin-bottom: 30px;">🦩</span>
+                    <h2 style="font-size: 44px; font-weight: 700; line-height: 1.7; margin-bottom: 50px; color: #ffd700; text-shadow: 0 0 30px rgba(0,0,0,0.5); font-style: italic;">
+                        «دریاچه صورتی، رویایی ترین رنگ طبیعت ایران؛ جایی که زمین آسمان را در آغوش می‌کشد»
+                    </h2>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.8);">— هانیه کریمی، پژوهشگر طبیعت ایران</p>
+                    <div style="margin-top: 50px;">
+                        <span class="cuneiform-pink" style="background: rgba(0,0,0,0.3); color: #ffd700; border-color: #ffb6c1; font-size: 28px;">🦩 دریاچه صورتی ایران 🦩</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: #fff0f5; padding: 120px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="pink-card fade-up-pink" style="background: white;">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <div style="width: 100px; height: 100px; background: rgba(255,105,180,0.08); border-radius: 50%; line-height: 100px; font-size: 55px; color: #ff69b4; margin: 0 auto 25px; border: 2px dashed #ff69b4;">
+                                🦩
+                            </div>
+                            <span style="background: #ff69b4; color: white; padding: 10px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 3px; display: inline-block; margin-bottom: 25px;">🦩 دریاچه صورتی ایران 🦩</span>
+                            <h2 style="font-size: 48px; font-weight: 800; color: #8b1e3f; margin-top: 15px;">هانیه کریمی</h2>
+                            <p style="font-size: 20px; color: #ff69b4; margin-top: 15px; font-weight: 600;">پژوهشگر طبیعت ایران | طراح و توسعه‌دهنده وب</p>
+                            <div style="width: 100px; height: 3px; background: linear-gradient(90deg, #ff69b4, #ffb6c1, #ff69b4); margin: 30px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #fff0f5; padding: 45px 30px; border-radius: 35px; height: 100%; border: 1px solid rgba(255,105,180,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #ff69b4; margin-bottom: 20px;">📬</div>
+                                    <div style="direction: ltr; text-align: left; font-size: 18px; color: #8b1e3f; margin: 25px 0 15px; font-family: monospace; background: white; padding: 15px 20px; border-radius: 15px; border: 1px solid rgba(255,105,180,0.15);">
+                                        hanieh.karimii1389@gmail.com
+                                    </div>
+                                    <div style="direction: ltr; text-align: left; font-size: 26px; color: #ff69b4; margin: 20px 0; font-weight: 800; background: rgba(255,105,180,0.03); padding: 12px; border-radius: 15px;">
+                                        ۰۹۹۳۲۳۰۹۴۹۲
+                                    </div>
+                                    <div style="font-size: 20px; color: #8b1e3f; font-weight: 600;">
+                                        مشهد، ایران
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #fff0f5; padding: 45px 35px; border-radius: 35px; height: 100%; border: 1px solid rgba(255,105,180,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #ff69b4; margin-bottom: 20px;">🦩</div>
+                                    <p style="font-size: 18px; line-height: 2; color: #8b1e3f; margin-top: 25px; text-align: justify;">
+                                        این وبسایت به پاس گرامیداشت زیبایی‌های بی‌نظیر طبیعت ایران زمین طراحی شده است. دریاچه‌های صورتی ایران، یکی از شگفت‌انگیزترین پدیده‌های طبیعی جهان، هدیه‌ای از جانب خداوند به ایران عزیزمان است.
+                                    </p>
+                                    <div style="margin-top: 35px; padding: 15px; background: rgba(255,105,180,0.06); border-radius: 15px; border: 1px dashed #ff69b4;">
+                                        <span style="color: #8b1e3f; font-weight: 700; font-size: 20px;">🦩 دریاچه صورتی - مهارلو و ارومیه 🦩</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر -->
+                        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,105,180,0.2);">
+                            <div style="background: #ff69b4; color: white; padding: 15px 35px; border-radius: 50px; display: inline-block; font-weight: 700; box-shadow: 0 10px 25px rgba(255,105,180,0.4); border: 2px solid #ffb6c1; margin-bottom: 25px;">
+                                🦩 دریاچه صورتی ایران - شگفتی طبیعت 🦩
+                            </div>
+                            <p style="color: #ff69b4; margin-top: 25px; font-size: 18px; font-weight: 600;">
+                                طراحی شده با افتخار و عشق به ایران زمین توسط هانیه کریمی © ۲۰۲۶
+                            </p>
+                            <div style="margin-top: 30px;">
+                                <span style="color: #ff69b4; font-size: 24px;">🦩 ایران سرزمین دریاچه‌های صورتی 🦩</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>

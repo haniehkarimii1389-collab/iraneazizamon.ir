@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کوه‌های سر به فلک کشیده | البرز - دماوند</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ انیمیشن‌های کوهستان ================ */
+        @keyframes fadeUpMountain {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes cloudFloat {
+            0% { transform: translateX(-20px); opacity: 0.4; }
+            50% { transform: translateX(20px); opacity: 0.7; }
+            100% { transform: translateX(-20px); opacity: 0.4; }
+        }
+        
+        @keyframes snowGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+            50% { filter: drop-shadow(0 0 30px rgba(173,216,230,0.6)); }
+            100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+        }
+        
+        .fade-up-mountain {
+            animation: fadeUpMountain 1.2s ease forwards;
+        }
+        
+        .cloud-float {
+            animation: cloudFloat 20s ease-in-out infinite;
+        }
+        
+        .snow-peak {
+            animation: snowGlow 5s infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-6 { animation-delay: 1.2s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی کوه‌ها ================ */
+        .mountain-logo {
+            width: 80px;
+            height: 80px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+        }
+        
+        .mountain-logo:hover {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 0 30px rgba(173,216,230,0.8));
+        }
+        
+        /* ================ استایل‌های اختصاصی کوهستان ================ */
+        .mountain-pattern {
+            background: repeating-linear-gradient(45deg, 
+                rgba(200,220,240,0.03) 0px, 
+                rgba(200,220,240,0.03) 10px,
+                transparent 10px, 
+                transparent 30px);
+        }
+        
+        .mountain-card {
+            background: linear-gradient(145deg, #f0f8ff, #e6f0fa);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(70,130,180,0.1);
+            border: 1px solid rgba(135,206,235,0.25);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        
+        .mountain-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 80px rgba(70,130,180,0.15);
+            border-color: rgba(135,206,250,0.4);
+        }
+        
+        .mountain-card:after {
+            content: '🏔️';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.03;
+            color: #4682b4;
+            transform: rotate(-5deg);
+        }
+        
+        .mountain-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #2c5a7a, #1e3a4a);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(44,90,122,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 25px;
+        }
+        
+        .mountain-title {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #2c5a7a, #4682b4, #1e3a4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 20px rgba(70,130,180,0.2);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .mountain-border {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #2c5a7a, #87ceeb, #2c5a7a);
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(135,206,235,0.3);
+        }
+        
+        .stat-mountain {
+            background: rgba(70,130,180,0.03);
+            padding: 30px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(70,130,180,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .stat-mountain:hover {
+            background: rgba(70,130,180,0.06);
+            border-color: rgba(135,206,250,0.3);
+            transform: translateY(-8px);
+        }
+        
+        .stat-number-mountain {
+            font-size: 48px;
+            font-weight: 900;
+            color: #2c5a7a;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .timeline-mountain {
+            position: relative;
+            padding: 35px;
+            background: white;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border-right: 6px solid #4682b4;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-mountain:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 20px 50px rgba(70,130,180,0.1);
+            border-right-width: 10px;
+        }
+        
+        .timeline-mountain h3 {
+            color: #4682b4;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .mountain-image-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+            border: 8px solid rgba(255,255,255,0.3);
+            transition: all 0.6s ease;
+            background: #e6f0fa;
+        }
+        
+        .mountain-image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 90px rgba(70,130,180,0.25);
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        .mountain-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.8s ease;
+        }
+        
+        .mountain-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .peak-icon {
+            font-size: 60px;
+            color: #4682b4;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: snowGlow 5s infinite;
+        }
+        
+        .damavand-quote {
+            font-family: 'Times New Roman', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: #1e3a4a;
+            line-height: 2;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .cuneiform-mountain {
+            font-family: 'Times New Roman', serif;
+            font-size: 22px;
+            color: #4682b4;
+            letter-spacing: 6px;
+            background: rgba(70,130,180,0.05);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(70,130,180,0.15);
+        }
+        
+        .quote-section-mountain {
+            background: linear-gradient(135deg, #1a2f3f, #2c5a7a, #1a2f3f);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mountain-range {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to top, #1e3a4a, transparent);
+            clip-path: polygon(0% 100%, 5% 30%, 10% 50%, 15% 20%, 20% 40%, 25% 15%, 30% 35%, 35% 10%, 40% 30%, 45% 5%, 50% 25%, 55% 0%, 60% 20%, 65% 5%, 70% 25%, 75% 10%, 80% 30%, 85% 15%, 90% 40%, 95% 25%, 100% 50%, 100% 100%);
+            opacity: 0.1;
+        }
+        
+        .cloud {
+            position: absolute;
+            background: rgba(255,255,255,0.2);
+            border-radius: 1000px;
+            width: 100px;
+            height: 40px;
+            filter: blur(15px);
+        }
+    </style>
+</head>
+<body class="inner-pag mountain-pattern" style="background: linear-gradient(to bottom, #cfe7ff, #e6f0fa);">
+
+    <!-- ================ ابرهای متحرک ================ -->
+    <div class="cloud" style="top: 15%; left: 5%; width: 150px; height: 50px; animation: cloudFloat 25s infinite;"></div>
+    <div class="cloud" style="top: 25%; right: 10%; width: 200px; height: 60px; animation: cloudFloat 30s infinite reverse;"></div>
+    <div class="cloud" style="top: 45%; left: 20%; width: 120px; height: 40px; animation: cloudFloat 20s infinite;"></div>
+    <div class="cloud" style="top: 60%; right: 15%; width: 180px; height: 55px; animation: cloudFloat 35s infinite reverse;"></div>
+
+    <!-- ================ هدر با عکس کوه‌ها ================ -->
+    <header id="inner-header" class="inner-header parallax" style="height: 100vh; position: relative; z-index: 2; overflow: hidden;">
+        <!-- ✅ بکگراند آبی کوهستانی -->
+        <div class="overlay" style="background: radial-gradient(circle at 30% 50%, #1e3a4a, #2c5a7a, #0f2a33); opacity: 0.85; box-shadow: inset 0 0 180px rgba(70,130,180,0.4);"></div>
+        
+        <!-- ✅ رشته کوه البرز -->
+        <div class="mountain-range" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1; opacity: 0.2;"></div>
+        
+        <!-- ناوبری با لوگوی کوهستان -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up-mountain">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <!-- لوگوی اختصاصی کوه‌های البرز -->
+                    <svg width="80" height="80" viewBox="0 0 100 100" class="mountain-logo">
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="white" stroke-width="2" stroke-dasharray="6 4"/>
+                        <!-- قله دماوند -->
+                        <polygon points="50,10 30,50 70,50" fill="white" opacity="0.9"/>
+                        <polygon points="50,15 35,50 65,50" fill="#b0e0e6" opacity="0.8"/>
+                        <!-- برف قله -->
+                        <circle cx="50" cy="25" r="8" fill="white" opacity="0.7" class="snow-peak"/>
+                        <!-- کوه‌های اطراف -->
+                        <polygon points="20,50 30,30 40,50" fill="#4682b4" opacity="0.5"/>
+                        <polygon points="60,50 70,35 80,50" fill="#4682b4" opacity="0.5"/>
+                        <polygon points="5,70 15,50 25,70" fill="#2c5a7a" opacity="0.6"/>
+                        <polygon points="75,70 85,55 95,70" fill="#2c5a7a" opacity="0.6"/>
+                    </svg>
+                    <span style="color: white; font-weight: 800; margin-right: 15px; font-size: 22px; text-shadow: 0 0 20px rgba(70,130,180,0.7);">کوه‌های البرز</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#mountains">کوه‌ها</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#damavand">دماوند</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#alborz">البرز</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر - کوه‌های سر به فلک کشیده -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up-mountain" style="position: relative; z-index: 4;">
+                    <div class="cuneiform-mountain" style="color: white; border-color: rgba(255,255,255,0.3); background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); margin-bottom: 25px;">
+                        🏔️ البرز - دماوند 🏔️
+                    </div>
+                    <h1 style="font-size: 90px; font-weight: 900; color: white; text-shadow: 0 0 50px #87ceeb, 0 0 100px rgba(135,206,235,0.5), 2px 2px 20px black; margin-top: 15px; letter-spacing: 6px;" class="fade-up-mountain delay-1">
+                        کوه‌های سر به فلک کشیده
+                    </h1>
+                    <p style="font-size: 38px; color: rgba(255,255,255,0.98); font-weight: 400; letter-spacing: 8px; text-shadow: 0 0 35px #87ceeb, 2px 2px 15px black;" class="fade-up-mountain delay-2">
+                        البرز - دماوند
+                    </p>
+                    <div style="width: 200px; height: 6px; background: linear-gradient(90deg, #b0e0e6, #4682b4, #2c5a7a, #4682b4, #b0e0e6); margin: 40px auto; box-shadow: 0 0 40px #87ceeb; border-radius: 10px;" class="fade-up-mountain delay-3"></div>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.95); max-width: 1000px; margin: 40px auto; line-height: 1.8; text-shadow: 2px 2px 20px black; font-weight: 500; background: rgba(0,0,0,0.2); padding: 20px 40px; border-radius: 80px; backdrop-filter: blur(5px); border: 1px solid rgba(176,224,230,0.3);" class="fade-up-mountain delay-4">
+                        «کوه‌های البرز، رشته کوهی افسانه‌ای که از قفقاز تا خراسان امتداد یافته و دماوند، بام ایران، با ۵۶۱۰ متر ارتفاع، بلندترین قله آن است»
+                    </p>
+                    <div class="mt-5 fade-up-mountain delay-5">
+                        <a href="#damavand" class="bttn" style="background: linear-gradient(135deg, #2c5a7a, #1e3a4a); color: white; padding: 18px 50px; font-size: 20px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); border: 2px solid #b0e0e6; margin-left: 20px; font-weight: 700;">قله دماوند</a>
+                        <a href="#alborz" class="bttn" style="background: transparent; color: white; padding: 18px 45px; font-size: 20px; border-radius: 60px; border: 2px solid #b0e0e6; font-weight: 700;">رشته کوه البرز</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- رشته کوه پس زمینه -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;">
+            <svg viewBox="0 0 1440 320" style="width: 100%; height: auto; opacity: 0.15;">
+                <path fill="white" fill-opacity="1" d="M0,224L60,213.3C120,203,240,181,360,181.3C480,181,600,203,720,213.3C840,224,960,224,1080,208C1200,192,1320,160,1380,144L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- ================ بخش کوه‌ها - عکس ================ -->
+    <section id="mountains" class="blog-pp single-pp" style="position: relative; z-index: 3; background: #f0f8ff; padding: 130px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-mountain">
+                    <div class="mountain-image-frame">
+                        <img src="img/koh-sar-be-falak-keshide.jpg" 
+                             alt="کوه‌های البرز - دماوند" 
+                             class="mountain-image img-fluid"
+                             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Mount_Damavand_%2842149849780%29.jpg/800px-Mount_Damavand_%2842149849780%29.jpg'">
+                        <div style="position: absolute; bottom: -20px; left: 30px; background: white; padding: 18px 35px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-right: 6px solid #4682b4; direction: ltr;">
+                            <span style="font-weight: 700; color: #1e3a4a; font-size: 18px;">قله دماوند - بام ایران</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-mountain delay-2">
+                    <div class="mountain-card">
+                        <span class="mountain-badge">🏔️ بلندترین قله ایران و خاورمیانه</span>
+                        <h2 class="mountain-title">رشته کوه البرز</h2>
+                        <div class="mountain-border"></div>
+                        <p style="font-size: 17px; line-height: 2.1; color: #1e3a4a; margin-bottom: 30px;">
+                            <span style="font-size: 32px; color: #4682b4; font-weight: 800; float: right; margin-left: 15px;">🏔️</span>
+                            رشته کوه البرز با ۱۳۰۰ کیلومتر طول، از قفقاز تا خراسان امتداد یافته و دیواره شمالی ایران را تشکیل می‌دهد. این کوه‌ها با ۶۰ قله بالای ۴۰۰۰ متر، یکی از مهم‌ترین زیست‌بوم‌های ایران هستند.
+                        </p>
+                        <p style="font-size: 17px; line-height: 2.1; color: #1e3a4a; margin-bottom: 35px;">
+                            قله دماوند با ۵۶۱۰ متر ارتفاع، بلندترین قله ایران و خاورمیانه است و در اساطیر ایرانی جایگاه ویژه‌ای دارد.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <div class="stat-mountain">
+                                    <span class="stat-number-mountain">۵۶۱۰</span>
+                                    <p style="font-size: 15px; color: #4682b4; margin-top: 12px; font-weight: 600;">متر ارتفاع</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-mountain">
+                                    <span class="stat-number-mountain">۱۳۰۰</span>
+                                    <p style="font-size: 15px; color: #4682b4; margin-top: 12px; font-weight: 600;">کیلومتر طول</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-mountain">
+                                    <span class="stat-number-mountain">۶۰</span>
+                                    <p style="font-size: 15px; color: #4682b4; margin-top: 12px; font-weight: 600;">قله بالای ۴۰۰۰ متر</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش قله دماوند ================ -->
+    <section id="damavand" style="position: relative; z-index: 3; background: linear-gradient(to bottom, #d4eaff, #b0e0e6); padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-mountain text-center">
+                    <div class="peak-icon">🏔️❄️🏔️</div>
+                </div>
+                <div class="col-lg-6 fade-up-mountain">
+                    <span style="color: #1e3a4a; font-size: 18px; letter-spacing: 3px;">❄️ بام ایران</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #2c5a7a; margin-top: 20px; margin-bottom: 25px;">قله دماوند</h2>
+                    <div style="width: 100px; height: 3px; background: #4682b4; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #1e3a4a; margin-bottom: 25px;">
+                        دماوند در اساطیر ایرانی، جایگاه اژدهاک (ضحاک) و کاوه آهنگر است. این قله یک آتشفشان خاموش با قدمت ۱.۸ میلیون سال است و هر ساله هزاران کوهنورد به آن صعود می‌کنند.
+                    </p>
+                    <div class="damavand-quote mt-4">
+                        "ای دیو سپید پای در بند<br>
+                        ای گنبد گیتی، ای دماوند"
+                    </div>
+                    <p style="font-size: 16px; color: #2c5a7a; margin-top: 15px;">— ملک‌الشعرای بهار</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش البرز ================ -->
+    <section id="alborz" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-mountain order-lg-2 text-center">
+                    <div style="font-size: 80px; color: #4682b4; opacity: 0.3;">🗻🗻🗻</div>
+                </div>
+                <div class="col-lg-6 fade-up-mountain order-lg-1">
+                    <span style="color: #4682b4; font-size: 18px; letter-spacing: 3px;">🗻 رشته کوه البرز</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #2c5a7a; margin-top: 20px; margin-bottom: 25px;">دیواره شمالی ایران</h2>
+                    <div style="width: 100px; height: 3px; background: #4682b4; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #1e3a4a; margin-bottom: 25px;">
+                        البرز از غرب به تالش و آذربایجان و از شرق به خراسان متصل می‌شود. قله‌های علم‌کوه، توچال، دماوند و سبلان از معروف‌ترین قله‌های آن هستند.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #1e3a4a;">
+                        جنگل‌های هیرکانی در دامنه شمالی البرز و کویر مرکزی در دامنه جنوبی آن، تنوع آب و هوایی بی‌نظیری به این رشته کوه داده است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش قله‌های معروف ================ -->
+    <section style="position: relative; z-index: 3; background: #f0f8ff; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up-mountain">
+                <span style="color: #4682b4;">🗻 قله‌های معروف</span>
+                <h2 style="font-size: 52px; font-weight: 800; color: #2c5a7a; margin-top: 20px;">بلندترین قله‌های البرز</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto;">مقصد کوهنوردان ایران و جهان</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-mountain delay-1">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(70,130,180,0.1);">
+                        <div style="font-size: 55px; color: #4682b4; margin-bottom: 20px;">🏔️</div>
+                        <h4 style="color: #2c5a7a; font-size: 28px; font-weight: 800;">دماوند</h4>
+                        <p style="color: #4682b4; font-size: 20px; font-weight: 700;">۵۶۱۰ متر</p>
+                        <p style="color: #666;">بلندترین قله ایران</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-mountain delay-2">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(70,130,180,0.1);">
+                        <div style="font-size: 55px; color: #4682b4; margin-bottom: 20px;">🗻</div>
+                        <h4 style="color: #2c5a7a; font-size: 28px; font-weight: 800;">علم‌کوه</h4>
+                        <p style="color: #4682b4; font-size: 20px; font-weight: 700;">۴۸۵۰ متر</p>
+                        <p style="color: #666;">دیواره علم‌کوه، بهشت سنگنوردان</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-mountain delay-3">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(70,130,180,0.1);">
+                        <div style="font-size: 55px; color: #4682b4; margin-bottom: 20px;">🏔️</div>
+                        <h4 style="color: #2c5a7a; font-size: 28px; font-weight: 800;">توچال</h4>
+                        <p style="color: #4682b4; font-size: 20px; font-weight: 700;">۳۹۶۴ متر</p>
+                        <p style="color: #666;">میزبان تهران</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تاریخچه کوهنوردی ================ -->
+    <section id="history" style="position: relative; z-index: 3; background: white; padding: 120px 0;">
+        <div class="container">
+            <div class="section-title fade-up-mountain">
+                <span style="color: #4682b4;">📜 تاریخچه صعود</span>
+                <h2 style="font-size: 58px; font-weight: 800; color: #2c5a7a; margin-top: 20px;">گاهشمار کوه‌های ایران</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto;">از اساطیر تا امروز</p>
+                <div style="width: 120px; height: 4px; background: #4682b4; margin: 25px auto;"></div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up-mountain">
+                    <div class="timeline-mountain">
+                        <h3>۱۰۰۰ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #2c5a7a; margin-bottom: 15px;">اساطیر ایرانی</h4>
+                        <p style="line-height: 1.9;">دماوند در شاهنامه فردوسی جایگاه اژدهاک و کاوه آهنگر است.</p>
+                    </div>
+                    <div class="timeline-mountain">
+                        <h3>۱۸۳۷ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #2c5a7a; margin-bottom: 15px;">نخستین صعود ثبت شده</h4>
+                        <p style="line-height: 1.9;">تایلر تامسون، کنسول بریتانیا در تهران، به قله دماوند صعود کرد.</p>
+                    </div>
+                    <div class="timeline-mountain">
+                        <h3>۱۹۲۱ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #2c5a7a; margin-bottom: 15px;">نخستین صعود زمستانه</h4>
+                        <p style="line-height: 1.9;">صعود زمستانه به دماوند توسط کوهنوردان ایرانی و آلمانی انجام شد.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-mountain delay-2">
+                    <div class="timeline-mountain">
+                        <h3>۱۹۷۸ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #2c5a7a; margin-bottom: 15px;">ثبت ملی</h4>
+                        <p style="line-height: 1.9;">دماوند به عنوان اثر طبیعی ملی ثبت شد.</p>
+                    </div>
+                    <div class="timeline-mountain">
+                        <h3>۲۰۰۸ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #2c5a7a; margin-bottom: 15px;">جهانی شدن دماوند</h4>
+                        <p style="line-height: 1.9;">دماوند در فهرست آثار طبیعی جهانی یونسکو ثبت شد.</p>
+                    </div>
+                    <div class="timeline-mountain">
+                        <h3>۲۰۲۶ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #2c5a7a; margin-bottom: 15px;">مقصد کوهنوردان جهان</h4>
+                        <p style="line-height: 1.9;">سالانه بیش از ۵۰ هزار کوهنورد به قله دماوند صعود می‌کنند.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش نقل قول ================ -->
+    <section class="quote-section-mountain" style="position: relative; z-index: 3; padding: 120px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-mountain">
+                    <span style="font-size: 80px; line-height: 0.6; color: rgba(255,255,255,0.2); display: block; margin-bottom: 30px;">🏔️</span>
+                    <h2 style="font-size: 44px; font-weight: 700; line-height: 1.7; margin-bottom: 50px; color: #ffd700; text-shadow: 0 0 30px rgba(0,0,0,0.5); font-style: italic;">
+                        «دماوند، نماد استواری و سربلندی ایران؛ کوهی که در دل هر ایرانی جای دارد»
+                    </h2>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.8);">— هانیه کریمی، پژوهشگر طبیعت ایران</p>
+                    <div style="margin-top: 50px;">
+                        <span class="cuneiform-mountain" style="background: rgba(0,0,0,0.3); color: #ffd700; border-color: #b0e0e6; font-size: 28px;">🏔️ البرز - دماوند 🏔️</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: #f0f8ff; padding: 120px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="mountain-card fade-up-mountain" style="background: white;">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <div style="width: 100px; height: 100px; background: rgba(70,130,180,0.08); border-radius: 50%; line-height: 100px; font-size: 55px; color: #4682b4; margin: 0 auto 25px; border: 2px dashed #4682b4;">
+                                🏔️
+                            </div>
+                            <span style="background: #4682b4; color: white; padding: 10px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 3px; display: inline-block; margin-bottom: 25px;">🏔️ البرز - دماوند 🏔️</span>
+                            <h2 style="font-size: 48px; font-weight: 800; color: #1e3a4a; margin-top: 15px;">هانیه کریمی</h2>
+                            <p style="font-size: 20px; color: #4682b4; margin-top: 15px; font-weight: 600;">پژوهشگر طبیعت ایران | طراح و توسعه‌دهنده وب</p>
+                            <div style="width: 100px; height: 3px; background: linear-gradient(90deg, #4682b4, #b0e0e6, #4682b4); margin: 30px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #f0f8ff; padding: 45px 30px; border-radius: 35px; height: 100%; border: 1px solid rgba(70,130,180,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #4682b4; margin-bottom: 20px;">📬</div>
+                                    <div style="direction: ltr; text-align: left; font-size: 18px; color: #1e3a4a; margin: 25px 0 15px; font-family: monospace; background: white; padding: 15px 20px; border-radius: 15px; border: 1px solid rgba(70,130,180,0.15);">
+                                        hanieh.karimii1389@gmail.com
+                                    </div>
+                                    <div style="direction: ltr; text-align: left; font-size: 26px; color: #4682b4; margin: 20px 0; font-weight: 800; background: rgba(70,130,180,0.03); padding: 12px; border-radius: 15px;">
+                                        ۰۹۹۳۲۳۰۹۴۹۲
+                                    </div>
+                                    <div style="font-size: 20px; color: #1e3a4a; font-weight: 600;">
+                                        مشهد، ایران
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #f0f8ff; padding: 45px 35px; border-radius: 35px; height: 100%; border: 1px solid rgba(70,130,180,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #4682b4; margin-bottom: 20px;">🏔️</div>
+                                    <p style="font-size: 18px; line-height: 2; color: #1e3a4a; margin-top: 25px; text-align: justify;">
+                                        این وبسایت به پاس گرامیداشت طبیعت بکر و زیبای ایران زمین طراحی شده است. کوه‌های البرز و دماوند، نماد استواری و سربلندی ایران عزیزمان هستند.
+                                    </p>
+                                    <div style="margin-top: 35px; padding: 15px; background: rgba(70,130,180,0.06); border-radius: 15px; border: 1px dashed #4682b4;">
+                                        <span style="color: #1e3a4a; font-weight: 700; font-size: 20px;">🏔️ البرز - دماوند 🏔️</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر -->
+                        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(70,130,180,0.2);">
+                            <div style="background: #4682b4; color: white; padding: 15px 35px; border-radius: 50px; display: inline-block; font-weight: 700; box-shadow: 0 10px 25px rgba(70,130,180,0.4); border: 2px solid #b0e0e6; margin-bottom: 25px;">
+                                🏔️ کوه‌های سر به فلک کشیده - البرز و دماوند
+                            </div>
+                            <p style="color: #4682b4; margin-top: 25px; font-size: 18px; font-weight: 600;">
+                                طراحی شده با افتخار و عشق به ایران زمین توسط هانیه کریمی © ۲۰۲۶
+                            </p>
+                            <div style="margin-top: 30px;">
+                                <span style="color: #4682b4; font-size: 24px;">🏔️ دماوند، بام ایران 🏔️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>

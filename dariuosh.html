@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کتیبه‌های داریوش بزرگ | هخامنشیان</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ انیمیشن‌های ظریف ================ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-up {
+            animation: fadeUp 1s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی ایران ================ */
+        .iran-logo {
+            width: 70px;
+            height: 70px;
+            transition: all 0.3s ease;
+        }
+        
+        .iran-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        /* ================ استایل‌های اختصاصی ================ */
+        .inscription-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(55,140,63,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .inscription-card:hover {
+            box-shadow: 0 20px 50px rgba(55,140,63,0.1);
+            border-color: rgba(55,140,63,0.3);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-right: 4px solid #378C3F;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+        }
+        
+        .stat-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(55,140,63,0.05);
+            border-radius: 50px;
+            color: #378C3F;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .persian-border {
+            border-bottom: 2px solid #378C3F;
+            width: 70px;
+            margin: 20px 0;
+        }
+        
+        .inscription-img {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transition: all 0.5s ease;
+            width: 100%;
+            height: auto;
+        }
+        
+        .inscription-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px rgba(55,140,63,0.2);
+        }
+        
+        /* ================ استایل بخش تماس ================ */
+        .contact-card {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            border: 1px solid rgba(55,140,63,0.1);
+        }
+        
+        .contact-item {
+            background: #f9fbfd;
+            padding: 25px;
+            border-radius: 20px;
+            height: 100%;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(55,140,63,0.1);
+            background: white;
+        }
+        
+        .contact-icon {
+            font-size: 40px;
+            color: #378C3F;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .contact-email {
+            direction: ltr;
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+        
+        .contact-phone {
+            direction: ltr;
+            text-align: left;
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+        
+        .contact-address {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0;
+        }
+        
+        .heritage-text {
+            color: #999;
+            font-size: 14px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        
+        .credit-text {
+            color: #999;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .badge-light {
+            background: rgba(55,140,63,0.05);
+            color: #378C3F;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body class="inner-pag">
+
+    <!-- ================ هدر با بکگراند سبز وسط‌چین ================ -->
+    <header id="inner-header" class="inner-header parallax" style="height: 100vh; position: relative; z-index: 2;">
+        <!-- ✅ بکگراند گرادینت سبز - کاملاً وسط‌چین -->
+        <div class="overlay" style="background: radial-gradient(circle at 50% 50%, #2d6e2d, #145214, #0a460a); opacity: 0.98; box-shadow: inset 0 0 150px rgba(0,100,0,0.3);"></div>
+        
+        <!-- ✅ لایه دوم برای عمق بیشتر - وسط‌چین -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                    background: radial-gradient(circle at 50% 50%, rgba(55,140,63,0.3), transparent 80%);
+                    z-index: 1;"></div>
+        
+        <!-- ناوبری با لوگوی ایران -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <!-- لوگوی اختصاصی ایران با حرف I و پرچم -->
+                    <svg width="70" height="70" viewBox="0 0 100 100" class="iran-logo">
+                        <circle cx="50" cy="50" r="45" fill="white" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                        <defs>
+                            <linearGradient id="flagGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#239f40"/>
+                                <stop offset="33%" stop-color="#239f40"/>
+                                <stop offset="33%" stop-color="white"/>
+                                <stop offset="66%" stop-color="white"/>
+                                <stop offset="66%" stop-color="#da0000"/>
+                                <stop offset="100%" stop-color="#da0000"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="35" y="20" width="30" height="60" rx="12" fill="url(#flagGradient)"/>
+                        <path d="M50 10 L58 18 L42 18 Z" fill="gold"/>
+                        <circle cx="50" cy="16" r="6" fill="gold" stroke="#b8860b" stroke-width="1"/>
+                    </svg>
+                    <span style="color: white; font-weight: 700; margin-right: 10px; font-size: 18px; text-shadow: 0 0 10px rgba(0,0,0,0.5);">کتیبه‌های داریوش</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="#home">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#bistoon">کتیبه بیستون</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#inscriptions">کتیبه‌ها</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#biography">زندگی‌نامه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر با عکس داریوش -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up" style="position: relative; z-index: 4;">
+                    <span class="stat-badge" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(5px);">
+                        𐎭𐎠𐎼𐎹𐎺𐎢𐏁
+                    </span>
+                    <h1 style="font-size: 82px; font-weight: 900; color: white; text-shadow: 0 0 30px rgba(55,140,63,0.8), 2px 2px 20px black; margin-top: 20px;" class="fade-up delay-1">
+                        داریوش بزرگ
+                    </h1>
+                    <p style="font-size: 32px; color: rgba(255,255,255,0.95); font-weight: 400; letter-spacing: 3px; text-shadow: 0 0 20px #378C3F;" class="fade-up delay-2">
+                        شاهنشاه هخامنشی
+                    </p>
+                    <div style="width: 150px; height: 4px; background: linear-gradient(90deg, #34d8be, #378C3F, #239f40); margin: 30px auto; box-shadow: 0 0 20px #378C3F;" class="fade-up delay-3"></div>
+                    <p style="font-size: 22px; color: rgba(255,255,255,0.9); max-width: 900px; margin: 30px auto; line-height: 1.9; text-shadow: 1px 1px 10px black; font-weight: 400;" class="fade-up delay-3">
+                        «بخواست اهورامزدا، من داریوش هستم، شاه بزرگ، شاه شاهان، شاه سرزمین‌ها»
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================ بخش کتیبه بیستون ================ -->
+    <section id="bistoon" class="blog-pp single-pp" style="position: relative; z-index: 3; background: white; padding: 120px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up">
+                    <div class="inscription-img-container">
+                        <img src="img/dariuoshh.png" 
+                             alt="کتیبه بیستون" 
+                             class="inscription-img img-fluid"
+                             onerror="this.src='img/dariuosh.png'">
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up delay-2">
+                    <div class="inscription-card">
+                        <span class="stat-badge">✨ شاهکار تاریخ باستان</span>
+                        <h2 class="co-purple" style="font-size: 42px; font-weight: 700; margin-bottom: 20px;">کتیبه بیستون</h2>
+                        <div class="persian-border"></div>
+                        <p style="font-size: 16px; line-height: 1.9; color: #4a4a4a; margin-bottom: 30px;">
+                            کتیبه بیستون بزرگترین و مهم‌ترین سنگ‌نوشتهٔ جهان باستان است که به سه زبان پارسی باستان، عیلامی و بابلی، داستان پیروزی داریوش بزرگ را روایت می‌کند. این کتیبه در کوه بیستون کرمانشاه، نماد اقتدار و عدالت در ایران باستان است.
+                        </p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-4 text-center">
+                                <div style="background: rgba(55,140,63,0.03); padding: 20px 10px; border-radius: 15px;">
+                                    <span style="font-size: 32px; font-weight: 800; color: #378C3F;">۲۵۰۰</span>
+                                    <p style="font-size: 14px; color: #666; margin-top: 5px;">سال قدمت</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div style="background: rgba(55,140,63,0.03); padding: 20px 10px; border-radius: 15px;">
+                                    <span style="font-size: 32px; font-weight: 800; color: #378C3F;">۳</span>
+                                    <p style="font-size: 14px; color: #666; margin-top: 5px;">زبان</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div style="background: rgba(55,140,63,0.03); padding: 20px 10px; border-radius: 15px;">
+                                    <span style="font-size: 32px; font-weight: 800; color: #378C3F;">۱۰۰m</span>
+                                    <p style="font-size: 14px; color: #666; margin-top: 5px;">ارتفاع</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش کتیبه‌های داریوش ================ -->
+    <section id="inscriptions" class="services" style="position: relative; z-index: 3; background: #f9fbfd; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up">
+                <span>📜 کتیبه‌های سلطنتی</span>
+                <h2 style="font-size: 42px; font-weight: 700; color: #2c3e50; margin-top: 20px;">سنگ‌نوشته‌های داریوش</h2>
+                <p style="color: #666; max-width: 700px; margin: 20px auto;">کتیبه‌های داریوش بزرگ، مهم‌ترین اسناد تاریخی دوره هخامنشیان</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 fade-up delay-1">
+                    <div class="timeline-item" style="height: 100%;">
+                        <span style="font-size: 48px; color: #378C3F; opacity: 0.2; position: absolute; top: 20px; left: 20px;">𐎡</span>
+                        <h4 class="co-purple" style="font-size: 24px;">کتیبه بیستون</h4>
+                        <p style="color: #999; font-size: 14px;">۵۲۱-۵۲۰ پ.م</p>
+                        <p style="margin-top: 15px;">شرح پیروزی بر ۱۹ شورش و به قدرت رسیدن داریوش</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up delay-2">
+                    <div class="timeline-item" style="height: 100%;">
+                        <span style="font-size: 48px; color: #378C3F; opacity: 0.2; position: absolute; top: 20px; left: 20px;">𐎴</span>
+                        <h4 class="co-purple" style="font-size: 24px;">کتیبه نقش رستم</h4>
+                        <p style="color: #999; font-size: 14px;">۴۹۰ پ.م</p>
+                        <p style="margin-top: 15px;">دربارهٔ قدرت و عدالت اهورامزدا و افتخارات داریوش</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up delay-3">
+                    <div class="timeline-item" style="height: 100%;">
+                        <span style="font-size: 48px; color: #378C3F; opacity: 0.2; position: absolute; top: 20px; left: 20px;">𐏃</span>
+                        <h4 class="co-purple" style="font-size: 24px;">کتیبه شوش</h4>
+                        <p style="color: #999; font-size: 14px;">۵۱۰ پ.م</p>
+                        <p style="margin-top: 15px;">شرح ساخت کاخ شوش و قدرت امپراتوری</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش زندگی‌نامه ================ -->
+    <section id="biography" class="random-post" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up">
+                <span>👑 زندگی‌نامه</span>
+                <h2 style="font-size: 42px; font-weight: 700; color: #2c3e50; margin-top: 20px;">داریوش بزرگ</h2>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up">
+                    <div style="background: #f9f9fc; padding: 40px; border-radius: 30px;">
+                        <h3 class="co-purple" style="font-size: 28px; margin-bottom: 30px;">آغاز پادشاهی</h3>
+                        <p style="line-height: 1.9; margin-bottom: 25px;">
+                            داریوش در سال ۵۵۰ پیش از میلاد در خاندان سلطنتی هخامنشی متولد شد. او در سال ۵۲۲ پ.م پس از کشتن گئومات مغ (بردیای دروغین) به شاهی رسید و امپراتوری هخامنشی را از آشوب نجات داد.
+                        </p>
+                        <p style="line-height: 1.9;">
+                            او با ۱۹ شورش همزمان در سراسر امپراتوری مبارزه کرد و همه را سرکوب نمود. کتیبه بیستون برای ثبت این پیروزی‌ها نگاشته شد.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up delay-2">
+                    <div style="background: #f9f9fc; padding: 40px; border-radius: 30px;">
+                        <h3 class="co-purple" style="font-size: 28px; margin-bottom: 30px;">دستاوردها</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 20px; display: flex; align-items: center;">
+                                <span style="display: inline-block; width: 10px; height: 10px; background: #378C3F; border-radius: 50%; margin-left: 15px;"></span>
+                                <span>تقسیم امپراتوری به ۲۰ ساتراپی (استان)</span>
+                            </li>
+                            <li style="margin-bottom: 20px; display: flex; align-items: center;">
+                                <span style="display: inline-block; width: 10px; height: 10px; background: #378C3F; border-radius: 50%; margin-left: 15px;"></span>
+                                <span>ایجاد راه شاهی به طول ۲۵۰۰ کیلومتر</span>
+                            </li>
+                            <li style="margin-bottom: 20px; display: flex; align-items: center;">
+                                <span style="display: inline-block; width: 10px; height: 10px; background: #378C3F; border-radius: 50%; margin-left: 15px;"></span>
+                                <span>واحد پول یکسان (دریک طلا)</span>
+                            </li>
+                            <li style="margin-bottom: 20px; display: flex; align-items: center;">
+                                <span style="display: inline-block; width: 10px; height: 10px; background: #378C3F; border-radius: 50%; margin-left: 15px;"></span>
+                                <span>خط میخی پارسی باستان</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 fade-up delay-3">
+                    <div style="background: linear-gradient(135deg, #378C3F, #2a6b2f); color: white; padding: 60px; border-radius: 30px; text-align: center;">
+                        <span style="font-size: 48px; opacity: 0.2; position: absolute; top: 20px; right: 30px;">"</span>
+                        <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 20px;">آرامگاه داریوش</h3>
+                        <p style="font-size: 18px; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                            داریوش بزرگ در سال ۴۸۶ پیش از میلاد درگذشت و در نقش رستم، در مقبره‌ای سنگی که خود از پیش آماده کرده بود، به خاک سپرده شد. آرامگاه او با نمادهای قدرت و دین زرتشتی تزیین شده است.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش نقل قول ================ -->
+    <section style="position: relative; z-index: 3; background: #0a1a0a; padding: 100px 0; color: white; margin-top: 50px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up">
+                    <span style="font-size: 100px; line-height: 0.8; color: rgba(55,140,63,0.5); display: block; margin-bottom: 30px;">"</span>
+                    <h2 style="font-size: 36px; font-weight: 600; line-height: 1.6; margin-bottom: 40px; font-style: italic;">
+                        آنچه را درست است، آن را دوست دارم. آنچه را نادرست است، از آن بیزارم.
+                    </h2>
+                    <p style="font-size: 20px; color: rgba(255,255,255,0.7);">— داریوش بزرگ، کتیبه نقش رستم</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس - مرتب و زیبا ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="contact-card fade-up">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <span class="badge-light">📝 پژوهش‌گر تاریخ</span>
+                            <h2 style="font-size: 42px; font-weight: 700; color: #2c3e50; margin-top: 15px;">هانیه کریمی</h2>
+                            <p style="font-size: 18px; color: #666; margin-top: 10px;">طراح و توسعه‌دهنده وب | علاقه‌مند به تاریخ ایران باستان</p>
+                            <div style="width: 80px; height: 3px; background: #378C3F; margin: 25px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس - دو ستون -->
+                        <div class="row">
+                            <!-- ستون راست - اطلاعات تماس -->
+                            <div class="col-md-6 mb-4">
+                                <div class="contact-item">
+                                    <span class="contact-icon">📧</span>
+                                    <div class="contact-email">hanieh.karimii1389@gmail.com</div>
+                                    <div class="contact-phone">۰۹۹۳۲۳۰۹۴۹۲</div>
+                                    <div class="contact-address">مشهد، ایران</div>
+                                </div>
+                            </div>
+                            
+                            <!-- ستون چپ - میراث فرهنگی -->
+                            <div class="col-md-6 mb-4">
+                                <div class="contact-item">
+                                    <span class="contact-icon">🏛️</span>
+                                    <p style="font-size: 16px; line-height: 1.9; color: #4a4a4a; margin-top: 15px; text-align: justify;">
+                                        این وبسایت به پاس گرامیداشت میراث فرهنگی ایران زمین و با افتخار به تمدن هخامنشی طراحی شده است.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر -->
+                        <div class="heritage-text">
+                            کتیبه بیستون - میراث جهانی یونسکو
+                        </div>
+                        <div class="credit-text">
+                            طراحی شده با افتخار توسط هانیه کریمی © ۲۰۲۶
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>

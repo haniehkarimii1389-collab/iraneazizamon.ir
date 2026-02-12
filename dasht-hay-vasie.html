@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دشت‌های وسیع و دلنواز | کویر - مغان</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ انیمیشن‌های دشت ================ */
+        @keyframes fadeUpPlain {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes wheatWave {
+            0% { transform: translateX(-10px) rotate(-1deg); opacity: 0.5; }
+            50% { transform: translateX(10px) rotate(1deg); opacity: 0.8; }
+            100% { transform: translateX(-10px) rotate(-1deg); opacity: 0.5; }
+        }
+        
+        @keyframes sunGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(255,165,0,0.3)); }
+            50% { filter: drop-shadow(0 0 30px rgba(255,215,0,0.6)); }
+            100% { filter: drop-shadow(0 0 5px rgba(255,165,0,0.3)); }
+        }
+        
+        .fade-up-plain {
+            animation: fadeUpPlain 1.2s ease forwards;
+        }
+        
+        .wheat-wave {
+            animation: wheatWave 8s ease-in-out infinite;
+        }
+        
+        .sun-glow {
+            animation: sunGlow 5s infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-6 { animation-delay: 1.2s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی دشت‌ها ================ */
+        .plain-logo {
+            width: 80px;
+            height: 80px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 10px rgba(218,165,32,0.4));
+        }
+        
+        .plain-logo:hover {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 0 30px rgba(255,215,0,0.7));
+        }
+        
+        /* ================ استایل‌های اختصاصی دشت‌ها ================ */
+        .plain-pattern {
+            background: repeating-linear-gradient(45deg, 
+                rgba(244,164,96,0.03) 0px, 
+                rgba(244,164,96,0.03) 10px,
+                transparent 10px, 
+                transparent 30px);
+        }
+        
+        .plain-card {
+            background: linear-gradient(145deg, #fffaf0, #fdf5e6);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(210,180,140,0.15);
+            border: 1px solid rgba(244,164,96,0.25);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        
+        .plain-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 80px rgba(205,133,63,0.15);
+            border-color: rgba(255,165,0,0.3);
+        }
+        
+        .plain-card:after {
+            content: '🌾';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.03;
+            color: #d2b48c;
+            transform: rotate(-5deg);
+        }
+        
+        .plain-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #c49a6c, #8b5a2b);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(139,90,43,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 25px;
+        }
+        
+        .plain-title {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #b8860b, #cd853f, #8b5a2b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 20px rgba(184,134,11,0.2);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .plain-border {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #d2b48c, #f4a460, #d2b48c);
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(244,164,96,0.3);
+        }
+        
+        .stat-plain {
+            background: rgba(210,180,140,0.05);
+            padding: 30px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(210,180,140,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .stat-plain:hover {
+            background: rgba(244,164,96,0.08);
+            border-color: rgba(244,164,96,0.3);
+            transform: translateY(-8px);
+        }
+        
+        .stat-number-plain {
+            font-size: 48px;
+            font-weight: 900;
+            color: #b8860b;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .timeline-plain {
+            position: relative;
+            padding: 35px;
+            background: white;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border-right: 6px solid #cd853f;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-plain:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 20px 50px rgba(205,133,63,0.1);
+            border-right-width: 10px;
+        }
+        
+        .timeline-plain h3 {
+            color: #b8860b;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .plain-image-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.2);
+            border: 8px solid rgba(244,164,96,0.2);
+            transition: all 0.6s ease;
+            background: #fdf5e6;
+        }
+        
+        .plain-image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 90px rgba(184,134,11,0.2);
+            border-color: rgba(255,165,0,0.4);
+        }
+        
+        .plain-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.8s ease;
+        }
+        
+        .plain-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .wheat-icon {
+            font-size: 60px;
+            color: #d2b48c;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: wheatWave 7s ease-in-out infinite;
+        }
+        
+        .desert-quote {
+            font-family: 'Times New Roman', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: #8b5a2b;
+            line-height: 2;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .cuneiform-plain {
+            font-family: 'Times New Roman', serif;
+            font-size: 22px;
+            color: #b8860b;
+            letter-spacing: 6px;
+            background: rgba(184,134,11,0.05);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(184,134,11,0.15);
+        }
+        
+        .quote-section-plain {
+            background: linear-gradient(135deg, #5a3e1e, #8b5a2b, #5a3e1e);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plain-horizon {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, #d2b48c, transparent);
+            clip-path: polygon(0% 80%, 10% 60%, 20% 70%, 30% 50%, 40% 60%, 50% 40%, 60% 50%, 70% 30%, 80% 40%, 90% 20%, 100% 30%, 100% 100%, 0% 100%);
+            opacity: 0.2;
+        }
+        
+        .wheat-field {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: repeating-linear-gradient(90deg, #f4a460 0px, #f4a460 5px, transparent 5px, transparent 20px);
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="inner-pag plain-pattern" style="background: #fff8e7;">
+
+    <!-- ================ موج‌های گندم ================ -->
+    <div class="wheat-field" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 0;"></div>
+    <div class="plain-horizon" style="position: fixed; bottom: 50px; left: 0; right: 0; z-index: 0; opacity: 0.1;"></div>
+
+    <!-- ================ هدر با عکس دشت‌ها ================ -->
+    <header id="inner-header" class="inner-header parallax" style="height: 100vh; position: relative; z-index: 2; overflow: hidden;">
+        <!-- ✅ بکگراند طلایی دشت -->
+        <div class="overlay" style="background: radial-gradient(circle at 30% 50%, #8b5a2b, #c49a6c, #5a3e1e); opacity: 0.82; box-shadow: inset 0 0 180px rgba(218,165,32,0.3);"></div>
+        
+        <!-- ✅ افق دشت -->
+        <div class="plain-horizon" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1; opacity: 0.25;"></div>
+        
+        <!-- ناوبری با لوگوی دشت -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up-plain">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <!-- لوگوی اختصاصی دشت‌ها -->
+                    <svg width="80" height="80" viewBox="0 0 100 100" class="plain-logo">
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="#d2b48c" stroke-width="2" stroke-dasharray="6 4"/>
+                        <!-- خوشه گندم -->
+                        <path d="M50,30 L50,70" stroke="#b8860b" stroke-width="4" fill="none"/>
+                        <circle cx="50" cy="30" r="6" fill="#f4a460"/>
+                        <circle cx="42" cy="40" r="5" fill="#f4a460"/>
+                        <circle cx="58" cy="40" r="5" fill="#f4a460"/>
+                        <circle cx="36" cy="50" r="5" fill="#f4a460"/>
+                        <circle cx="64" cy="50" r="5" fill="#f4a460"/>
+                        <circle cx="42" cy="60" r="5" fill="#f4a460"/>
+                        <circle cx="58" cy="60" r="5" fill="#f4a460"/>
+                        <!-- خورشید -->
+                        <circle cx="75" cy="25" r="12" fill="#ffd700" opacity="0.4" class="sun-glow"/>
+                        <circle cx="75" cy="25" r="6" fill="#ffd700" opacity="0.6"/>
+                    </svg>
+                    <span style="color: white; font-weight: 800; margin-right: 15px; font-size: 22px; text-shadow: 0 0 20px rgba(184,134,11,0.7);">دشت‌های ایران</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#plains">دشت‌ها</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#kavir">دشت کویر</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#moghan">دشت مغان</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر - دشت‌های وسیع -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up-plain" style="position: relative; z-index: 4;">
+                    <div class="cuneiform-plain" style="color: white; border-color: rgba(255,255,255,0.3); background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); margin-bottom: 25px;">
+                        🌾 دشت‌های ایران 🌾
+                    </div>
+                    <h1 style="font-size: 90px; font-weight: 900; color: white; text-shadow: 0 0 50px #f4a460, 0 0 100px rgba(244,164,96,0.5), 2px 2px 20px black; margin-top: 15px; letter-spacing: 6px;" class="fade-up-plain delay-1">
+                        دشت‌های وسیع و دلنواز
+                    </h1>
+                    <p style="font-size: 38px; color: rgba(255,255,255,0.98); font-weight: 400; letter-spacing: 8px; text-shadow: 0 0 35px #f4a460, 2px 2px 15px black;" class="fade-up-plain delay-2">
+                        کویر - مغان - خوزستان
+                    </p>
+                    <div style="width: 200px; height: 6px; background: linear-gradient(90deg, #f4a460, #d2b48c, #b8860b, #d2b48c, #f4a460); margin: 40px auto; box-shadow: 0 0 40px #f4a460; border-radius: 10px;" class="fade-up-plain delay-3"></div>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.95); max-width: 1000px; margin: 40px auto; line-height: 1.8; text-shadow: 2px 2px 20px black; font-weight: 500; background: rgba(0,0,0,0.2); padding: 20px 40px; border-radius: 80px; backdrop-filter: blur(5px); border: 1px solid rgba(244,164,96,0.3);" class="fade-up-plain delay-4">
+                        «از کویر مرکزی تا دشت مغان، ایران سرزمین دشت‌های وسیع و حاصلخیز است؛ گهواره تمدن و مهد کشاورزی»
+                    </p>
+                    <div class="mt-5 fade-up-plain delay-5">
+                        <a href="#kavir" class="bttn" style="background: linear-gradient(135deg, #b8860b, #8b5a2b); color: white; padding: 18px 50px; font-size: 20px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); border: 2px solid #f4a460; margin-left: 20px; font-weight: 700;">دشت کویر</a>
+                        <a href="#moghan" class="bttn" style="background: transparent; color: white; padding: 18px 45px; font-size: 20px; border-radius: 60px; border: 2px solid #f4a460; font-weight: 700;">دشت مغان</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- افق دشت -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;">
+            <svg viewBox="0 0 1440 320" style="width: 100%; height: auto; opacity: 0.15;">
+                <path fill="#f4a460" fill-opacity="1" d="M0,192L60,186.7C120,181,240,171,360,176C480,181,600,203,720,208C840,213,960,203,1080,181.3C1200,160,1320,128,1380,112L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- ================ بخش دشت‌ها - عکس ================ -->
+    <section id="plains" class="blog-pp single-pp" style="position: relative; z-index: 3; background: #fff8e7; padding: 130px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-plain">
+                    <div class="plain-image-frame">
+                        <img src="img/dasht-hay-vasie.jpg" 
+                             alt="دشت‌های ایران - کویر مرکزی" 
+                             class="plain-image img-fluid"
+                             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Kavir_Lut_Iran_2006.jpg/800px-Kavir_Lut_Iran_2006.jpg'">
+                        <div style="position: absolute; bottom: -20px; left: 30px; background: white; padding: 18px 35px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-right: 6px solid #b8860b; direction: ltr;">
+                            <span style="font-weight: 700; color: #8b5a2b; font-size: 18px;">دشت کویر - آرامش بی‌کران</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-plain delay-2">
+                    <div class="plain-card">
+                        <span class="plain-badge">🌾 نگین کویر ایران</span>
+                        <h2 class="plain-title">دشت‌های ایران</h2>
+                        <div class="plain-border"></div>
+                        <p style="font-size: 17px; line-height: 2.1; color: #5a3e1e; margin-bottom: 30px;">
+                            <span style="font-size: 32px; color: #b8860b; font-weight: 800; float: right; margin-left: 15px;">🌾</span>
+                            ایران سرزمین دشت‌های وسیع و حاصلخیز است. از دشت کویر و لوت در مرکز ایران تا دشت مغان و خوزستان در شمال و جنوب، هر کدام زیبایی و سرگذشت منحصر به فردی دارند.
+                        </p>
+                        <p style="font-size: 17px; line-height: 2.1; color: #5a3e1e; margin-bottom: 35px;">
+                            این دشت‌ها نه تنها مهد کشاورزی ایران هستند، بلکه در طول تاریخ، محل شکل‌گیری تمدن‌های بزرگ و شاهکارهای معماری کویری بوده‌اند.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <div class="stat-plain">
+                                    <span class="stat-number-plain">۸۰۰</span>
+                                    <p style="font-size: 15px; color: #b8860b; margin-top: 12px; font-weight: 600;">هزار کیلومتر مربع</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-plain">
+                                    <span class="stat-number-plain">۲۰۰۰</span>
+                                    <p style="font-size: 15px; color: #b8860b; margin-top: 12px; font-weight: 600;">سال کشاورزی</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-plain">
+                                    <span class="stat-number-plain">۱۵</span>
+                                    <p style="font-size: 15px; color: #b8860b; margin-top: 12px; font-weight: 600;">دشت حاصلخیز</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش دشت کویر ================ -->
+    <section id="kavir" style="position: relative; z-index: 3; background: #faf0e6; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-plain text-center">
+                    <div class="wheat-icon">🏜️☀️🏜️</div>
+                </div>
+                <div class="col-lg-6 fade-up-plain">
+                    <span style="color: #b8860b; font-size: 18px; letter-spacing: 3px;">🏜️ کویر مرکزی</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #8b5a2b; margin-top: 20px; margin-bottom: 25px;">دشت کویر</h2>
+                    <div style="width: 100px; height: 3px; background: #b8860b; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #5a3e1e; margin-bottom: 25px;">
+                        دشت کویر با وسعت ۲۰۰ هزار کیلومتر مربع، بزرگترین کویر ایران است. کاروان‌سراها، قلعه‌های کویری و آسمان پرستاره، از جذابیت‌های این دشت بیکران است.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #5a3e1e;">
+                        کویر مصر، فرحزاد، گرمسار و ابوزیدآباد از معروفترین مناطق کویرنوردی ایران هستند.
+                    </p>
+                    <div class="desert-quote mt-4">
+                        "کویر، دریایی از شن و خورشید، آینه آسمان"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش دشت مغان ================ -->
+    <section id="moghan" style="position: relative; z-index: 3; background: #fdf5e6; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-plain order-lg-2 text-center">
+                    <div style="font-size: 80px; color: #8b5a2b; opacity: 0.3;">🌾🌿🌾</div>
+                </div>
+                <div class="col-lg-6 fade-up-plain order-lg-1">
+                    <span style="color: #b8860b; font-size: 18px; letter-spacing: 3px;">🌾 انبار غله ایران</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #8b5a2b; margin-top: 20px; margin-bottom: 25px;">دشت مغان</h2>
+                    <div style="width: 100px; height: 3px; background: #b8860b; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #5a3e1e; margin-bottom: 25px;">
+                        دشت مغان در استان اردبیل، یکی از حاصلخیزترین دشت‌های ایران است. گندم، جو، پنبه و ذرت از محصولات اصلی این دشت سبز هستند.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #5a3e1e;">
+                        این دشت با رود ارس مرز مشترک ایران و جمهوری آذربایجان است و مناظر بی‌نظیری از تلفیق کشتزارهای سبز و تپه‌های ماهور دارد.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش دشت خوزستان ================ -->
+    <section style="position: relative; z-index: 3; background: #faebd7; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-plain text-center">
+                    <div style="font-size: 60px; color: #b8860b;">🌴🌾🌴</div>
+                </div>
+                <div class="col-lg-6 fade-up-plain">
+                    <span style="color: #b8860b; font-size: 18px; letter-spacing: 3px;">🌾 بهشت کشاورزی</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #8b5a2b; margin-top: 20px; margin-bottom: 25px;">دشت خوزستان</h2>
+                    <div style="width: 100px; height: 3px; background: #b8860b; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #5a3e1e; margin-bottom: 25px;">
+                        دشت خوزستان با رودخانه‌های پرآب کارون، کرخه و دز، یکی از مهمترین قطب‌های کشاورزی ایران است. نیشکر، خرما، گندم و مرکبات از محصولات این دشت حاصلخیز هستند.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #5a3e1e;">
+                        شوش باستان، چغازنبیل و هفت‌تپه، یادگار تمدن عیلام و هخامنشی در این دشت تاریخی است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تاریخچه دشت‌ها ================ -->
+    <section id="history" style="position: relative; z-index: 3; background: #fff8e7; padding: 120px 0;">
+        <div class="container">
+            <div class="section-title fade-up-plain">
+                <span style="color: #b8860b;">📜 هفت هزار سال کشاورزی</span>
+                <h2 style="font-size: 58px; font-weight: 800; color: #8b5a2b; margin-top: 20px;">گاهشمار دشت‌های ایران</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto; font-size: 20px;">از نخستین خوشه‌های گندم تا امروز</p>
+                <div style="width: 120px; height: 4px; background: #b8860b; margin: 25px auto;"></div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up-plain">
+                    <div class="timeline-plain">
+                        <h3>۵۰۰۰ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #8b5a2b; margin-bottom: 15px;">نخستین کشتزارها</h4>
+                        <p style="line-height: 1.9;">قدیمی‌ترین آثار کشاورزی در دشت خوزستان و فلات مرکزی ایران یافت شده است.</p>
+                    </div>
+                    <div class="timeline-plain">
+                        <h3>۱۰۰۰ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #8b5a2b; margin-bottom: 15px;">تمدن‌های کویری</h4>
+                        <p style="line-height: 1.9;">شهرهای کویری چون یزد، کاشان و بم در حاشیه دشت کویر شکوفا شدند.</p>
+                    </div>
+                    <div class="timeline-plain">
+                        <h3>۵۵۰ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #8b5a2b; margin-bottom: 15px;">دشت‌های هخامنشی</h4>
+                        <p style="line-height: 1.9;">دشت مرودشت با تخت جمشید و دشت شوش با کاخ آپادانا، مراکز هخامنشیان بودند.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-plain delay-2">
+                    <div class="timeline-plain">
+                        <h3>۶۵۰ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #8b5a2b; margin-bottom: 15px;">شکوفایی کشاورزی</h4>
+                        <p style="line-height: 1.9;">در دوران اسلامی، قنات‌ها و سیستم‌های آبیاری در دشت‌های ایران توسعه یافت.</p>
+                    </div>
+                    <div class="timeline-plain">
+                        <h3>۱۹۵۰ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #8b5a2b; margin-bottom: 15px;">توسعه دشت مغان</h4>
+                        <p style="line-height: 1.9;">دشت مغان با احداث سد ارس به یکی از قطب‌های کشاورزی ایران تبدیل شد.</p>
+                    </div>
+                    <div class="timeline-plain">
+                        <h3>۲۰۲۶ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #8b5a2b; margin-bottom: 15px;">مقصد گردشگری</h4>
+                        <p style="line-height: 1.9;">کویرنوردی و گردشگری کشاورزی در دشت‌های ایران رونق گرفته است.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش دشت‌های معروف ایران ================ -->
+    <section style="position: relative; z-index: 3; background: #faf0e6; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up-plain">
+                <span style="color: #b8860b;">🌾 گنجینه‌های سبز و طلایی</span>
+                <h2 style="font-size: 52px; font-weight: 800; color: #8b5a2b; margin-top: 20px;">دشت‌های معروف ایران</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto;">از کویر تا سرسبزی</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-plain delay-1">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">🏜️</div>
+                        <h4 style="color: #8b5a2b; font-size: 24px; font-weight: 800;">دشت کویر</h4>
+                        <p style="color: #b8860b; font-size: 16px;">مرکز ایران</p>
+                        <p style="color: #666;">وسعت: ۲۰۰,۰۰۰ کیلومتر مربع</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-plain delay-2">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">🌾</div>
+                        <h4 style="color: #8b5a2b; font-size: 24px; font-weight: 800;">دشت مغان</h4>
+                        <p style="color: #b8860b; font-size: 16px;">اردبیل</p>
+                        <p style="color: #666;">انبار غله ایران</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-plain delay-3">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">🌴</div>
+                        <h4 style="color: #8b5a2b; font-size: 24px; font-weight: 800;">دشت خوزستان</h4>
+                        <p style="color: #b8860b; font-size: 16px;">خوزستان</p>
+                        <p style="color: #666;">بهشت کشاورزی</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-plain delay-4">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">🏛️</div>
+                        <h4 style="color: #8b5a2b; font-size: 24px; font-weight: 800;">دشت مرودشت</h4>
+                        <p style="color: #b8860b; font-size: 16px;">فارس</p>
+                        <p style="color: #666;">میزبان تخت جمشید</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-plain delay-5">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">⛰️</div>
+                        <h4 style="color: #8b5a2b; font-size: 24px; font-weight: 800;">دشت همدان</h4>
+                        <p style="color: #b8860b; font-size: 16px;">همدان</p>
+                        <p style="color: #666;">پایتخت مادها</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-plain delay-6">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">🏺</div>
+                        <h4 style="color: #8b5a2b; font-size: 24px; font-weight: 800;">دشت شوش</h4>
+                        <p style="color: #b8860b; font-size: 16px;">خوزستان</p>
+                        <p style="color: #666;">پایتخت عیلام</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش نقل قول ================ -->
+    <section class="quote-section-plain" style="position: relative; z-index: 3; padding: 120px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-plain">
+                    <span style="font-size: 80px; line-height: 0.6; color: rgba(255,215,0,0.2); display: block; margin-bottom: 30px;">🌾</span>
+                    <h2 style="font-size: 44px; font-weight: 700; line-height: 1.7; margin-bottom: 50px; color: #ffd700; text-shadow: 0 0 30px rgba(0,0,0,0.5); font-style: italic;">
+                        «دشت‌های ایران، گهواره تمدن و مهد کشاورزی؛ از کویر لوت تا مغان سبز، هر وجب از این خاک داستانی دارد»
+                    </h2>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.8);">— هانیه کریمی، پژوهشگر طبیعت ایران</p>
+                    <div style="margin-top: 50px;">
+                        <span class="cuneiform-plain" style="background: rgba(0,0,0,0.3); color: #ffd700; border-color: #f4a460; font-size: 28px;">🌾 دشت‌های ایران 🌾</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: #fff8e7; padding: 120px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="plain-card fade-up-plain" style="background: white;">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <div style="width: 100px; height: 100px; background: rgba(184,134,11,0.08); border-radius: 50%; line-height: 100px; font-size: 55px; color: #b8860b; margin: 0 auto 25px; border: 2px dashed #b8860b;">
+                                🌾
+                            </div>
+                            <span style="background: #b8860b; color: white; padding: 10px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 3px; display: inline-block; margin-bottom: 25px;">🌾 دشت‌های ایران 🌾</span>
+                            <h2 style="font-size: 48px; font-weight: 800; color: #5a3e1e; margin-top: 15px;">هانیه کریمی</h2>
+                            <p style="font-size: 20px; color: #b8860b; margin-top: 15px; font-weight: 600;">پژوهشگر طبیعت ایران | طراح و توسعه‌دهنده وب</p>
+                            <div style="width: 100px; height: 3px; background: linear-gradient(90deg, #b8860b, #f4a460, #b8860b); margin: 30px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #fff8e7; padding: 45px 30px; border-radius: 35px; height: 100%; border: 1px solid rgba(184,134,11,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #b8860b; margin-bottom: 20px;">📬</div>
+                                    <div style="direction: ltr; text-align: left; font-size: 18px; color: #5a3e1e; margin: 25px 0 15px; font-family: monospace; background: white; padding: 15px 20px; border-radius: 15px; border: 1px solid rgba(184,134,11,0.15);">
+                                        hanieh.karimii1389@gmail.com
+                                    </div>
+                                    <div style="direction: ltr; text-align: left; font-size: 26px; color: #b8860b; margin: 20px 0; font-weight: 800; background: rgba(184,134,11,0.03); padding: 12px; border-radius: 15px;">
+                                        ۰۹۹۳۲۳۰۹۴۹۲
+                                    </div>
+                                    <div style="font-size: 20px; color: #5a3e1e; font-weight: 600;">
+                                        مشهد، ایران
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #fff8e7; padding: 45px 35px; border-radius: 35px; height: 100%; border: 1px solid rgba(184,134,11,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #b8860b; margin-bottom: 20px;">🏜️</div>
+                                    <p style="font-size: 18px; line-height: 2; color: #5a3e1e; margin-top: 25px; text-align: justify;">
+                                        این وبسایت به پاس گرامیداشت طبیعت بکر و زیبای ایران زمین طراحی شده است. دشت‌های وسیع ایران، از کویر لوت تا مغان سبز، نماد شکوه و پایداری ایران عزیزمان هستند.
+                                    </p>
+                                    <div style="margin-top: 35px; padding: 15px; background: rgba(184,134,11,0.06); border-radius: 15px; border: 1px dashed #b8860b;">
+                                        <span style="color: #5a3e1e; font-weight: 700; font-size: 20px;">🌾 دشت‌های وسیع و دلنواز 🌾</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر -->
+                        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(184,134,11,0.2);">
+                            <div style="background: #b8860b; color: white; padding: 15px 35px; border-radius: 50px; display: inline-block; font-weight: 700; box-shadow: 0 10px 25px rgba(184,134,11,0.4); border: 2px solid #f4a460; margin-bottom: 25px;">
+                                🌾 دشت‌های وسیع ایران - کویر تا مغان 🌾
+                            </div>
+                            <p style="color: #b8860b; margin-top: 25px; font-size: 18px; font-weight: 600;">
+                                طراحی شده با افتخار و عشق به ایران زمین توسط هانیه کریمی © ۲۰۲۶
+                            </p>
+                            <div style="margin-top: 30px;">
+                                <span style="color: #b8860b; font-size: 24px;">🌾 ایران سرزمین دشت‌ها 🌾</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>

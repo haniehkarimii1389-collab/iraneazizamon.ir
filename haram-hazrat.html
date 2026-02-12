@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حرم حضرت معصومه (س) | قم مقدس</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ فیکس مشکل اسکرول ================ */
+        html, body {
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            height: auto !important;
+            min-height: 100vh;
+        }
+        
+        body {
+            overflow-y: auto !important;
+            position: relative !important;
+        }
+        
+        /* ================ انیمیشن‌های حرم معصومه (س) ================ */
+        @keyframes fadeUpMasoumeh {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes turquoiseGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(64,224,208,0.4)); }
+            50% { filter: drop-shadow(0 0 30px rgba(0,206,209,0.8)); }
+            100% { filter: drop-shadow(0 0 5px rgba(64,224,208,0.4)); }
+        }
+        
+        @keyframes turquoiseDove {
+            0% { transform: translateX(-10px) translateY(-5px); }
+            50% { transform: translateX(10px) translateY(5px); }
+            100% { transform: translateX(-10px) translateY(-5px); }
+        }
+        
+        @keyframes pearlLight {
+            0% { opacity: 0.2; transform: scale(0.95); }
+            50% { opacity: 0.5; transform: scale(1.05); }
+            100% { opacity: 0.2; transform: scale(0.95); }
+        }
+        
+        .fade-up-masoumeh {
+            animation: fadeUpMasoumeh 1.2s ease forwards;
+        }
+        
+        .turquoise-glow {
+            animation: turquoiseGlow 5s infinite;
+        }
+        
+        .turquoise-dove {
+            animation: turquoiseDove 12s ease-in-out infinite;
+        }
+        
+        .pearl-light {
+            animation: pearlLight 8s ease-in-out infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-6 { animation-delay: 1.2s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی حرم معصومه (س) ================ */
+        .masoumeh-logo {
+            width: 80px;
+            height: 80px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 10px rgba(64,224,208,0.6));
+        }
+        
+        .masoumeh-logo:hover {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 0 30px rgba(0,206,209,0.9));
+        }
+        
+        /* ================ استایل‌های اختصاصی حرم معصومه (س) ================ */
+        .masoumeh-pattern {
+            background: repeating-linear-gradient(45deg, 
+                rgba(64,224,208,0.03) 0px, 
+                rgba(64,224,208,0.03) 10px,
+                transparent 10px, 
+                transparent 30px);
+        }
+        
+        .masoumeh-card {
+            background: linear-gradient(145deg, #e0ffff, #d1f2eb);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(0,139,139,0.1);
+            border: 1px solid rgba(64,224,208,0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        
+        .masoumeh-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 80px rgba(0,150,136,0.2);
+            border-color: rgba(64,224,208,0.6);
+        }
+        
+        .masoumeh-card:after {
+            content: '🕊️';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.03;
+            color: #40e0d0;
+            transform: rotate(-5deg);
+        }
+        
+        .masoumeh-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #008b8b, #006666);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(0,139,139,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 25px;
+        }
+        
+        .masoumeh-title {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #008b8b, #40e0d0, #006666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 20px rgba(64,224,208,0.3);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .masoumeh-border {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #008b8b, #40e0d0, #008b8b);
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(64,224,208,0.3);
+        }
+        
+        .stat-masoumeh {
+            background: rgba(0,139,139,0.04);
+            padding: 30px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(0,139,139,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .stat-masoumeh:hover {
+            background: rgba(64,224,208,0.08);
+            border-color: rgba(64,224,208,0.3);
+            transform: translateY(-8px);
+        }
+        
+        .stat-number-masoumeh {
+            font-size: 48px;
+            font-weight: 900;
+            color: #008b8b;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .timeline-masoumeh {
+            position: relative;
+            padding: 35px;
+            background: white;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border-right: 6px solid #008b8b;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-masoumeh:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 20px 50px rgba(0,139,139,0.1);
+            border-right-width: 10px;
+        }
+        
+        .timeline-masoumeh h3 {
+            color: #008b8b;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .masoumeh-image-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+            border: 8px solid rgba(64,224,208,0.3);
+            transition: all 0.6s ease;
+            background: #d1f2eb;
+        }
+        
+        .masoumeh-image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 90px rgba(0,139,139,0.25);
+            border-color: rgba(64,224,208,0.6);
+        }
+        
+        .masoumeh-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.8s ease;
+        }
+        
+        .masoumeh-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .dome-turquoise-icon {
+            font-size: 70px;
+            color: #40e0d0;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: turquoiseGlow 6s infinite;
+        }
+        
+        .dove-turquoise-icon {
+            font-size: 40px;
+            color: white;
+            display: inline-block;
+            animation: turquoiseDove 10s ease-in-out infinite;
+        }
+        
+        .masoumeh-quote {
+            font-family: 'Times New Roman', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: #006666;
+            line-height: 2;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .cuneiform-masoumeh {
+            font-family: 'Times New Roman', serif;
+            font-size: 22px;
+            color: #008b8b;
+            letter-spacing: 6px;
+            background: rgba(0,139,139,0.05);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(0,139,139,0.15);
+        }
+        
+        .quote-section-masoumeh {
+            background: linear-gradient(135deg, #004d4d, #008b8b, #004d4d);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dove-turquoise-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .turquoise-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(64,224,208,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+        
+        .persian-arch-turquoise {
+            background: linear-gradient(to bottom, #008b8b, #40e0d0);
+            height: 10px;
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .fatemeh-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #40e0d0;
+            text-shadow: 0 0 15px rgba(64,224,208,0.5);
+        }
+    </style>
+</head>
+<body class="inner-pag masoumeh-pattern" style="background: linear-gradient(to bottom, #e0ffff, #d1f2eb); overflow-y: auto !important;">
+
+    <!-- ================ کبوترهای حرم ================ -->
+    <div class="dove-turquoise-container">
+        <div class="dove-turquoise-icon" style="top: 15%; left: 5%; position: absolute; animation-delay: 0s; color: #40e0d0;">🕊️</div>
+        <div class="dove-turquoise-icon" style="top: 25%; right: 10%; position: absolute; animation-delay: 2s; color: #40e0d0;">🕊️</div>
+        <div class="dove-turquoise-icon" style="top: 55%; left: 20%; position: absolute; animation-delay: 4s; color: #40e0d0;">🕊️</div>
+        <div class="dove-turquoise-icon" style="top: 75%; right: 15%; position: absolute; animation-delay: 6s; color: #40e0d0;">🕊️</div>
+        <div class="dove-turquoise-icon" style="top: 90%; left: 30%; position: absolute; animation-delay: 8s; color: #40e0d0;">🕊️</div>
+    </div>
+    
+    <!-- ================ نقطه‌های فیروزه‌ای ================ -->
+    <div class="turquoise-dots"></div>
+
+    <!-- ================ هدر با عکس حرم ================ -->
+    <header id="inner-header" class="inner-header parallax" style="height: 100vh; position: relative; z-index: 2; overflow: hidden;">
+        <!-- ✅ بکگراند فیروزه‌ای - سبز حرم -->
+        <div class="overlay" style="background: radial-gradient(circle at 30% 50%, #004d4d, #008b8b, #003333); opacity: 0.85; box-shadow: inset 0 0 180px rgba(64,224,208,0.5);"></div>
+        
+        <!-- ✅ نورپردازی فیروزه‌ای -->
+        <div class="pearl-light" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 30%, rgba(64,224,208,0.1), transparent 70%); z-index: 1;"></div>
+        
+        <!-- ناوبری با لوگوی حرم معصومه (س) -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up-masoumeh">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <!-- لوگوی اختصاصی حرم حضرت معصومه (س) -->
+                    <svg width="80" height="80" viewBox="0 0 100 100" class="masoumeh-logo">
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="#40e0d0" stroke-width="2" stroke-dasharray="6 4"/>
+                        <!-- گنبد فیروزه‌ای -->
+                        <ellipse cx="50" cy="45" rx="30" ry="15" fill="#40e0d0" opacity="0.8"/>
+                        <ellipse cx="50" cy="40" rx="25" ry="12" fill="#40e0d0" opacity="0.9"/>
+                        <ellipse cx="50" cy="35" rx="20" ry="10" fill="#40e0d0" class="turquoise-glow"/>
+                        <!-- مناره‌ها -->
+                        <rect x="20" y="20" width="8" height="40" fill="#c0c0c0" opacity="0.8"/>
+                        <circle cx="24" cy="20" r="6" fill="#40e0d0"/>
+                        <rect x="72" y="20" width="8" height="40" fill="#c0c0c0" opacity="0.8"/>
+                        <circle cx="76" cy="20" r="6" fill="#40e0d0"/>
+                        <!-- نام فاطمه معصومه (س) -->
+                        <text x="30" y="80" font-size="12" fill="#40e0d0" font-family="Arial">فاطمه معصومه (س)</text>
+                    </svg>
+                    <span style="color: white; font-weight: 800; margin-right: 15px; font-size: 22px; text-shadow: 0 0 20px rgba(64,224,208,0.7);">حرم حضرت معصومه (س)</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#masoumeh">حرم مطهر</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#biography">زندگینامه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#architecture">معماری</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر - حرم حضرت معصومه (س) -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up-masoumeh" style="position: relative; z-index: 4;">
+                    <div class="cuneiform-masoumeh" style="color: white; border-color: rgba(255,255,255,0.4); background: rgba(0,0,0,0.3); backdrop-filter: blur(8px); margin-bottom: 25px;">
+                        🕊️ حرم حضرت معصومه (س) 🕊️
+                    </div>
+                    <h1 style="font-size: 90px; font-weight: 900; color: white; text-shadow: 0 0 50px #40e0d0, 0 0 100px rgba(64,224,208,0.5), 2px 2px 20px black; margin-top: 15px; letter-spacing: 6px;" class="fade-up-masoumeh delay-1">
+                        حرم حضرت معصومه (س)
+                    </h1>
+                    <p style="font-size: 38px; color: rgba(255,255,255,0.98); font-weight: 400; letter-spacing: 8px; text-shadow: 0 0 35px #40e0d0, 2px 2px 15px black;" class="fade-up-masoumeh delay-2">
+                        قم مقدس - حرم اهل بیت (ع)
+                    </p>
+                    <div style="width: 200px; height: 6px; background: linear-gradient(90deg, #40e0d0, #ffffff, #008b8b, #ffffff, #40e0d0); margin: 40px auto; box-shadow: 0 0 40px #40e0d0; border-radius: 10px;" class="fade-up-masoumeh delay-3"></div>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.95); max-width: 1000px; margin: 40px auto; line-height: 1.8; text-shadow: 2px 2px 20px black; font-weight: 500; background: rgba(0,0,0,0.3); padding: 20px 40px; border-radius: 80px; backdrop-filter: blur(5px); border: 1px solid rgba(64,224,208,0.4);" class="fade-up-masoumeh delay-4">
+                        «حرم حضرت فاطمه معصومه (س)، خواهر امام رضا (ع)، نگین درخشان قم و قبله دل‌های عاشقان اهل بیت (ع) است. این حرم مطهر، پناهگاه بی‌پناهان و مرکز علم و معنویت در ایران اسلامی است.»
+                    </p>
+                    <div class="mt-5 fade-up-masoumeh delay-5">
+                        <a href="#masoumeh" class="bttn" style="background: linear-gradient(135deg, #008b8b, #006666); color: white; padding: 18px 50px; font-size: 20px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); border: 2px solid #40e0d0; margin-left: 20px; font-weight: 700;">آشنایی با حرم</a>
+                        <a href="#biography" class="bttn" style="background: transparent; color: white; padding: 18px 45px; font-size: 20px; border-radius: 60px; border: 2px solid #40e0d0; font-weight: 700;">زندگینامه</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- گنبد فیروزه‌ای -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;">
+            <svg viewBox="0 0 1440 320" style="width: 100%; height: auto; opacity: 0.15;">
+                <path fill="#40e0d0" fill-opacity="1" d="M0,256L60,234.7C120,213,240,171,360,160C480,149,600,171,720,181.3C840,192,960,192,1080,176C1200,160,1320,128,1380,112L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- ================ بخش حرم مطهر - عکس ================ -->
+    <section id="masoumeh" class="blog-pp single-pp" style="position: relative; z-index: 3; background: #e0ffff; padding: 130px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-masoumeh">
+                    <div class="masoumeh-image-frame">
+                        <img src="img/haram-hazrat.jpg" 
+                             alt="حرم حضرت معصومه (س) - قم" 
+                             class="masoumeh-image img-fluid"
+                             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Fatima_Masumeh_Shrine_in_Qom_2020.jpg/800px-Fatima_Masumeh_Shrine_in_Qom_2020.jpg'">
+                        <div style="position: absolute; bottom: -20px; left: 30px; background: white; padding: 18px 35px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-right: 6px solid #008b8b; direction: ltr;">
+                            <span style="font-weight: 700; color: #006666; font-size: 18px;">حرم مطهر حضرت معصومه (س) - قم مقدس</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-masoumeh delay-2">
+                    <div class="masoumeh-card">
+                        <span class="masoumeh-badge">🕊️ حرم اهل بیت (ع)</span>
+                        <h2 class="masoumeh-title">حضرت معصومه (س)</h2>
+                        <div class="masoumeh-border"></div>
+                        <p style="font-size: 17px; line-height: 2.1; color: #004d4d; margin-bottom: 30px;">
+                            <span style="font-size: 32px; color: #008b8b; font-weight: 800; float: right; margin-left: 15px;">🕊️</span>
+                            حرم حضرت فاطمه معصومه (س) در شهر قم، سومین حرم مطهر ایران و یکی از مهم‌ترین مراکز زیارتی جهان تشیع است. این حرم مطهر، آرامگاه حضرت معصومه (س)، خواهر بزرگوار امام رضا (ع) است.
+                        </p>
+                        <p style="font-size: 17px; line-height: 2.1; color: #004d4d; margin-bottom: 35px;">
+                            این مجموعه عظیم شامل روضه منوره، گنبد فیروزه‌ای، صحن‌ها، رواق‌ها، موزه و کتابخانه آستان مقدس است و هر ساله میزبان میلیون‌ها زائر از سراسر جهان است.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <div class="stat-masoumeh">
+                                    <span class="stat-number-masoumeh">۲۰</span>
+                                    <p style="font-size: 15px; color: #008b8b; margin-top: 12px; font-weight: 600;">میلیون زائر</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-masoumeh">
+                                    <span class="stat-number-masoumeh">۸</span>
+                                    <p style="font-size: 15px; color: #008b8b; margin-top: 12px; font-weight: 600;">صحن اصلی</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-masoumeh">
+                                    <span class="stat-number-masoumeh">۱۲۰۰</span>
+                                    <p style="font-size: 15px; color: #008b8b; margin-top: 12px; font-weight: 600;">سال قدمت</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش گنبد فیروزه‌ای ================ -->
+    <section style="position: relative; z-index: 3; background: #d1f2eb; padding: 80px 0;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 fade-up-masoumeh">
+                    <div class="dome-turquoise-icon">🕌💎🕌</div>
+                    <h3 style="font-size: 36px; font-weight: 700; color: #008b8b; margin-top: 20px;">گنبد فیروزه‌ای</h3>
+                    <p style="font-size: 20px; color: #004d4d; max-width: 800px; margin: 20px auto;">
+                        گنبد فیروزه‌ای حرم حضرت معصومه (س) با ۱۶ متر ارتفاع، از دورترین نقاط قم قابل مشاهده است. این گنبد با کاشی‌های فیروزه‌ای منحصر به فرد، نماد شهر قم است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش زندگینامه حضرت معصومه (س) ================ -->
+    <section id="biography" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-masoumeh">
+                    <div style="font-size: 80px; color: #008b8b; opacity: 0.3; text-align: center;">📜🕊️📜</div>
+                </div>
+                <div class="col-lg-6 fade-up-masoumeh">
+                    <span style="color: #008b8b; font-size: 18px; letter-spacing: 3px;">📜 کریمه اهل بیت (ع)</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #006666; margin-top: 20px; margin-bottom: 25px;">زندگینامه</h2>
+                    <div style="width: 100px; height: 3px; background: #008b8b; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #004d4d; margin-bottom: 25px;">
+                        حضرت فاطمه معصومه (س) در ۱ ذی‌القعده سال ۱۷۳ هجری قمری در مدینه منوره دیده به جهان گشود. ایشان دختر امام موسی کاظم (ع) و خواهر امام رضا (ع) هستند.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #004d4d; margin-bottom: 25px;">
+                        ایشان در سال ۲۰۱ هجری قمری به قصد دیدار برادرشان عازم ایران شدند اما در ساوه بیمار شدند و پس از ۱۷ روز در قم به دیار باقی شتافتند. مرقد مطهرشان امروز قبله‌گاه عاشقان اهل بیت (ع) است.
+                    </p>
+                    <div class="fatemeh-name mt-4">
+                        «فاطمه معصومه (س)»
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش فضائل حضرت معصومه (س) ================ -->
+    <section style="position: relative; z-index: 3; background: #e0ffff; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up-masoumeh">
+                <span style="color: #008b8b;">✨ کرامات و فضائل</span>
+                <h2 style="font-size: 52px; font-weight: 800; color: #006666; margin-top: 20px;">مقام والای حضرت معصومه (س)</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto;">با حدیثی از امام رضا (ع)</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto fade-up-masoumeh">
+                    <div style="background: white; border-radius: 30px; padding: 50px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid rgba(0,139,139,0.2);">
+                        <span style="font-size: 60px; color: #008b8b;">🕊️</span>
+                        <p style="font-size: 24px; line-height: 2; color: #004d4d; font-style: italic; margin: 30px 0;">
+                            امام رضا (ع) درباره خواهرشان فرمودند:
+                        </p>
+                        <p style="font-size: 28px; line-height: 2; color: #006666; font-weight: 700; margin-bottom: 30px;">
+                            «مَنْ زارَها عارِفاً بِحَقِّها فَلَهُ الْجَنَّةُ»
+                        </p>
+                        <p style="font-size: 20px; line-height: 2; color: #004d4d;">
+                            «هر کس او را با شناخت حقش زیارت کند، بهشت برای اوست.»
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تاریخچه حرم ================ -->
+    <section id="history" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up-masoumeh">
+                <span style="color: #008b8b;">📜 تاریخچه حرم مطهر</span>
+                <h2 style="font-size: 52px; font-weight: 800; color: #006666; margin-top: 20px;">از خاکسپاری تا توسعه عظیم</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto;">بیش از ۱۲۰۰ سال افتخار و معنویت</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up-masoumeh">
+                    <div class="timeline-masoumeh">
+                        <h3>۲۰۱ قمری</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">ورود به قم و رحلت</h4>
+                        <p style="line-height: 1.9;">حضرت معصومه (س) پس از ۱۷ روز بیماری در قم به دیار باقی شتافتند و در باغ بابلان به خاک سپرده شدند.</p>
+                    </div>
+                    <div class="timeline-masoumeh">
+                        <h3>۲۵۶ قمری</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">ساخت گنبد اولیه</h4>
+                        <p style="line-height: 1.9;">زینب دختر امام جواد (ع) اولین گنبد را بر مرقد مطهر بنا کرد.</p>
+                    </div>
+                    <div class="timeline-masoumeh">
+                        <h3>۹۶۵ قمری</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">توسعه صفوی</h4>
+                        <p style="line-height: 1.9;">شاه طهماسب صفوی گنبد را بازسازی و صحن عتیق را ساخت.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-masoumeh delay-2">
+                    <div class="timeline-masoumeh">
+                        <h3>۱۳۰۰ شمسی</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">ضریح فعلی</h4>
+                        <p style="line-height: 1.9;">ضریح نقره‌ای کنونی به دستور فتحعلی شاه قاجار ساخته شد.</p>
+                    </div>
+                    <div class="timeline-masoumeh">
+                        <h3>۱۳۷۵ شمسی</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">طرح توسعه عظیم</h4>
+                        <p style="line-height: 1.9;">آغاز طرح توسعه حرم مطهر با ساخت صحن‌های جدید.</p>
+                    </div>
+                    <div class="timeline-masoumeh">
+                        <h3>۱۴۰۵ شمسی</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">تکمیل توسعه</h4>
+                        <p style="line-height: 1.9;">صحن‌های پیامبر اعظم (ص) و امام هادی (ع) به مجموعه اضافه شد.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش معماری ================ -->
+    <section id="architecture" style="position: relative; z-index: 3; background: #e0ffff; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up-masoumeh">
+                <span style="color: #008b8b;">🏛️ شاهکار معماری اسلامی</span>
+                <h2 style="font-size: 52px; font-weight: 800; color: #006666; margin-top: 20px;">گنجینه هنر ایرانی</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto;">تلفیق هنر صفوی، قاجاری و معاصر</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-masoumeh delay-1">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,139,139,0.1);">
+                        <div style="font-size: 55px; color: #008b8b; margin-bottom: 20px;">🕌</div>
+                        <h4 style="color: #006666; font-size: 24px; font-weight: 800;">گنبد فیروزه‌ای</h4>
+                        <p style="color: #666;">ارتفاع ۱۶ متر - کاشی‌های معرق</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-masoumeh delay-2">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,139,139,0.1);">
+                        <div style="font-size: 55px; color: #008b8b; margin-bottom: 20px;">🕊️</div>
+                        <h4 style="color: #006666; font-size: 24px; font-weight: 800;">گلدسته‌ها</h4>
+                        <p style="color: #666;">۶ مناره با ارتفاع ۴۵ متر</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-masoumeh delay-3">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,139,139,0.1);">
+                        <div style="font-size: 55px; color: #008b8b; margin-bottom: 20px;">💎</div>
+                        <h4 style="color: #006666; font-size: 24px; font-weight: 800;">ضریح نقره‌ای</h4>
+                        <p style="color: #666;">ضریح قاجاری با نقره و طلا</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-masoumeh delay-4">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,139,139,0.1);">
+                        <div style="font-size: 55px; color: #008b8b; margin-bottom: 20px;">🏛️</div>
+                        <h4 style="color: #006666; font-size: 24px; font-weight: 800;">صحن‌ها</h4>
+                        <p style="color: #666;">۸ صحن با ۲۰۰,۰۰۰ متر مربع</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-masoumeh delay-5">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,139,139,0.1);">
+                        <div style="font-size: 55px; color: #008b8b; margin-bottom: 20px;">🪞</div>
+                        <h4 style="color: #006666; font-size: 24px; font-weight: 800;">آینه‌کاری</h4>
+                        <p style="color: #666;">رواق‌های آینه‌کاری بی‌نظیر</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-masoumeh delay-6">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,139,139,0.1);">
+                        <div style="font-size: 55px; color: #008b8b; margin-bottom: 20px;">📚</div>
+                        <h4 style="color: #006666; font-size: 24px; font-weight: 800;">کتابخانه</h4>
+                        <p style="color: #666;">کتابخانه آستان مقدس</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش صحن‌ها و رواق‌ها ================ -->
+    <section style="position: relative; z-index: 3; background: #d1f2eb; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-masoumeh text-center">
+                    <div style="font-size: 80px; color: #008b8b; opacity: 0.5;">🕌🏛️🕌</div>
+                </div>
+                <div class="col-lg-6 fade-up-masoumeh">
+                    <span style="color: #008b8b; font-size: 18px; letter-spacing: 3px;">🏛️ صحن‌های حرم</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #006666; margin-top: 20px; margin-bottom: 25px;">صحن‌ها و رواق‌ها</h2>
+                    <div style="width: 100px; height: 3px; background: #008b8b; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #004d4d; margin-bottom: 25px;">
+                        حرم حضرت معصومه (س) دارای ۸ صحن بزرگ و ۱۲ رواق است که هر کدام با معماری بی‌نظیر و تزیینات هنری چشم‌نواز تزیین شده‌اند.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #004d4d; margin-bottom: 25px;">
+                        صحن‌های عتیق، نو، امام رضا (ع)، امام هادی (ع)، پیامبر اعظم (ص)، جوادالائمه (ع)، فاطمه زهرا (س) و امام علی (ع) از صحن‌های این حرم مطهر هستند.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش موزه و کتابخانه ================ -->
+    <section style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-masoumeh order-lg-2 text-center">
+                    <div style="font-size: 80px; color: #008b8b; opacity: 0.5;">📚🎨📚</div>
+                </div>
+                <div class="col-lg-6 fade-up-masoumeh order-lg-1">
+                    <span style="color: #008b8b; font-size: 18px; letter-spacing: 3px;">📚 گنجینه علم و هنر</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #006666; margin-top: 20px; margin-bottom: 25px;">موزه و کتابخانه</h2>
+                    <div style="width: 100px; height: 3px; background: #008b8b; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #004d4d; margin-bottom: 25px;">
+                        کتابخانه آستان مقدس حضرت معصومه (س) با ۵۰۰ هزار نسخه کتاب، یکی از غنی‌ترین کتابخانه‌های ایران است و نسخ خطی ارزشمندی را در خود جای داده است.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #004d4d; margin-bottom: 25px;">
+                        موزه آستان مقدس شامل بخش‌های مختلفی از جمله گنجینه قرآن، فرش، سکه، تمبر، ظروف تاریخی و آثار اهدایی به حرم مطهر است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش نقل قول ================ -->
+    <section class="quote-section-masoumeh" style="position: relative; z-index: 3; padding: 120px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-masoumeh">
+                    <span style="font-size: 80px; line-height: 0.6; color: rgba(64,224,208,0.2); display: block; margin-bottom: 30px;">🕊️</span>
+                    <h2 style="font-size: 44px; font-weight: 700; line-height: 1.7; margin-bottom: 50px; color: #ffd700; text-shadow: 0 0 30px rgba(0,0,0,0.5); font-style: italic;">
+                        «حرم حضرت معصومه (س)، نگین فیروزه‌ای قم و پناهگاه دل‌های عاشق است. هر کبوتر حرمش، نشانی از آرامش و هر گنبد فیروزه‌ایش، فروغی از پاکی و ایمان است.»
+                    </h2>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.8);">— هانیه کریمی، پژوهشگر تاریخ اسلام</p>
+                    <div style="margin-top: 50px;">
+                        <span class="cuneiform-masoumeh" style="background: rgba(0,0,0,0.3); color: #ffd700; border-color: #40e0d0; font-size: 28px;">🕊️ حرم حضرت معصومه (س) 🕊️</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: #e0ffff; padding: 120px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="masoumeh-card fade-up-masoumeh" style="background: white;">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <div style="width: 100px; height: 100px; background: rgba(0,139,139,0.08); border-radius: 50%; line-height: 100px; font-size: 55px; color: #008b8b; margin: 0 auto 25px; border: 2px dashed #008b8b;">
+                                🕊️
+                            </div>
+                            <span style="background: #008b8b; color: white; padding: 10px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 3px; display: inline-block; margin-bottom: 25px;">🕊️ حرم حضرت معصومه (س) 🕊️</span>
+                            <h2 style="font-size: 48px; font-weight: 800; color: #004d4d; margin-top: 15px;">هانیه کریمی</h2>
+                            <p style="font-size: 20px; color: #008b8b; margin-top: 15px; font-weight: 600;">پژوهشگر تاریخ اسلام | طراح و توسعه‌دهنده وب</p>
+                            <div style="width: 100px; height: 3px; background: linear-gradient(90deg, #008b8b, #40e0d0, #008b8b); margin: 30px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #e0ffff; padding: 45px 30px; border-radius: 35px; height: 100%; border: 1px solid rgba(0,139,139,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #008b8b; margin-bottom: 20px;">📬</div>
+                                    <div style="direction: ltr; text-align: left; font-size: 18px; color: #004d4d; margin: 25px 0 15px; font-family: monospace; background: white; padding: 15px 20px; border-radius: 15px; border: 1px solid rgba(0,139,139,0.15);">
+                                        hanieh.karimii1389@gmail.com
+                                    </div>
+                                    <div style="direction: ltr; text-align: left; font-size: 26px; color: #008b8b; margin: 20px 0; font-weight: 800; background: rgba(0,139,139,0.03); padding: 12px; border-radius: 15px;">
+                                        ۰۹۹۳۲۳۰۹۴۹۲
+                                    </div>
+                                    <div style="font-size: 20px; color: #004d4d; font-weight: 600;">
+                                        مشهد، ایران
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #e0ffff; padding: 45px 35px; border-radius: 35px; height: 100%; border: 1px solid rgba(0,139,139,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #008b8b; margin-bottom: 20px;">🕊️</div>
+                                    <p style="font-size: 18px; line-height: 2; color: #004d4d; margin-top: 25px; text-align: justify;">
+                                        این وبسایت به پاس ارادت به ساحت مقدس حضرت فاطمه معصومه (س) و با افتخار به شهر مقدس قم طراحی شده است. امید که مورد قبول حضرت کریمه اهل بیت (ع) قرار گیرد.
+                                    </p>
+                                    <div style="margin-top: 35px; padding: 15px; background: rgba(0,139,139,0.06); border-radius: 15px; border: 1px dashed #008b8b;">
+                                        <span style="color: #004d4d; font-weight: 700; font-size: 20px;">🕊️ حرم حضرت معصومه (س) - قم مقدس 🕊️</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر -->
+                        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(0,139,139,0.2);">
+                            <div style="background: #008b8b; color: white; padding: 15px 35px; border-radius: 50px; display: inline-block; font-weight: 700; box-shadow: 0 10px 25px rgba(0,139,139,0.4); border: 2px solid #40e0d0; margin-bottom: 25px;">
+                                🕊️ حرم حضرت معصومه (س) - قم مقدس 🕊️
+                            </div>
+                            <p style="color: #008b8b; margin-top: 25px; font-size: 18px; font-weight: 600;">
+                                طراحی شده با عشق و ارادت به اهل بیت (ع) توسط هانیه کریمی © ۲۰۲۶
+                            </p>
+                            <div style="margin-top: 30px;">
+                                <span style="color: #008b8b; font-size: 24px;">🕊️ السلام علیک یا فاطمه معصومه (س) 🕊️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>

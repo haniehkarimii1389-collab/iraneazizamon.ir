@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حرم امام رضا (ع) | نگین خراسان</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ فیکس مشکل اسکرول ================ */
+        html, body {
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            height: auto !important;
+            min-height: 100vh;
+        }
+        
+        body {
+            overflow-y: auto !important;
+            position: relative !important;
+        }
+        
+        /* ================ انیمیشن‌های حرم ================ */
+        @keyframes fadeUpHoly {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes goldenGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(255,215,0,0.4)); }
+            50% { filter: drop-shadow(0 0 30px rgba(255,215,0,0.8)); }
+            100% { filter: drop-shadow(0 0 5px rgba(255,215,0,0.4)); }
+        }
+        
+        @keyframes doveFly {
+            0% { transform: translateX(-10px) translateY(-5px); }
+            50% { transform: translateX(10px) translateY(5px); }
+            100% { transform: translateX(-10px) translateY(-5px); }
+        }
+        
+        @keyframes lightBeam {
+            0% { opacity: 0.2; transform: scale(0.95); }
+            50% { opacity: 0.5; transform: scale(1.05); }
+            100% { opacity: 0.2; transform: scale(0.95); }
+        }
+        
+        .fade-up-holy {
+            animation: fadeUpHoly 1.2s ease forwards;
+        }
+        
+        .golden-glow {
+            animation: goldenGlow 5s infinite;
+        }
+        
+        .dove-fly {
+            animation: doveFly 12s ease-in-out infinite;
+        }
+        
+        .light-beam {
+            animation: lightBeam 8s ease-in-out infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-6 { animation-delay: 1.2s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی حرم ================ */
+        .haram-logo {
+            width: 80px;
+            height: 80px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 10px rgba(255,215,0,0.6));
+        }
+        
+        .haram-logo:hover {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 0 30px rgba(255,215,0,0.9));
+        }
+        
+        /* ================ استایل‌های اختصاصی حرم ================ */
+        .haram-pattern {
+            background: repeating-linear-gradient(45deg, 
+                rgba(255,215,0,0.03) 0px, 
+                rgba(255,215,0,0.03) 10px,
+                transparent 10px, 
+                transparent 30px);
+        }
+        
+        .haram-card {
+            background: linear-gradient(145deg, #fff9e6, #fff4d9);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(204,153,0,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        
+        .haram-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 80px rgba(204,153,0,0.2);
+            border-color: rgba(255,215,0,0.6);
+        }
+        
+        .haram-card:after {
+            content: '🕊️';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.03;
+            color: #ffd700;
+            transform: rotate(-5deg);
+        }
+        
+        .haram-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #b8860b, #8b6914);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(184,134,11,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 25px;
+        }
+        
+        .haram-title {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #b8860b, #ffd700, #8b6914);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 20px rgba(255,215,0,0.3);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .haram-border {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b);
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255,215,0,0.3);
+        }
+        
+        .stat-haram {
+            background: rgba(184,134,11,0.04);
+            padding: 30px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(184,134,11,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .stat-haram:hover {
+            background: rgba(255,215,0,0.08);
+            border-color: rgba(255,215,0,0.3);
+            transform: translateY(-8px);
+        }
+        
+        .stat-number-haram {
+            font-size: 48px;
+            font-weight: 900;
+            color: #b8860b;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .timeline-haram {
+            position: relative;
+            padding: 35px;
+            background: white;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border-right: 6px solid #b8860b;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-haram:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 20px 50px rgba(184,134,11,0.1);
+            border-right-width: 10px;
+        }
+        
+        .timeline-haram h3 {
+            color: #b8860b;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .haram-image-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+            border: 8px solid rgba(255,215,0,0.3);
+            transition: all 0.6s ease;
+            background: #fff4d9;
+        }
+        
+        .haram-image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 90px rgba(184,134,11,0.25);
+            border-color: rgba(255,215,0,0.6);
+        }
+        
+        .haram-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.8s ease;
+        }
+        
+        .haram-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .dome-icon {
+            font-size: 70px;
+            color: #ffd700;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: goldenGlow 6s infinite;
+        }
+        
+        .dove-icon {
+            font-size: 40px;
+            color: white;
+            display: inline-block;
+            animation: doveFly 10s ease-in-out infinite;
+        }
+        
+        .haram-quote {
+            font-family: 'Times New Roman', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: #8b6914;
+            line-height: 2;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .cuneiform-haram {
+            font-family: 'Times New Roman', serif;
+            font-size: 22px;
+            color: #b8860b;
+            letter-spacing: 6px;
+            background: rgba(184,134,11,0.05);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(184,134,11,0.15);
+        }
+        
+        .quote-section-haram {
+            background: linear-gradient(135deg, #4a3a1a, #8b6914, #4a3a1a);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dove-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .golden-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+        
+        .persian-arch {
+            background: linear-gradient(to bottom, #8b6914, #b8860b);
+            height: 10px;
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+    </style>
+</head>
+<body class="inner-pag haram-pattern" style="background: linear-gradient(to bottom, #fff9e6, #fff4d9); overflow-y: auto !important;">
+
+    <!-- ================ کبوترهای حرم ================ -->
+    <div class="dove-container">
+        <div class="dove-icon" style="top: 15%; left: 5%; position: absolute; animation-delay: 0s;">🕊️</div>
+        <div class="dove-icon" style="top: 25%; right: 10%; position: absolute; animation-delay: 2s;">🕊️</div>
+        <div class="dove-icon" style="top: 55%; left: 20%; position: absolute; animation-delay: 4s;">🕊️</div>
+        <div class="dove-icon" style="top: 75%; right: 15%; position: absolute; animation-delay: 6s;">🕊️</div>
+        <div class="dove-icon" style="top: 90%; left: 30%; position: absolute; animation-delay: 8s;">🕊️</div>
+    </div>
+    
+    <!-- ================ نقطه‌های طلایی ================ -->
+    <div class="golden-dots"></div>
+
+    <!-- ================ هدر با عکس حرم ================ -->
+    <header id="inner-header" class="inner-header parallax" style="height: 100vh; position: relative; z-index: 2; overflow: hidden;">
+        <!-- ✅ بکگراند طلایی - سبز حرم -->
+        <div class="overlay" style="background: radial-gradient(circle at 30% 50%, #1a3b1a, #2d5a2d, #0a2a0a); opacity: 0.82; box-shadow: inset 0 0 180px rgba(184,134,11,0.5);"></div>
+        
+        <!-- ✅ نورپردازی حرم -->
+        <div class="light-beam" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 30%, rgba(255,215,0,0.1), transparent 70%); z-index: 1;"></div>
+        
+        <!-- ناوبری با لوگوی حرم -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up-holy">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <!-- لوگوی اختصاصی حرم امام رضا (ع) -->
+                    <svg width="80" height="80" viewBox="0 0 100 100" class="haram-logo">
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="#ffd700" stroke-width="2" stroke-dasharray="6 4"/>
+                        <!-- گنبد طلایی -->
+                        <ellipse cx="50" cy="45" rx="30" ry="15" fill="#ffd700" opacity="0.8"/>
+                        <ellipse cx="50" cy="40" rx="25" ry="12" fill="#ffd700" opacity="0.9"/>
+                        <ellipse cx="50" cy="35" rx="20" ry="10" fill="#ffd700" class="golden-glow"/>
+                        <!-- مناره -->
+                        <rect x="20" y="20" width="8" height="40" fill="#c0c0c0" opacity="0.8"/>
+                        <circle cx="24" cy="20" r="6" fill="#ffd700"/>
+                        <rect x="72" y="20" width="8" height="40" fill="#c0c0c0" opacity="0.8"/>
+                        <circle cx="76" cy="20" r="6" fill="#ffd700"/>
+                        <!-- کبوتر -->
+                        <path d="M80,60 L88,55 L80,65" stroke="white" stroke-width="2" fill="white" class="dove-fly"/>
+                    </svg>
+                    <span style="color: white; font-weight: 800; margin-right: 15px; font-size: 22px; text-shadow: 0 0 20px rgba(255,215,0,0.7);">حرم امام رضا (ع)</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#haram">حرم مطهر</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#history">تاریخچه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#architecture">معماری</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر - حرم امام رضا (ع) -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up-holy" style="position: relative; z-index: 4;">
+                    <div class="cuneiform-haram" style="color: white; border-color: rgba(255,255,255,0.4); background: rgba(0,0,0,0.3); backdrop-filter: blur(8px); margin-bottom: 25px;">
+                        🕊️ حرم امام رضا (ع) 🕊️
+                    </div>
+                    <h1 style="font-size: 90px; font-weight: 900; color: white; text-shadow: 0 0 50px #ffd700, 0 0 100px rgba(255,215,0,0.5), 2px 2px 20px black; margin-top: 15px; letter-spacing: 6px;" class="fade-up-holy delay-1">
+                        حرم امام رضا (ع)
+                    </h1>
+                    <p style="font-size: 38px; color: rgba(255,255,255,0.98); font-weight: 400; letter-spacing: 8px; text-shadow: 0 0 35px #ffd700, 2px 2px 15px black;" class="fade-up-holy delay-2">
+                        نگین خراسان - پایتخت معنوی ایران
+                    </p>
+                    <div style="width: 200px; height: 6px; background: linear-gradient(90deg, #ffd700, #ffffff, #b8860b, #ffffff, #ffd700); margin: 40px auto; box-shadow: 0 0 40px #ffd700; border-radius: 10px;" class="fade-up-holy delay-3"></div>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.95); max-width: 1000px; margin: 40px auto; line-height: 1.8; text-shadow: 2px 2px 20px black; font-weight: 500; background: rgba(0,0,0,0.3); padding: 20px 40px; border-radius: 80px; backdrop-filter: blur(5px); border: 1px solid rgba(255,215,0,0.4);" class="fade-up-holy delay-4">
+                        «حرم امام رضا (ع)، نگین درخشان مشهد الرضا، قبله دل‌های عاشقان و پناهگاه بی‌پناهان؛ هر ساله میلیون‌ها زائر از سراسر جهان برای زیارت این مضجع شریف به ایران می‌آیند»
+                    </p>
+                    <div class="mt-5 fade-up-holy delay-5">
+                        <a href="#haram" class="bttn" style="background: linear-gradient(135deg, #b8860b, #8b6914); color: white; padding: 18px 50px; font-size: 20px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); border: 2px solid #ffd700; margin-left: 20px; font-weight: 700;">آشنایی با حرم</a>
+                        <a href="#history" class="bttn" style="background: transparent; color: white; padding: 18px 45px; font-size: 20px; border-radius: 60px; border: 2px solid #ffd700; font-weight: 700;">تاریخچه</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- گنبد طلایی -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;">
+            <svg viewBox="0 0 1440 320" style="width: 100%; height: auto; opacity: 0.15;">
+                <path fill="#ffd700" fill-opacity="1" d="M0,256L60,234.7C120,213,240,171,360,160C480,149,600,171,720,181.3C840,192,960,192,1080,176C1200,160,1320,128,1380,112L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- ================ بخش حرم مطهر - عکس ================ -->
+    <section id="haram" class="blog-pp single-pp" style="position: relative; z-index: 3; background: #fff9e6; padding: 130px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-holy">
+                    <div class="haram-image-frame">
+                        <img src="img/haram.jpg" 
+                             alt="حرم امام رضا (ع) - مشهد" 
+                             class="haram-image img-fluid"
+                             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Imam_Reza_shrine_in_Mashhad_2020.jpg/800px-Imam_Reza_shrine_in_Mashhad_2020.jpg'">
+                        <div style="position: absolute; bottom: -20px; left: 30px; background: white; padding: 18px 35px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-right: 6px solid #b8860b; direction: ltr;">
+                            <span style="font-weight: 700; color: #8b6914; font-size: 18px;">حرم مطهر امام رضا (ع) - مشهد الرضا</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-holy delay-2">
+                    <div class="haram-card">
+                        <span class="haram-badge">🕊️ بزرگترین مرکز زیارتی ایران</span>
+                        <h2 class="haram-title">حرم امام رضا (ع)</h2>
+                        <div class="haram-border"></div>
+                        <p style="font-size: 17px; line-height: 2.1; color: #4a3a1a; margin-bottom: 30px;">
+                            <span style="font-size: 32px; color: #b8860b; font-weight: 800; float: right; margin-left: 15px;">🕊️</span>
+                            حرم امام رضا (ع) در شهر مشهد مقدس، بزرگترین مرکز زیارتی ایران و یکی از مهم‌ترین اماکن متبرکه جهان اسلام است. این حرم مطهر، آرامگاه هشتمین امام شیعیان، حضرت علی بن موسی الرضا (ع) است.
+                        </p>
+                        <p style="font-size: 17px; line-height: 2.1; color: #4a3a1a; margin-bottom: 35px;">
+                            این مجموعه عظیم شامل روضه منوره، گنبد طلایی، مناره‌ها، صحن‌ها، رواق‌ها، موزه‌ها و کتابخانه مرکزی است و هر ساله میزبان بیش از ۳۰ میلیون زائر از سراسر جهان است.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <div class="stat-haram">
+                                    <span class="stat-number-haram">۳۰</span>
+                                    <p style="font-size: 15px; color: #b8860b; margin-top: 12px; font-weight: 600;">میلیون زائر سالانه</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-haram">
+                                    <span class="stat-number-haram">۱۲</span>
+                                    <p style="font-size: 15px; color: #b8860b; margin-top: 12px; font-weight: 600;">صحن و رواق</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-haram">
+                                    <span class="stat-number-haram">۱۴۰۰</span>
+                                    <p style="font-size: 15px; color: #b8860b; margin-top: 12px; font-weight: 600;">سال قدمت</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش گنبد طلایی ================ -->
+    <section style="position: relative; z-index: 3; background: #fff4d9; padding: 80px 0;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 fade-up-holy">
+                    <div class="dome-icon">🕌✨🕌</div>
+                    <h3 style="font-size: 36px; font-weight: 700; color: #b8860b; margin-top: 20px;">گنبد طلایی</h3>
+                    <p style="font-size: 20px; color: #4a3a1a; max-width: 800px; margin: 20px auto;">
+                        گنبد طلایی حرم امام رضا (ع) با ۲۵ متر ارتفاع، از دورترین نقاط مشهد قابل مشاهده است. این گنبد با ۶۶۲۴ خشت طلا پوشیده شده و در دوران صفویه و افشاریه تزیین شده است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تاریخچه حرم ================ -->
+    <section id="history" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up-holy">
+                <span style="color: #b8860b;">📜 تاریخچه حرم مطهر</span>
+                <h2 style="font-size: 52px; font-weight: 800; color: #8b6914; margin-top: 20px;">از شهادت تا امروز</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto;">بیش از ۱۲۰۰ سال افتخار و معنویت</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up-holy">
+                    <div class="timeline-haram">
+                        <h3>۲۰۳ قمری</h3>
+                        <h4 style="font-size: 24px; color: #8b6914; margin-bottom: 15px;">شهادت امام رضا (ع)</h4>
+                        <p style="line-height: 1.9;">امام رضا (ع) در سن ۵۵ سالگی به دست مأمون عباسی به شهادت رسید و در سناباد مشهد به خاک سپرده شد.</p>
+                    </div>
+                    <div class="timeline-haram">
+                        <h3>۳۹۸ قمری</h3>
+                        <h4 style="font-size: 24px; color: #8b6914; margin-bottom: 15px;">ساخت گنبد اولیه</h4>
+                        <p style="line-height: 1.9;">سلطان محمود غزنوی نخستین گنبد را بر روی مرقد مطهر بنا کرد.</p>
+                    </div>
+                    <div class="timeline-haram">
+                        <h3>۹۹۳ قمری</h3>
+                        <h4 style="font-size: 24px; color: #8b6914; margin-bottom: 15px;">تذهیب گنبد</h4>
+                        <p style="line-height: 1.9;">شاه عباس صفوی گنبد را طلاکاری کرد و صحن عتیق (انقلاب) را ساخت.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-holy delay-2">
+                    <div class="timeline-haram">
+                        <h3>۱۳۱۱ شمسی</h3>
+                        <h4 style="font-size: 24px; color: #8b6914; margin-bottom: 15px;">تعمیرات اساسی</h4>
+                        <p style="line-height: 1.9;">در دوره پهلوی، تعمیرات اساسی در حرم مطهر انجام شد.</p>
+                    </div>
+                    <div class="timeline-haram">
+                        <h3>۱۳۵۸ شمسی</h3>
+                        <h4 style="font-size: 24px; color: #8b6914; margin-bottom: 15px;">توسعه عظیم حرم</h4>
+                        <p style="line-height: 1.9;">پس از انقلاب اسلامی، طرح توسعه عظیم حرم مطهر آغاز شد.</p>
+                    </div>
+                    <div class="timeline-haram">
+                        <h3>۱۴۰۵ شمسی</h3>
+                        <h4 style="font-size: 24px; color: #8b6914; margin-bottom: 15px;">پایان طرح توسعه</h4>
+                        <p style="line-height: 1.9;">طرح توسعه حرم مطهر با اضافه شدن صحن‌های جدید به پایان رسید.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش معماری ================ -->
+    <section id="architecture" style="position: relative; z-index: 3; background: #fff9e6; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up-holy">
+                <span style="color: #b8860b;">🏛️ شاهکار معماری اسلامی</span>
+                <h2 style="font-size: 52px; font-weight: 800; color: #8b6914; margin-top: 20px;">گنجینه هنر ایرانی</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto;">تلفیق هنر صفوی، افشاری و قاجاری</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-holy delay-1">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">🕌</div>
+                        <h4 style="color: #8b6914; font-size: 24px; font-weight: 800;">گنبد طلایی</h4>
+                        <p style="color: #666;">۶۶۲۴ خشت طلا - ۲۵ متر ارتفاع</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-holy delay-2">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">🕊️</div>
+                        <h4 style="color: #8b6914; font-size: 24px; font-weight: 800;">گلدسته‌ها</h4>
+                        <p style="color: #666;">۱۲ مناره با ارتفاع ۴۰ متر</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-holy delay-3">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">💎</div>
+                        <h4 style="color: #8b6914; font-size: 24px; font-weight: 800;">ضریح</h4>
+                        <p style="color: #666;">ضریح هفتم با ۵ تن طلا و نقره</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-holy delay-4">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">🏛️</div>
+                        <h4 style="color: #8b6914; font-size: 24px; font-weight: 800;">صحن‌ها</h4>
+                        <p style="color: #666;">۱۲ صحن با ۵۰۰,۰۰۰ متر مربع</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-holy delay-5">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">🪞</div>
+                        <h4 style="color: #8b6914; font-size: 24px; font-weight: 800;">آینه‌کاری</h4>
+                        <p style="color: #666;">رواق‌های آینه‌کاری بی‌نظیر</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-holy delay-6">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(184,134,11,0.1);">
+                        <div style="font-size: 55px; color: #b8860b; margin-bottom: 20px;">📚</div>
+                        <h4 style="color: #8b6914; font-size: 24px; font-weight: 800;">کتابخانه</h4>
+                        <p style="color: #666;">بزرگترین کتابخانه وقفی جهان</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش صحن‌ها و رواق‌ها ================ -->
+    <section style="position: relative; z-index: 3; background: #fff4d9; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-holy text-center">
+                    <div style="font-size: 80px; color: #b8860b; opacity: 0.5;">🕌🏛️🕌</div>
+                </div>
+                <div class="col-lg-6 fade-up-holy">
+                    <span style="color: #b8860b; font-size: 18px; letter-spacing: 3px;">🏛️ صحن‌های حرم</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #8b6914; margin-top: 20px; margin-bottom: 25px;">صحن‌ها و رواق‌ها</h2>
+                    <div style="width: 100px; height: 3px; background: #b8860b; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #4a3a1a; margin-bottom: 25px;">
+                        حرم امام رضا (ع) دارای ۱۲ صحن بزرگ و ۲۴ رواق است که هر کدام با معماری بی‌نظیر و تزیینات هنری چشم‌نواز تزیین شده‌اند.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #4a3a1a; margin-bottom: 25px;">
+                        صحن‌های انقلاب، آزادی، جمهوری، قدس، کوثر، فجر، هدایت، غدیر، بعثت، نبوت، کرامت و امام حسن مجتبی (ع) از صحن‌های این حرم مطهر هستند.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش موزه‌ها و کتابخانه ================ -->
+    <section style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-holy order-lg-2 text-center">
+                    <div style="font-size: 80px; color: #b8860b; opacity: 0.5;">📚🎨📚</div>
+                </div>
+                <div class="col-lg-6 fade-up-holy order-lg-1">
+                    <span style="color: #b8860b; font-size: 18px; letter-spacing: 3px;">📚 گنجینه علم و هنر</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #8b6914; margin-top: 20px; margin-bottom: 25px;">موزه و کتابخانه</h2>
+                    <div style="width: 100px; height: 3px; background: #b8860b; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #4a3a1a; margin-bottom: 25px;">
+                        کتابخانه مرکزی آستان قدس رضوی با ۶ میلیون نسخه کتاب، بزرگترین کتابخانه وقفی جهان است و گنجینه‌ای از نسخ خطی نفیس را در خود جای داده است.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #4a3a1a; margin-bottom: 25px;">
+                        موزه آستان قدس رضوی شامل بخش‌های مختلفی از جمله گنجینه قرآن، فرش، سکه، تمبر، سلاح‌های تاریخی و آثار اهدایی به حرم مطهر است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش ضریح مطهر ================ -->
+    <section style="position: relative; z-index: 3; background: #fff9e6; padding: 100px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-holy">
+                    <span style="font-size: 60px; color: #ffd700; display: block; margin-bottom: 20px;">✨💎✨</span>
+                    <span style="background: #b8860b; color: white; padding: 8px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 2px;">ضریح مطهر</span>
+                    <h2 style="font-size: 42px; font-weight: 800; color: #8b6914; margin-top: 35px; margin-bottom: 30px;">ضریح هفتم</h2>
+                    <p style="font-size: 20px; line-height: 1.9; color: #4a3a1a; max-width: 800px; margin: 0 auto;">
+                        ضریح فعلی حرم امام رضا (ع) هفتمین ضریحی است که بر مضجع شریف نصب شده است. این ضریح با ۵ تن طلا و نقره، در سال ۱۳۷۹ توسط هنرمندان شیرازی ساخته شد و جایگزین ضریح فولادی قبلی گردید.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش نقل قول ================ -->
+    <section class="quote-section-haram" style="position: relative; z-index: 3; padding: 120px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-holy">
+                    <span style="font-size: 80px; line-height: 0.6; color: rgba(255,215,0,0.2); display: block; margin-bottom: 30px;">🕊️</span>
+                    <h2 style="font-size: 44px; font-weight: 700; line-height: 1.7; margin-bottom: 50px; color: #ffd700; text-shadow: 0 0 30px rgba(0,0,0,0.5); font-style: italic;">
+                        «حرم امام رضا (ع) نه فقط یک مکان زیارتی، که پناهگاه دل‌های شکسته و قبله عاشقان اهل بیت (ع) است. هر کبوتر حرمش، نشانی از آرامش و هر گنبد طلایش، فروغی از ایمان است.»
+                    </h2>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.8);">— هانیه کریمی، پژوهشگر تاریخ اسلام</p>
+                    <div style="margin-top: 50px;">
+                        <span class="cuneiform-haram" style="background: rgba(0,0,0,0.3); color: #ffd700; border-color: #b8860b; font-size: 28px;">🕊️ حرم امام رضا (ع) 🕊️</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: #fff9e6; padding: 120px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="haram-card fade-up-holy" style="background: white;">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <div style="width: 100px; height: 100px; background: rgba(184,134,11,0.08); border-radius: 50%; line-height: 100px; font-size: 55px; color: #b8860b; margin: 0 auto 25px; border: 2px dashed #b8860b;">
+                                🕊️
+                            </div>
+                            <span style="background: #b8860b; color: white; padding: 10px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 3px; display: inline-block; margin-bottom: 25px;">🕊️ حرم امام رضا (ع) 🕊️</span>
+                            <h2 style="font-size: 48px; font-weight: 800; color: #4a3a1a; margin-top: 15px;">هانیه کریمی</h2>
+                            <p style="font-size: 20px; color: #b8860b; margin-top: 15px; font-weight: 600;">پژوهشگر تاریخ اسلام | طراح و توسعه‌دهنده وب</p>
+                            <div style="width: 100px; height: 3px; background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b); margin: 30px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #fff9e6; padding: 45px 30px; border-radius: 35px; height: 100%; border: 1px solid rgba(184,134,11,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #b8860b; margin-bottom: 20px;">📬</div>
+                                    <div style="direction: ltr; text-align: left; font-size: 18px; color: #4a3a1a; margin: 25px 0 15px; font-family: monospace; background: white; padding: 15px 20px; border-radius: 15px; border: 1px solid rgba(184,134,11,0.15);">
+                                        hanieh.karimii1389@gmail.com
+                                    </div>
+                                    <div style="direction: ltr; text-align: left; font-size: 26px; color: #b8860b; margin: 20px 0; font-weight: 800; background: rgba(184,134,11,0.03); padding: 12px; border-radius: 15px;">
+                                        ۰۹۹۳۲۳۰۹۴۹۲
+                                    </div>
+                                    <div style="font-size: 20px; color: #4a3a1a; font-weight: 600;">
+                                        مشهد، ایران
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #fff9e6; padding: 45px 35px; border-radius: 35px; height: 100%; border: 1px solid rgba(184,134,11,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #b8860b; margin-bottom: 20px;">🕊️</div>
+                                    <p style="font-size: 18px; line-height: 2; color: #4a3a1a; margin-top: 25px; text-align: justify;">
+                                        این وبسایت به پاس ارادت به ساحت مقدس امام رضا (ع) و با افتخار به میزبانی مشهد الرضا طراحی شده است. من به عنوان یک مشهدی و مجاور این حرم مطهر، این صفحه را با عشق تقدیم می‌کنم.
+                                    </p>
+                                    <div style="margin-top: 35px; padding: 15px; background: rgba(184,134,11,0.06); border-radius: 15px; border: 1px dashed #b8860b;">
+                                        <span style="color: #4a3a1a; font-weight: 700; font-size: 20px;">🕊️ حرم امام رضا (ع) - نگین خراسان 🕊️</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر -->
+                        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(184,134,11,0.2);">
+                            <div style="background: #b8860b; color: white; padding: 15px 35px; border-radius: 50px; display: inline-block; font-weight: 700; box-shadow: 0 10px 25px rgba(184,134,11,0.4); border: 2px solid #ffd700; margin-bottom: 25px;">
+                                🕊️ حرم امام رضا (ع) - مشهد الرضا 🕊️
+                            </div>
+                            <p style="color: #b8860b; margin-top: 25px; font-size: 18px; font-weight: 600;">
+                                طراحی شده با عشق و ارادت به امام رضا (ع) توسط هانیه کریمی © ۲۰۲۶
+                            </p>
+                            <div style="margin-top: 30px;">
+                                <span style="color: #b8860b; font-size: 24px;">🕊️ السلام علیک یا علی بن موسی الرضا (ع) 🕊️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>

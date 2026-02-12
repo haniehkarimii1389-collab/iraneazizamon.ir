@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ری | چشمه علی - کهن‌ترین شهر ری</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ انیمیشن‌های ری ================ */
+        @keyframes fadeUpRay {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes waterFlow {
+            0% { transform: translateY(0) scale(1); opacity: 0.3; }
+            50% { transform: translateY(-10px) scale(1.1); opacity: 0.6; }
+            100% { transform: translateY(0) scale(1); opacity: 0.3; }
+        }
+        
+        .fade-up-ray {
+            animation: fadeUpRay 1.2s ease forwards;
+        }
+        
+        .water-flow {
+            animation: waterFlow 5s ease-in-out infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی ری ================ */
+        .ray-logo {
+            width: 80px;
+            height: 80px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 10px rgba(52,152,219,0.3));
+        }
+        
+        .ray-logo:hover {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 0 25px rgba(41,128,185,0.6));
+        }
+        
+        /* ================ استایل‌های اختصاصی ری ================ */
+        .ray-pattern {
+            background: repeating-linear-gradient(45deg, 
+                rgba(52,152,219,0.03) 0px, 
+                rgba(52,152,219,0.03) 10px,
+                transparent 10px, 
+                transparent 30px);
+        }
+        
+        .ray-card {
+            background: linear-gradient(145deg, #f0f9ff, #e6f3fa);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(52,152,219,0.1);
+            border: 1px solid rgba(52,152,219,0.25);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        
+        .ray-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 80px rgba(41,128,185,0.15);
+            border-color: rgba(52,152,219,0.4);
+        }
+        
+        .ray-card:after {
+            content: '𐎼𐎥𐎠';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.03;
+            color: #2980b9;
+            font-family: 'Times New Roman', serif;
+            transform: rotate(-5deg);
+        }
+        
+        .ray-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(52,152,219,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 25px;
+        }
+        
+        .ray-title {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #3498db, #2980b9, #1a5276);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 20px rgba(52,152,219,0.2);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .ray-border {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #85c1e9, #3498db);
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(52,152,219,0.3);
+        }
+        
+        .stat-ray {
+            background: rgba(52,152,219,0.03);
+            padding: 30px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(52,152,219,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .stat-ray:hover {
+            background: rgba(52,152,219,0.06);
+            border-color: rgba(52,152,219,0.3);
+            transform: translateY(-8px);
+        }
+        
+        .stat-number-ray {
+            font-size: 48px;
+            font-weight: 900;
+            color: #2980b9;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .timeline-ray {
+            position: relative;
+            padding: 35px;
+            background: white;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border-right: 6px solid #3498db;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-ray:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 20px 50px rgba(52,152,219,0.1);
+            border-right-width: 10px;
+        }
+        
+        .timeline-ray h3 {
+            color: #2980b9;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .ray-image-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+            border: 8px solid rgba(52,152,219,0.2);
+            transition: all 0.6s ease;
+            background: #e6f3fa;
+        }
+        
+        .ray-image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 90px rgba(41,128,185,0.25);
+            border-color: rgba(52,152,219,0.4);
+        }
+        
+        .ray-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.8s ease;
+        }
+        
+        .ray-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .water-icon {
+            font-size: 60px;
+            color: #3498db;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: waterFlow 4s infinite;
+        }
+        
+        .cuneiform-ray {
+            font-family: 'Times New Roman', serif;
+            font-size: 22px;
+            color: #2980b9;
+            letter-spacing: 6px;
+            background: rgba(52,152,219,0.05);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(52,152,219,0.15);
+        }
+        
+        .quote-section-ray {
+            background: linear-gradient(135deg, #1a4d5e, #2c6b7a, #1a4d5e);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cheshmeh-ali {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(to bottom, #3498db, #1a5276);
+            opacity: 0.1;
+            clip-path: polygon(0% 40%, 10% 20%, 20% 30%, 30% 15%, 40% 25%, 50% 10%, 60% 20%, 70% 15%, 80% 25%, 90% 10%, 100% 20%, 100% 100%, 0% 100%);
+        }
+    </style>
+</head>
+<body class="inner-pag ray-pattern" style="background: #f0f9ff;">
+
+    <!-- ================ هدر با عکس ری ================ -->
+    <header id="inner-header" class="inner-header parallax" style="height: 100vh; position: relative; z-index: 2;">
+        <!-- ✅ بکگراند آبی - چشمه علی -->
+        <div class="overlay" style="background: radial-gradient(circle at 30% 50%, #1a5276, #154360, #0a2635); opacity: 0.88; box-shadow: inset 0 0 180px rgba(52,152,219,0.4);"></div>
+        
+        <!-- ✅ لایه بافت آب -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                    background: repeating-linear-gradient(45deg, rgba(52,152,219,0.04) 0px, rgba(52,152,219,0.04) 2px, transparent 2px, transparent 15px);
+                    z-index: 1;"></div>
+        
+        <!-- ناوبری با لوگوی ری -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up-ray">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <!-- لوگوی اختصاصی ری - چشمه علی -->
+                    <svg width="80" height="80" viewBox="0 0 100 100" class="ray-logo">
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="#3498db" stroke-width="2" stroke-dasharray="6 4"/>
+                        <!-- چشمه آب -->
+                        <circle cx="50" cy="50" r="20" fill="#3498db" opacity="0.2"/>
+                        <circle cx="50" cy="50" r="15" fill="#5dade2" opacity="0.4"/>
+                        <circle cx="50" cy="50" r="10" fill="#85c1e9" opacity="0.6"/>
+                        <circle cx="50" cy="50" r="5" fill="white" opacity="0.9"/>
+                        <!-- قطرات آب -->
+                        <circle cx="30" cy="40" r="3" fill="#3498db" opacity="0.6" class="water-flow"/>
+                        <circle cx="70" cy="60" r="3" fill="#3498db" opacity="0.6" class="water-flow" style="animation-delay: 1s;"/>
+                        <circle cx="35" cy="70" r="2" fill="#3498db" opacity="0.6" class="water-flow" style="animation-delay: 2s;"/>
+                        <circle cx="65" cy="30" r="2" fill="#3498db" opacity="0.6" class="water-flow" style="animation-delay: 3s;"/>
+                    </svg>
+                    <span style="color: white; font-weight: 800; margin-right: 15px; font-size: 22px; text-shadow: 0 0 20px rgba(52,152,219,0.7);">ری باستان</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#ray">ری</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#cheshmeh-ali">چشمه علی</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#history">تاریخچه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر - ری -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up-ray" style="position: relative; z-index: 4;">
+                    <div class="cuneiform-ray" style="color: white; border-color: rgba(255,255,255,0.3); background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); margin-bottom: 25px;">
+                        𐎼𐎥𐎠
+                    </div>
+                    <h1 style="font-size: 100px; font-weight: 900; color: white; text-shadow: 0 0 50px #3498db, 0 0 100px rgba(52,152,219,0.5), 2px 2px 20px black; margin-top: 15px; letter-spacing: 6px;" class="fade-up-ray delay-1">
+                        ری
+                    </h1>
+                    <p style="font-size: 38px; color: rgba(255,255,255,0.98); font-weight: 400; letter-spacing: 8px; text-shadow: 0 0 35px #3498db, 2px 2px 15px black;" class="fade-up-ray delay-2">
+                        چشمه علی - کهن‌ترین شهر ری
+                    </p>
+                    <div style="width: 200px; height: 6px; background: linear-gradient(90deg, #85c1e9, #3498db, #1a5276, #3498db, #85c1e9); margin: 40px auto; box-shadow: 0 0 40px #3498db; border-radius: 10px;" class="fade-up-ray delay-3"></div>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.95); max-width: 1000px; margin: 40px auto; line-height: 1.8; text-shadow: 2px 2px 20px black; font-weight: 500; background: rgba(0,0,0,0.2); padding: 20px 40px; border-radius: 80px; backdrop-filter: blur(5px); border: 1px solid rgba(133,193,233,0.3);" class="fade-up-ray delay-4">
+                        «چشمه علی ری، نگین کویر ایران؛ جایی که تاریخ ۸۰۰۰ ساله در کنار آب زلال جاری است»
+                    </p>
+                    <div class="mt-5 fade-up-ray delay-5">
+                        <a href="#ray" class="bttn" style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 18px 50px; font-size: 20px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); border: 2px solid #85c1e9; margin-left: 20px; font-weight: 700;">کشف ری</a>
+                        <a href="#history" class="bttn" style="background: transparent; color: white; padding: 18px 45px; font-size: 20px; border-radius: 60px; border: 2px solid #85c1e9; font-weight: 700;">تاریخچه</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- موج‌های آب -->
+        <div class="cheshmeh-ali" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;"></div>
+    </header>
+
+    <!-- ================ بخش ری - عکس ================ -->
+    <section id="ray" class="blog-pp single-pp" style="position: relative; z-index: 3; background: #f0f9ff; padding: 130px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-ray">
+                    <div class="ray-image-frame">
+                        <img src="img/rey.jpg" 
+                             alt="ری - چشمه علی" 
+                             class="ray-image img-fluid"
+                             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Cheshmeh_Ali_%28Shahr-e_Rey%29.jpg/800px-Cheshmeh_Ali_%28Shahr-e_Rey%29.jpg'">
+                        <div style="position: absolute; bottom: -20px; left: 30px; background: white; padding: 18px 35px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-right: 6px solid #3498db; direction: ltr;">
+                            <span style="font-weight: 700; color: #1a5276; font-size: 18px;">چشمه علی ری</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-ray delay-2">
+                    <div class="ray-card">
+                        <span class="ray-badge">💧 چشمه علی - ۸۰۰۰ سال قدمت</span>
+                        <h2 class="ray-title">ری باستان</h2>
+                        <div class="ray-border"></div>
+                        <p style="font-size: 17px; line-height: 2.1; color: #1a4d5e; margin-bottom: 30px;">
+                            <span style="font-size: 32px; color: #2980b9; font-weight: 800; float: right; margin-left: 15px;">𐎼</span>
+                            ری یکی از کهن‌ترین شهرهای ایران است که قدمت آن به ۸۰۰۰ سال پیش بازمی‌گردد. چشمه علی ری با آب زلال و تاریخی خود، یادگار دوران مادها و هخامنشیان است.
+                        </p>
+                        <p style="font-size: 17px; line-height: 2.1; color: #1a4d5e; margin-bottom: 35px;">
+                            چشمه علی، برج طغرل، دژ رشکان و آرامگاه ابن‌بابویه از مهم‌ترین آثار تاریخی ری هستند. این شهر در دوران ساسانی و اسلامی نیز از اهمیت ویژه‌ای برخوردار بود.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <div class="stat-ray">
+                                    <span class="stat-number-ray">۸۰۰۰</span>
+                                    <p style="font-size: 15px; color: #2980b9; margin-top: 12px; font-weight: 600;">سال قدمت</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-ray">
+                                    <span class="stat-number-ray">۶۰۰۰</span>
+                                    <p style="font-size: 15px; color: #2980b9; margin-top: 12px; font-weight: 600;">سال سکونت</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-ray">
+                                    <span class="stat-number-ray">۱۰۰۰</span>
+                                    <p style="font-size: 15px; color: #2980b9; margin-top: 12px; font-weight: 600;">سال شکوفایی</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش چشمه علی ================ -->
+    <section id="cheshmeh-ali" style="position: relative; z-index: 3; background: linear-gradient(135deg, #d4e6f1, #e8f6ff); padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-ray order-lg-2 text-center">
+                    <div class="water-icon">💧💧💧</div>
+                    <div style="font-size: 120px; color: #3498db; opacity: 0.2; margin-top: -20px;">⛲</div>
+                </div>
+                <div class="col-lg-6 fade-up-ray order-lg-1">
+                    <span style="color: #2980b9; font-size: 18px; letter-spacing: 3px;">⛲ چشمه جاویدان</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #1a5276; margin-top: 20px; margin-bottom: 25px;">چشمه علی</h2>
+                    <div style="width: 100px; height: 3px; background: #3498db; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #1a4d5e; margin-bottom: 25px;">
+                        چشمه علی ری یکی از قدیمی‌ترین نشانه‌های سکونت بشر در ایران است. در این محوطه باستانی، آثاری از دوران ماد، هخامنشی، ساسانی و اسلامی کشف شده است.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #1a4d5e;">
+                        سنگ‌نگاره‌های دوره قاجار که به دستور فتحعلی شاه حجاری شده‌اند، از دیگر جاذبه‌های چشمه علی هستند.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تاریخچه ری ================ -->
+    <section id="history" style="position: relative; z-index: 3; background: white; padding: 120px 0;">
+        <div class="container">
+            <div class="section-title fade-up-ray">
+                <span style="color: #2980b9;">📜 هشت هزار سال تاریخ</span>
+                <h2 style="font-size: 58px; font-weight: 800; color: #1a5276; margin-top: 20px;">گاهشمار ری</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto; font-size: 20px;">از مادها تا پایتخت سلجوقیان</p>
+                <div style="width: 120px; height: 4px; background: #3498db; margin: 25px auto;"></div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up-ray">
+                    <div class="timeline-ray">
+                        <h3>۶۰۰۰ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #1a5276; margin-bottom: 15px;">نخستین سکونت‌ها</h4>
+                        <p style="line-height: 1.9;">قدیمی‌ترین آثار سکونت در تپه چشمه علی مربوط به این دوره است.</p>
+                    </div>
+                    <div class="timeline-ray">
+                        <h3>۱۰۰۰ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #1a5276; margin-bottom: 15px;">دوران مادها</h4>
+                        <p style="line-height: 1.9;">ری یکی از شهرهای مهم مادها بود و نام آن در کتیبه‌های بیستون آمده است.</p>
+                    </div>
+                    <div class="timeline-ray">
+                        <h3>۵۵۰ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #1a5276; margin-bottom: 15px;">دوران هخامنشی</h4>
+                        <p style="line-height: 1.9;">ری به عنوان یکی از ساتراپی‌های هخامنشیان به شکوفایی رسید.</p>
+                    </div>
+                    <div class="timeline-ray">
+                        <h3>۲۲۴ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #1a5276; margin-bottom: 15px;">دوران ساسانی</h4>
+                        <p style="line-height: 1.9;">دژ رشکان در ری یکی از پایگاه‌های مهم ساسانیان بود.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-ray delay-2">
+                    <div class="timeline-ray">
+                        <h3>۶۴۴ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #1a5276; margin-bottom: 15px;">فتح اسلامی</h4>
+                        <p style="line-height: 1.9;">ری به دست مسلمانان فتح شد و به یکی از مراکز علمی جهان اسلام تبدیل گشت.</p>
+                    </div>
+                    <div class="timeline-ray">
+                        <h3>۱۰۴۰ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #1a5276; margin-bottom: 15px;">پایتخت سلجوقیان</h4>
+                        <p style="line-height: 1.9;">طغرل سلجوقی ری را به پایتختی برگزید و برج طغرل را ساخت.</p>
+                    </div>
+                    <div class="timeline-ray">
+                        <h3>۱۲۲۰ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #1a5276; margin-bottom: 15px;">حمله مغول</h4>
+                        <p style="line-height: 1.9;">ری در حمله مغول‌ها به شدت ویران شد و هرگز به شکوه گذشته بازنگشت.</p>
+                    </div>
+                    <div class="timeline-ray">
+                        <h3>۲۰۲۶ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #1a5276; margin-bottom: 15px;">میراث فرهنگی</h4>
+                        <p style="line-height: 1.9;">چشمه علی ری به عنوان یکی از مهم‌ترین محوطه‌های باستانی ایران شناخته می‌شود.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش برج طغرل ================ -->
+    <section style="position: relative; z-index: 3; background: #f0f9ff; padding: 100px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-ray">
+                    <span style="font-size: 60px; color: #3498db; display: block; margin-bottom: 20px;">🗼</span>
+                    <span style="background: #2980b9; color: white; padding: 8px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 2px;">برج طغرل</span>
+                    <h2 style="font-size: 42px; font-weight: 800; color: #1a5276; margin-top: 35px; margin-bottom: 30px;">نماد شهر ری</h2>
+                    <p style="font-size: 20px; line-height: 1.9; color: #1a4d5e; max-width: 800px; margin: 0 auto;">
+                        برج طغرل یادگار دوره سلجوقیان است که در قرن ۱۱ میلادی ساخته شد. این برج ۲۰ متری، آرامگاه طغرل سلجوقی بوده و با معماری خاص خود، یکی از نمادهای شهر ری است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش نقل قول ================ -->
+    <section class="quote-section-ray" style="position: relative; z-index: 3; padding: 120px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-ray">
+                    <span style="font-size: 100px; line-height: 0.6; color: rgba(133,193,233,0.3); display: block; margin-bottom: 30px;">💧</span>
+                    <h2 style="font-size: 44px; font-weight: 700; line-height: 1.7; margin-bottom: 50px; color: #ffd700; text-shadow: 0 0 30px rgba(0,0,0,0.5); font-style: italic;">
+                        «چشمه علی ری، گهواره تمدن ایران؛ از دل این چشمه، تاریخ ۸۰۰۰ ساله جاری است»
+                    </h2>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.8);">— هانیه کریمی، پژوهشگر تاریخ ایران باستان</p>
+                    <div style="margin-top: 50px;">
+                        <span class="cuneiform-ray" style="background: rgba(0,0,0,0.3); color: #ffd700; border-color: #3498db; font-size: 28px;">𐎼𐎥𐎠 𐎼𐎠𐎹𐎠</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: #f0f9ff; padding: 120px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="ray-card fade-up-ray" style="background: white;">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <div style="width: 100px; height: 100px; background: rgba(52,152,219,0.08); border-radius: 50%; line-height: 100px; font-size: 55px; color: #3498db; margin: 0 auto 25px; border: 2px dashed #3498db;">
+                                💧
+                            </div>
+                            <span style="background: #2980b9; color: white; padding: 10px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 3px; display: inline-block; margin-bottom: 25px;">𐎼𐎥𐎠</span>
+                            <h2 style="font-size: 48px; font-weight: 800; color: #1a5276; margin-top: 15px;">هانیه کریمی</h2>
+                            <p style="font-size: 20px; color: #3498db; margin-top: 15px; font-weight: 600;">پژوهشگر تاریخ ایران باستان | طراح و توسعه‌دهنده وب</p>
+                            <div style="width: 100px; height: 3px; background: linear-gradient(90deg, #3498db, #85c1e9, #3498db); margin: 30px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #f0f9ff; padding: 45px 30px; border-radius: 35px; height: 100%; border: 1px solid rgba(52,152,219,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #3498db; margin-bottom: 20px;">📬</div>
+                                    <div style="direction: ltr; text-align: left; font-size: 18px; color: #1a5276; margin: 25px 0 15px; font-family: monospace; background: white; padding: 15px 20px; border-radius: 15px; border: 1px solid rgba(52,152,219,0.15);">
+                                        hanieh.karimii1389@gmail.com
+                                    </div>
+                                    <div style="direction: ltr; text-align: left; font-size: 26px; color: #2980b9; margin: 20px 0; font-weight: 800; background: rgba(52,152,219,0.03); padding: 12px; border-radius: 15px;">
+                                        ۰۹۹۳۲۳۰۹۴۹۲
+                                    </div>
+                                    <div style="font-size: 20px; color: #1a5276; font-weight: 600;">
+                                        مشهد، ایران
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #f0f9ff; padding: 45px 35px; border-radius: 35px; height: 100%; border: 1px solid rgba(52,152,219,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #3498db; margin-bottom: 20px;">🏺</div>
+                                    <p style="font-size: 18px; line-height: 2; color: #1a4d5e; margin-top: 25px; text-align: justify;">
+                                        این وبسایت به پاس گرامیداشت میراث فرهنگی ایران زمین طراحی شده است. ری باستان با چشمه علی و برج طغرل، یادگار ۸۰۰۰ سال تمدن ایران است.
+                                    </p>
+                                    <div style="margin-top: 35px; padding: 15px; background: rgba(52,152,219,0.06); border-radius: 15px; border: 1px dashed #3498db;">
+                                        <span style="color: #1a5276; font-weight: 700; font-size: 20px;">𐎼𐎥𐎠 𐎱𐎠𐎼𐎿</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر -->
+                        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(52,152,219,0.2);">
+                            <div style="background: #2980b9; color: white; padding: 15px 35px; border-radius: 50px; display: inline-block; font-weight: 700; box-shadow: 0 10px 25px rgba(52,152,219,0.4); border: 2px solid #85c1e9; margin-bottom: 25px;">
+                                💧 چشمه علی ری - ۸۰۰۰ سال تمدن
+                            </div>
+                            <p style="color: #2980b9; margin-top: 25px; font-size: 18px; font-weight: 600;">
+                                طراحی شده با افتخار و عشق به ایران باستان توسط هانیه کریمی © ۲۰۲۶
+                            </p>
+                            <div style="margin-top: 30px;">
+                                <span style="color: #3498db; font-size: 24px;">𐎼𐎥𐎠 𐏃𐏁𐎫𐎼𐎠</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>

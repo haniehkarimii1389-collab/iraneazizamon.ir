@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آبشارهای زیبا | شاهکارهای آب ایران</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ فیکس مشکل اسکرول ================ */
+        html, body {
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            height: auto !important;
+            min-height: 100vh;
+        }
+        
+        body {
+            overflow-y: auto !important;
+            position: relative !important;
+        }
+        
+        /* ================ انیمیشن‌های آبشار ================ */
+        @keyframes fadeUpWaterfall {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes waterFlow {
+            0% { transform: translateY(0) scale(1); opacity: 0.6; }
+            50% { transform: translateY(-15px) scale(1.05); opacity: 0.9; }
+            100% { transform: translateY(0) scale(1); opacity: 0.6; }
+        }
+        
+        @keyframes waterGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(0,191,255,0.4)); }
+            50% { filter: drop-shadow(0 0 30px rgba(135,206,250,0.8)); }
+            100% { filter: drop-shadow(0 0 5px rgba(0,191,255,0.4)); }
+        }
+        
+        @keyframes droplet {
+            0% { transform: translateY(0) scale(1); opacity: 0.5; }
+            50% { transform: translateY(30px) scale(0.8); opacity: 0.2; }
+            100% { transform: translateY(0) scale(1); opacity: 0.5; }
+        }
+        
+        .fade-up-waterfall {
+            animation: fadeUpWaterfall 1.2s ease forwards;
+        }
+        
+        .water-flow {
+            animation: waterFlow 6s ease-in-out infinite;
+        }
+        
+        .water-glow {
+            animation: waterGlow 5s infinite;
+        }
+        
+        .droplet {
+            animation: droplet 4s ease-in-out infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-6 { animation-delay: 1.2s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی آبشار ================ */
+        .waterfall-logo {
+            width: 80px;
+            height: 80px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 10px rgba(0,191,255,0.5));
+        }
+        
+        .waterfall-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 0 30px rgba(135,206,250,0.9));
+        }
+        
+        /* ================ استایل‌های اختصاصی آبشار ================ */
+        .waterfall-pattern {
+            background: repeating-linear-gradient(45deg, 
+                rgba(0,191,255,0.03) 0px, 
+                rgba(0,191,255,0.03) 10px,
+                transparent 10px, 
+                transparent 30px);
+        }
+        
+        .waterfall-card {
+            background: linear-gradient(145deg, #e0f2fe, #b8e2f2);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(0,150,199,0.1);
+            border: 1px solid rgba(0,191,255,0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        
+        .waterfall-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 80px rgba(0,150,199,0.2);
+            border-color: rgba(135,206,250,0.6);
+        }
+        
+        .waterfall-card:after {
+            content: '💧';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.03;
+            color: #00bfff;
+            transform: rotate(-5deg);
+        }
+        
+        .waterfall-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #0099cc, #00688b);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(0,153,204,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 25px;
+        }
+        
+        .waterfall-title {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #0099cc, #00bfff, #00688b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 20px rgba(0,191,255,0.3);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .waterfall-border {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #0099cc, #87cefa, #0099cc);
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(135,206,250,0.3);
+        }
+        
+        .stat-waterfall {
+            background: rgba(0,153,204,0.04);
+            padding: 30px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(0,153,204,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .stat-waterfall:hover {
+            background: rgba(0,191,255,0.08);
+            border-color: rgba(135,206,250,0.3);
+            transform: translateY(-8px);
+        }
+        
+        .stat-number-waterfall {
+            font-size: 48px;
+            font-weight: 900;
+            color: #0099cc;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .timeline-waterfall {
+            position: relative;
+            padding: 35px;
+            background: white;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border-right: 6px solid #0099cc;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-waterfall:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 20px 50px rgba(0,153,204,0.1);
+            border-right-width: 10px;
+        }
+        
+        .timeline-waterfall h3 {
+            color: #0099cc;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .waterfall-image-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.2);
+            border: 8px solid rgba(135,206,250,0.3);
+            transition: all 0.6s ease;
+            background: #b8e2f2;
+        }
+        
+        .waterfall-image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 90px rgba(0,153,204,0.25);
+            border-color: rgba(135,206,250,0.6);
+        }
+        
+        .waterfall-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.8s ease;
+        }
+        
+        .waterfall-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .water-icon {
+            font-size: 70px;
+            color: #0099cc;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: waterFlow 7s ease-in-out infinite;
+        }
+        
+        .droplet-icon {
+            font-size: 30px;
+            color: #87cefa;
+            display: inline-block;
+            animation: droplet 3s ease-in-out infinite;
+        }
+        
+        .waterfall-quote {
+            font-family: 'Times New Roman', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: #00688b;
+            line-height: 2;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .cuneiform-waterfall {
+            font-family: 'Times New Roman', serif;
+            font-size: 22px;
+            color: #0099cc;
+            letter-spacing: 6px;
+            background: rgba(0,153,204,0.05);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(0,153,204,0.15);
+        }
+        
+        .quote-section-waterfall {
+            background: linear-gradient(135deg, #003f5c, #00688b, #003f5c);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .water-droplet-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .water-bg {
+            background: linear-gradient(to bottom, #b8e2f2, #e0f2fe);
+            position: relative;
+        }
+        
+        .rainbow {
+            position: absolute;
+            width: 200%;
+            height: 100px;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+            opacity: 0.1;
+            border-radius: 50%;
+            filter: blur(30px);
+            animation: waterFlow 15s infinite;
+        }
+    </style>
+</head>
+<body class="inner-pag waterfall-pattern" style="background: linear-gradient(to bottom, #e0f2fe, #b8e2f2); overflow-y: auto !important;">
+
+    <!-- ================ قطرات آب متحرک ================ -->
+    <div class="water-droplet-container">
+        <div class="droplet-icon" style="top: 15%; left: 5%; position: absolute; animation-delay: 0s;">💧</div>
+        <div class="droplet-icon" style="top: 25%; right: 10%; position: absolute; animation-delay: 1s;">💧</div>
+        <div class="droplet-icon" style="top: 55%; left: 20%; position: absolute; animation-delay: 2s;">💧</div>
+        <div class="droplet-icon" style="top: 75%; right: 15%; position: absolute; animation-delay: 3s;">💧</div>
+        <div class="droplet-icon" style="top: 90%; left: 30%; position: absolute; animation-delay: 4s;">💧</div>
+        <div class="droplet-icon" style="top: 45%; right: 25%; position: absolute; animation-delay: 5s;">💧</div>
+    </div>
+
+    <!-- ================ هدر با عکس آبشار ================ -->
+    <header id="inner-header" class="inner-header parallax" style="height: 100vh; position: relative; z-index: 2; overflow: hidden;">
+        <!-- ✅ بکگراند آبی آبشار -->
+        <div class="overlay" style="background: radial-gradient(circle at 30% 50%, #00688b, #0099cc, #003f5c); opacity: 0.85; box-shadow: inset 0 0 180px rgba(0,191,255,0.5);"></div>
+        
+        <!-- ✅ افکت رنگین کمان -->
+        <div class="rainbow" style="position: absolute; bottom: 10%; left: -50%; z-index: 1;"></div>
+        
+        <!-- ناوبری با لوگوی آبشار -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up-waterfall">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <!-- لوگوی اختصاصی آبشار -->
+                    <svg width="80" height="80" viewBox="0 0 100 100" class="waterfall-logo">
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="#00bfff" stroke-width="2" stroke-dasharray="6 4"/>
+                        <!-- کوه -->
+                        <polygon points="30,60 40,30 50,40 60,25 70,35 75,45 80,60" fill="#2e7d32" opacity="0.5"/>
+                        <!-- آبشار -->
+                        <path d="M45,35 L45,70" stroke="#00bfff" stroke-width="8" stroke-dasharray="5 5" opacity="0.8"/>
+                        <path d="M50,40 L50,70" stroke="#87cefa" stroke-width="8" stroke-dasharray="5 5" opacity="0.8"/>
+                        <path d="M55,45 L55,70" stroke="#00bfff" stroke-width="8" stroke-dasharray="5 5" opacity="0.8"/>
+                        <!-- استخر -->
+                        <ellipse cx="50" cy="75" rx="20" ry="5" fill="#00bfff" opacity="0.3"/>
+                        <!-- قطرات آب -->
+                        <circle cx="35" cy="50" r="3" fill="#00bfff" class="droplet"/>
+                        <circle cx="65" cy="55" r="3" fill="#00bfff" class="droplet" style="animation-delay: 1s;"/>
+                    </svg>
+                    <span style="color: white; font-weight: 800; margin-right: 15px; font-size: 22px; text-shadow: 0 0 20px rgba(0,191,255,0.7);">آبشارهای ایران</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#waterfalls">آبشارها</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#bisheh">بیشه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#shelmsh">شلماش</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر - آبشارهای زیبا -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up-waterfall" style="position: relative; z-index: 4;">
+                    <div class="cuneiform-waterfall" style="color: white; border-color: rgba(255,255,255,0.4); background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); margin-bottom: 25px;">
+                        💧 آبشارهای زیبای ایران 💧
+                    </div>
+                    <h1 style="font-size: 90px; font-weight: 900; color: white; text-shadow: 0 0 50px #00bfff, 0 0 100px rgba(0,191,255,0.5), 2px 2px 20px black; margin-top: 15px; letter-spacing: 6px;" class="fade-up-waterfall delay-1">
+                        آبشارهای زیبا
+                    </h1>
+                    <p style="font-size: 38px; color: rgba(255,255,255,0.98); font-weight: 400; letter-spacing: 8px; text-shadow: 0 0 35px #87cefa, 2px 2px 15px black;" class="fade-up-waterfall delay-2">
+                        شاهکارهای آب ایران
+                    </p>
+                    <div style="width: 200px; height: 6px; background: linear-gradient(90deg, #87cefa, #00bfff, #00688b, #00bfff, #87cefa); margin: 40px auto; box-shadow: 0 0 40px #00bfff; border-radius: 10px;" class="fade-up-waterfall delay-3"></div>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.95); max-width: 1000px; margin: 40px auto; line-height: 1.8; text-shadow: 2px 2px 20px black; font-weight: 500; background: rgba(0,0,0,0.2); padding: 20px 40px; border-radius: 80px; backdrop-filter: blur(5px); border: 1px solid rgba(135,206,250,0.4);" class="fade-up-waterfall delay-4">
+                        «آبشارهای ایران، نگین‌های زمردین کوهستان؛ از بیشه تا شلماش، از مارگون تا گنج‌نامه، هر قطره‌اش داستانی از زیبایی و طراوت است»
+                    </p>
+                    <div class="mt-5 fade-up-waterfall delay-5">
+                        <a href="#bisheh" class="bttn" style="background: linear-gradient(135deg, #0099cc, #00688b); color: white; padding: 18px 50px; font-size: 20px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); border: 2px solid #87cefa; margin-left: 20px; font-weight: 700;">آبشار بیشه</a>
+                        <a href="#shelmsh" class="bttn" style="background: transparent; color: white; padding: 18px 45px; font-size: 20px; border-radius: 60px; border: 2px solid #87cefa; font-weight: 700;">آبشار شلماش</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- افکت آب -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;">
+            <svg viewBox="0 0 1440 320" style="width: 100%; height: auto; opacity: 0.2;">
+                <path fill="#00bfff" fill-opacity="1" d="M0,224L60,213.3C120,203,240,181,360,181.3C480,181,600,203,720,208C840,213,960,203,1080,176C1200,149,1320,107,1380,85.3L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- ================ بخش آبشارها - عکس ================ -->
+    <section id="waterfalls" class="blog-pp single-pp" style="position: relative; z-index: 3; background: #e0f2fe; padding: 130px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-waterfall">
+                    <div class="waterfall-image-frame">
+                        <img src="img/abshar-ziba.jpg" 
+                             alt="آبشار بیشه" 
+                             class="waterfall-image img-fluid"
+                             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Bisheh_Waterfall.jpg/800px-Bisheh_Waterfall.jpg'">
+                        <div style="position: absolute; bottom: -20px; left: 30px; background: white; padding: 18px 35px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-right: 6px solid #0099cc; direction: ltr;">
+                            <span style="font-weight: 700; color: #00688b; font-size: 18px;">آبشار بیشه - شاهکار لرستان</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-waterfall delay-2">
+                    <div class="waterfall-card">
+                        <span class="waterfall-badge">💧 زیباترین آبشارهای ایران</span>
+                        <h2 class="waterfall-title">آبشارهای ایران</h2>
+                        <div class="waterfall-border"></div>
+                        <p style="font-size: 17px; line-height: 2.1; color: #003f5c; margin-bottom: 30px;">
+                            <span style="font-size: 32px; color: #0099cc; font-weight: 800; float: right; margin-left: 15px;">💧</span>
+                            ایران با تنوع آب و هوایی خود، میزبان صدها آبشار زیبا و منحصر به فرد است. از آبشارهای یخی در شمال تا آبشارهای گرمسیری در جنوب، هر کدام زیبایی خاص خود را دارند.
+                        </p>
+                        <p style="font-size: 17px; line-height: 2.1; color: #003f5c; margin-bottom: 35px;">
+                            آبشارهای بیشه، شلماش، مارگون، گنج‌نامه، سمیرم و نیاگارای ایران از معروف‌ترین آبشارهای کشور هستند که هر ساله گردشگران بسیاری را به خود جذب می‌کنند.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <div class="stat-waterfall">
+                                    <span class="stat-number-waterfall">۵۰۰+</span>
+                                    <p style="font-size: 15px; color: #0099cc; margin-top: 12px; font-weight: 600;">آبشار فصلی</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-waterfall">
+                                    <span class="stat-number-waterfall">۵۰+</span>
+                                    <p style="font-size: 15px; color: #0099cc; margin-top: 12px; font-weight: 600;">آبشار دائمی</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-waterfall">
+                                    <span class="stat-number-waterfall">۳۰</span>
+                                    <p style="font-size: 15px; color: #0099cc; margin-top: 12px; font-weight: 600;">آبشار بلند</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش آبشار بیشه ================ -->
+    <section id="bisheh" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-waterfall text-center">
+                    <div class="water-icon">💦🏔️💦</div>
+                </div>
+                <div class="col-lg-6 fade-up-waterfall">
+                    <span style="color: #0099cc; font-size: 18px; letter-spacing: 3px;">🏞️ عروس آبشارهای ایران</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #00688b; margin-top: 20px; margin-bottom: 25px;">آبشار بیشه</h2>
+                    <div style="width: 100px; height: 3px; background: #0099cc; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #003f5c; margin-bottom: 25px;">
+                        آبشار بیشه در استان لرستان و در مسیر راه‌آهن سراسری ایران قرار دارد. این آبشار با ۴۸ متر ارتفاع، یکی از زیباترین آبشارهای ایران است.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #003f5c; margin-bottom: 25px;">
+                        قطارهای عبوری از مسیر دورود - اندیمشک، با عبور از کنار این آبشار، منظره‌ای بی‌نظیر را برای مسافران خلق می‌کنند. آبشار بیشه در فصل بهار و پس از بارندگی‌ها به اوج زیبایی خود می‌رسد.
+                    </p>
+                    <div class="waterfall-quote mt-4">
+                        "بیشه، عروس آبشارهای ایران"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش آبشار شلماش ================ -->
+    <section id="shelmsh" style="position: relative; z-index: 3; background: #e0f2fe; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-waterfall order-lg-2 text-center">
+                    <div style="font-size: 80px; color: #0099cc; opacity: 0.5;">💚💧💚</div>
+                </div>
+                <div class="col-lg-6 fade-up-waterfall order-lg-1">
+                    <span style="color: #0099cc; font-size: 18px; letter-spacing: 3px;">🌿 نگین کردستان</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #00688b; margin-top: 20px; margin-bottom: 25px;">آبشار شلماش</h2>
+                    <div style="width: 100px; height: 3px; background: #0099cc; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #003f5c; margin-bottom: 25px;">
+                        آبشار شلماش در ۳۰ کیلومتری شهر سردشت در استان آذربایجان غربی واقع شده است. این آبشار با ۲۵ متر ارتفاع و ۷۰ متر عرض، یکی از عریض‌ترین آبشارهای ایران است.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #003f5c; margin-bottom: 25px;">
+                        شلماش در میان دره‌ای سرسبز و پر از درختان بلوط و گردو قرار گرفته و به دلیل طبیعت بکر و چشم‌اندازهای خیره‌کننده، یکی از محبوب‌ترین مقاصد گردشگری در غرب کشور است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش آبشار مارگون ================ -->
+    <section style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-waterfall text-center">
+                    <div style="font-size: 80px; color: #0099cc; opacity: 0.5;">🏞️💦🏞️</div>
+                </div>
+                <div class="col-lg-6 fade-up-waterfall">
+                    <span style="color: #0099cc; font-size: 18px; letter-spacing: 3px;">🌄 یخچال طبیعی</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #00688b; margin-top: 20px; margin-bottom: 25px;">آبشار مارگون</h2>
+                    <div style="width: 100px; height: 3px; background: #0099cc; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #003f5c; margin-bottom: 25px;">
+                        آبشار مارگون در استان فارس و در نزدیکی سپیدان قرار دارد. این آبشار به شکل پلکانی و با ۷۰ متر ارتفاع، یکی از منحصر‌به‌فردترین آبشارهای ایران است.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #003f5c; margin-bottom: 25px;">
+                        آبشار مارگون در تمام فصول سال آب دارد و در زمستان به دلیل سرمای هوا، بخش‌هایی از آن یخ می‌زند و منظره‌ای شگفت‌انگیز از آبشار یخی را به نمایش می‌گذارد.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش آبشار گنج‌نامه ================ -->
+    <section style="position: relative; z-index: 3; background: #e0f2fe; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-waterfall order-lg-2 text-center">
+                    <div style="font-size: 80px; color: #0099cc; opacity: 0.5;">⛰️💧⛰️</div>
+                </div>
+                <div class="col-lg-6 fade-up-waterfall order-lg-1">
+                    <span style="color: #0099cc; font-size: 18px; letter-spacing: 3px;">🗿 همدان</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #00688b; margin-top: 20px; margin-bottom: 25px;">آبشار گنج‌نامه</h2>
+                    <div style="width: 100px; height: 3px; background: #0099cc; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #003f5c; margin-bottom: 25px;">
+                        آبشار گنج‌نامه در دامنه کوه الوند و در نزدیکی کتیبه‌های گنج‌نامه در همدان قرار دارد. این آبشار با ۱۲ متر ارتفاع، یکی از پربازدیدترین آبشارهای ایران است.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #003f5c; margin-bottom: 25px;">
+                        مجموعه تفریحی گنج‌نامه با امکاناتی مانند تله‌کابین، شهربازی و رستوران، یکی از مقاصد اصلی گردشگران در غرب ایران است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش لیست آبشارهای معروف ================ -->
+    <section style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up-waterfall">
+                <span style="color: #0099cc;">💧 گنجینه‌های آب</span>
+                <h2 style="font-size: 52px; font-weight: 800; color: #00688b; margin-top: 20px;">آبشارهای معروف ایران</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto;">از شمال تا جنوب، از غرب تا شرق</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-waterfall delay-1">
+                    <div style="background: #e0f2fe; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,153,204,0.1);">
+                        <div style="font-size: 55px; color: #0099cc; margin-bottom: 20px;">💧</div>
+                        <h4 style="color: #00688b; font-size: 24px; font-weight: 800;">آبشار بیشه</h4>
+                        <p style="color: #666;">لرستان - ۴۸ متر</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-waterfall delay-2">
+                    <div style="background: #e0f2fe; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,153,204,0.1);">
+                        <div style="font-size: 55px; color: #0099cc; margin-bottom: 20px;">💧</div>
+                        <h4 style="color: #00688b; font-size: 24px; font-weight: 800;">آبشار شلماش</h4>
+                        <p style="color: #666;">کردستان - ۲۵ متر</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-waterfall delay-3">
+                    <div style="background: #e0f2fe; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,153,204,0.1);">
+                        <div style="font-size: 55px; color: #0099cc; margin-bottom: 20px;">💧</div>
+                        <h4 style="color: #00688b; font-size: 24px; font-weight: 800;">آبشار مارگون</h4>
+                        <p style="color: #666;">فارس - ۷۰ متر</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-waterfall delay-4">
+                    <div style="background: #e0f2fe; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,153,204,0.1);">
+                        <div style="font-size: 55px; color: #0099cc; margin-bottom: 20px;">💧</div>
+                        <h4 style="color: #00688b; font-size: 24px; font-weight: 800;">آبشار گنج‌نامه</h4>
+                        <p style="color: #666;">همدان - ۱۲ متر</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-waterfall delay-5">
+                    <div style="background: #e0f2fe; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,153,204,0.1);">
+                        <div style="font-size: 55px; color: #0099cc; margin-bottom: 20px;">💧</div>
+                        <h4 style="color: #00688b; font-size: 24px; font-weight: 800;">آبشار سمیرم</h4>
+                        <p style="color: #666;">اصفهان - ۳۵ متر</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-waterfall delay-6">
+                    <div style="background: #e0f2fe; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(0,153,204,0.1);">
+                        <div style="font-size: 55px; color: #0099cc; margin-bottom: 20px;">💧</div>
+                        <h4 style="color: #00688b; font-size: 24px; font-weight: 800;">آبشار آتشکده</h4>
+                        <p style="color: #666;">مازندران - ۲۰ متر</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تاریخچه ================ -->
+    <section id="history" style="position: relative; z-index: 3; background: #e0f2fe; padding: 120px 0;">
+        <div class="container">
+            <div class="section-title fade-up-waterfall">
+                <span style="color: #0099cc;">📜 میلیون‌ها سال زیبایی</span>
+                <h2 style="font-size: 58px; font-weight: 800; color: #00688b; margin-top: 20px;">گاهشمار آبشارهای ایران</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto; font-size: 20px;">از دوران زمین‌شناسی تا امروز</p>
+                <div style="width: 120px; height: 4px; background: #0099cc; margin: 25px auto;"></div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up-waterfall">
+                    <div class="timeline-waterfall">
+                        <h3>۱۰ میلیون سال پیش</h3>
+                        <h4 style="font-size: 24px; color: #00688b; margin-bottom: 15px;">شکل‌گیری آبشارها</h4>
+                        <p style="line-height: 1.9;">بیشتر آبشارهای ایران در دوران چهارم زمین‌شناسی شکل گرفتند.</p>
+                    </div>
+                    <div class="timeline-waterfall">
+                        <h3>۱۳۲۰ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #00688b; margin-bottom: 15px;">راه‌آهن بیشه</h4>
+                        <p style="line-height: 1.9;">ساخت راه‌آهن سراسری و عبور قطار از کنار آبشار بیشه، این آبشار را به شهرت رساند.</p>
+                    </div>
+                    <div class="timeline-waterfall">
+                        <h3>۱۳۸۰ شمسی</h3>
+                        <h4 style="font-size: 24px; color: #00688b; margin-bottom: 15px;">منطقه حفاظت شده</h4>
+                        <p style="line-height: 1.9;">آبشار شلماش و اطراف آن به عنوان منطقه حفاظت شده ثبت شد.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-waterfall delay-2">
+                    <div class="timeline-waterfall">
+                        <h3>۱۳۸۵ شمسی</h3>
+                        <h4 style="font-size: 24px; color: #00688b; margin-bottom: 15px;">ثبت ملی</h4>
+                        <p style="line-height: 1.9;">آبشار مارگون در فهرست آثار طبیعی ملی ایران ثبت شد.</p>
+                    </div>
+                    <div class="timeline-waterfall">
+                        <h3>۱۳۹۰ شمسی</h3>
+                        <h4 style="font-size: 24px; color: #00688b; margin-bottom: 15px;">مجموعه گنج‌نامه</h4>
+                        <p style="line-height: 1.9;">آبشار گنج‌نامه با ایجاد امکانات تفریحی به یکی از قطب‌های گردشگری تبدیل شد.</p>
+                    </div>
+                    <div class="timeline-waterfall">
+                        <h3>۱۴۰۵ شمسی</h3>
+                        <h4 style="font-size: 24px; color: #00688b; margin-bottom: 15px;">مقصد گردشگران جهان</h4>
+                        <p style="line-height: 1.9;">آبشارهای ایران به یکی از محبوب‌ترین مقاصد طبیعت‌گردی تبدیل شده‌اند.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش نقل قول ================ -->
+    <section class="quote-section-waterfall" style="position: relative; z-index: 3; padding: 120px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-waterfall">
+                    <span style="font-size: 80px; line-height: 0.6; color: rgba(255,255,255,0.2); display: block; margin-bottom: 30px;">💧</span>
+                    <h2 style="font-size: 44px; font-weight: 700; line-height: 1.7; margin-bottom: 50px; color: #ffd700; text-shadow: 0 0 30px rgba(0,0,0,0.5); font-style: italic;">
+                        «آبشارهای ایران، اشک‌های شوق کوهستانند؛ جایی که زمین و آسمان در هم می‌آمیزند و آواز حیات سر می‌دهند»
+                    </h2>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.8);">— هانیه کریمی، پژوهشگر طبیعت ایران</p>
+                    <div style="margin-top: 50px;">
+                        <span class="cuneiform-waterfall" style="background: rgba(0,0,0,0.3); color: #ffd700; border-color: #87cefa; font-size: 28px;">💧 آبشارهای زیبای ایران 💧</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: #e0f2fe; padding: 120px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="waterfall-card fade-up-waterfall" style="background: white;">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <div style="width: 100px; height: 100px; background: rgba(0,153,204,0.08); border-radius: 50%; line-height: 100px; font-size: 55px; color: #0099cc; margin: 0 auto 25px; border: 2px dashed #0099cc;">
+                                💧
+                            </div>
+                            <span style="background: #0099cc; color: white; padding: 10px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 3px; display: inline-block; margin-bottom: 25px;">💧 آبشارهای زیبای ایران 💧</span>
+                            <h2 style="font-size: 48px; font-weight: 800; color: #003f5c; margin-top: 15px;">هانیه کریمی</h2>
+                            <p style="font-size: 20px; color: #0099cc; margin-top: 15px; font-weight: 600;">پژوهشگر طبیعت ایران | طراح و توسعه‌دهنده وب</p>
+                            <div style="width: 100px; height: 3px; background: linear-gradient(90deg, #0099cc, #87cefa, #0099cc); margin: 30px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #e0f2fe; padding: 45px 30px; border-radius: 35px; height: 100%; border: 1px solid rgba(0,153,204,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #0099cc; margin-bottom: 20px;">📬</div>
+                                    <div style="direction: ltr; text-align: left; font-size: 18px; color: #003f5c; margin: 25px 0 15px; font-family: monospace; background: white; padding: 15px 20px; border-radius: 15px; border: 1px solid rgba(0,153,204,0.15);">
+                                        hanieh.karimii1389@gmail.com
+                                    </div>
+                                    <div style="direction: ltr; text-align: left; font-size: 26px; color: #0099cc; margin: 20px 0; font-weight: 800; background: rgba(0,153,204,0.03); padding: 12px; border-radius: 15px;">
+                                        ۰۹۹۳۲۳۰۹۴۹۲
+                                    </div>
+                                    <div style="font-size: 20px; color: #003f5c; font-weight: 600;">
+                                        مشهد، ایران
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #e0f2fe; padding: 45px 35px; border-radius: 35px; height: 100%; border: 1px solid rgba(0,153,204,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #0099cc; margin-bottom: 20px;">💧</div>
+                                    <p style="font-size: 18px; line-height: 2; color: #003f5c; margin-top: 25px; text-align: justify;">
+                                        این وبسایت به پاس گرامیداشت زیبایی‌های بی‌نظیر طبیعت ایران زمین طراحی شده است. آبشارهای ایران، نگین‌های زمردین کوهستان، هدیه‌ای از میلیون‌ها سال تاریخ زمین به ایران عزیزمان.
+                                    </p>
+                                    <div style="margin-top: 35px; padding: 15px; background: rgba(0,153,204,0.06); border-radius: 15px; border: 1px dashed #0099cc;">
+                                        <span style="color: #003f5c; font-weight: 700; font-size: 20px;">💧 آبشارهای زیبای ایران 💧</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر -->
+                        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(0,153,204,0.2);">
+                            <div style="background: #0099cc; color: white; padding: 15px 35px; border-radius: 50px; display: inline-block; font-weight: 700; box-shadow: 0 10px 25px rgba(0,153,204,0.4); border: 2px solid #87cefa; margin-bottom: 25px;">
+                                💧 آبشارهای زیبای ایران - بیشه، شلماش، مارگون، گنج‌نامه 💧
+                            </div>
+                            <p style="color: #0099cc; margin-top: 25px; font-size: 18px; font-weight: 600;">
+                                طراحی شده با افتخار و عشق به ایران زمین توسط هانیه کریمی © ۲۰۲۶
+                            </p>
+                            <div style="margin-top: 30px;">
+                                <span style="color: #0099cc; font-size: 24px;">💧 ایران سرزمین آبشارهای زیبا 💧</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>

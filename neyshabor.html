@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نیشابور | شهر خیام و عطار</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ انیمیشن‌های نیشابور ================ */
+        @keyframes fadeUpNeyshabur {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes poemFloat {
+            0% { transform: translateY(0) scale(1); opacity: 0.3; }
+            50% { transform: translateY(-15px) scale(1.1); opacity: 0.6; }
+            100% { transform: translateY(0) scale(1); opacity: 0.3; }
+        }
+        
+        @keyframes turquoiseGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(64,224,208,0.3)); }
+            50% { filter: drop-shadow(0 0 30px rgba(0,206,209,0.6)); }
+            100% { filter: drop-shadow(0 0 5px rgba(64,224,208,0.3)); }
+        }
+        
+        .fade-up-neyshabur {
+            animation: fadeUpNeyshabur 1.2s ease forwards;
+        }
+        
+        .poem-float {
+            animation: poemFloat 6s ease-in-out infinite;
+        }
+        
+        .turquoise-glow {
+            animation: turquoiseGlow 4s infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی نیشابور ================ */
+        .neyshabur-logo {
+            width: 80px;
+            height: 80px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 10px rgba(0,206,209,0.3));
+        }
+        
+        .neyshabur-logo:hover {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 0 30px rgba(64,224,208,0.7));
+        }
+        
+        /* ================ استایل‌های اختصاصی نیشابور ================ */
+        .neyshabur-pattern {
+            background: repeating-linear-gradient(45deg, 
+                rgba(0,206,209,0.03) 0px, 
+                rgba(0,206,209,0.03) 10px,
+                transparent 10px, 
+                transparent 30px);
+        }
+        
+        .neyshabur-card {
+            background: linear-gradient(145deg, #f5fff5, #e6f7f0);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(0,139,139,0.1);
+            border: 1px solid rgba(0,206,209,0.25);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        
+        .neyshabur-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 80px rgba(0,150,136,0.15);
+            border-color: rgba(0,206,209,0.4);
+        }
+        
+        .neyshabur-card:after {
+            content: '⚜️';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.03;
+            color: #008b8b;
+            transform: rotate(-5deg);
+        }
+        
+        .neyshabur-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #008b8b, #006666);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(0,139,139,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 25px;
+        }
+        
+        .neyshabur-title {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #008b8b, #20b2aa, #006666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 20px rgba(0,206,209,0.2);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .neyshabur-border {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #008b8b, #40e0d0, #008b8b);
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(0,206,209,0.3);
+        }
+        
+        .stat-neyshabur {
+            background: rgba(0,139,139,0.03);
+            padding: 30px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(0,139,139,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .stat-neyshabur:hover {
+            background: rgba(0,139,139,0.06);
+            border-color: rgba(0,206,209,0.3);
+            transform: translateY(-8px);
+        }
+        
+        .stat-number-neyshabur {
+            font-size: 48px;
+            font-weight: 900;
+            color: #008b8b;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .timeline-neyshabur {
+            position: relative;
+            padding: 35px;
+            background: white;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border-right: 6px solid #008b8b;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-neyshabur:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 20px 50px rgba(0,139,139,0.1);
+            border-right-width: 10px;
+        }
+        
+        .timeline-neyshabur h3 {
+            color: #008b8b;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .neyshabur-image-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+            border: 8px solid rgba(0,206,209,0.2);
+            transition: all 0.6s ease;
+            background: #e6f7f0;
+        }
+        
+        .neyshabur-image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 90px rgba(0,139,139,0.25);
+            border-color: rgba(0,206,209,0.4);
+        }
+        
+        .neyshabur-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.8s ease;
+        }
+        
+        .neyshabur-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .poetry-icon {
+            font-size: 60px;
+            color: #008b8b;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: poemFloat 6s infinite;
+        }
+        
+        .rubaiyat {
+            font-family: 'Times New Roman', serif;
+            font-size: 24px;
+            font-style: italic;
+            color: #006666;
+            line-height: 2;
+            text-align: center;
+        }
+        
+        .cuneiform-neyshabur {
+            font-family: 'Times New Roman', serif;
+            font-size: 22px;
+            color: #008b8b;
+            letter-spacing: 6px;
+            background: rgba(0,139,139,0.05);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(0,139,139,0.15);
+        }
+        
+        .quote-section-neyshabur {
+            background: linear-gradient(135deg, #004d4d, #006666, #004d4d);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .persian-poem {
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 2;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="inner-pag neyshabur-pattern" style="background: #f0fff0;">
+
+    <!-- ================ هدر با عکس نیشابور ================ -->
+    <header id="inner-header" class="inner-header parallax" style="height: 100vh; position: relative; z-index: 2;">
+        <!-- ✅ بکگراند فیروزه‌ای - نیشابور -->
+        <div class="overlay" style="background: radial-gradient(circle at 30% 50%, #004d4d, #006666, #003333); opacity: 0.88; box-shadow: inset 0 0 180px rgba(0,206,209,0.4);"></div>
+        
+        <!-- ✅ لایه بافت فیروزه -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                    background: repeating-linear-gradient(45deg, rgba(0,206,209,0.04) 0px, rgba(0,206,209,0.04) 2px, transparent 2px, transparent 15px);
+                    z-index: 1;"></div>
+        
+        <!-- ناوبری با لوگوی نیشابور -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up-neyshabur">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <!-- لوگوی اختصاصی نیشابور - فیروزه و شعر -->
+                    <svg width="80" height="80" viewBox="0 0 100 100" class="neyshabur-logo">
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="#008b8b" stroke-width="2" stroke-dasharray="6 4"/>
+                        <!-- فیروزه نیشابور -->
+                        <circle cx="50" cy="45" r="20" fill="#40e0d0" opacity="0.2"/>
+                        <circle cx="50" cy="45" r="15" fill="#20b2aa" opacity="0.3"/>
+                        <circle cx="50" cy="45" r="10" fill="#008b8b" opacity="0.4"/>
+                        <circle cx="50" cy="45" r="5" fill="#00ced1" opacity="0.8" class="turquoise-glow"/>
+                        <!-- نماد شعر -->
+                        <path d="M30 65 L45 50 L60 65 L75 50" stroke="#ffd700" stroke-width="2" fill="none" opacity="0.8"/>
+                        <path d="M25 70 L40 55 L55 70 L70 55" stroke="#ffd700" stroke-width="2" fill="none" opacity="0.6"/>
+                    </svg>
+                    <span style="color: white; font-weight: 800; margin-right: 15px; font-size: 22px; text-shadow: 0 0 20px rgba(0,206,209,0.7);">نیشابور</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#neyshabur">نیشابور</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#khayyam">خیام</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#attar">عطار</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر - نیشابور -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up-neyshabur" style="position: relative; z-index: 4;">
+                    <div class="cuneiform-neyshabur" style="color: white; border-color: rgba(255,255,255,0.3); background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); margin-bottom: 25px;">
+                        ⚜️ نیـشـابـور ⚜️
+                    </div>
+                    <h1 style="font-size: 100px; font-weight: 900; color: white; text-shadow: 0 0 50px #008b8b, 0 0 100px rgba(0,139,139,0.5), 2px 2px 20px black; margin-top: 15px; letter-spacing: 6px;" class="fade-up-neyshabur delay-1">
+                        نیشابور
+                    </h1>
+                    <p style="font-size: 38px; color: rgba(255,255,255,0.98); font-weight: 400; letter-spacing: 8px; text-shadow: 0 0 35px #008b8b, 2px 2px 15px black;" class="fade-up-neyshabur delay-2">
+                        شهر خیام و عطار
+                    </p>
+                    <div style="width: 200px; height: 6px; background: linear-gradient(90deg, #40e0d0, #008b8b, #006666, #008b8b, #40e0d0); margin: 40px auto; box-shadow: 0 0 40px #40e0d0; border-radius: 10px;" class="fade-up-neyshabur delay-3"></div>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.95); max-width: 1000px; margin: 40px auto; line-height: 1.8; text-shadow: 2px 2px 20px black; font-weight: 500; background: rgba(0,0,0,0.2); padding: 20px 40px; border-radius: 80px; backdrop-filter: blur(5px); border: 1px solid rgba(64,224,208,0.3);" class="fade-up-neyshabur delay-4">
+                        «نیشابور، شهر فیروزه و ادب؛ زادگاه خیام و عطار، مهد علم و عرفان ایران زمین»
+                    </p>
+                    <div class="mt-5 fade-up-neyshabur delay-5">
+                        <a href="#neyshabur" class="bttn" style="background: linear-gradient(135deg, #008b8b, #006666); color: white; padding: 18px 50px; font-size: 20px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); border: 2px solid #40e0d0; margin-left: 20px; font-weight: 700;">کشف نیشابور</a>
+                        <a href="#khayyam" class="bttn" style="background: transparent; color: white; padding: 18px 45px; font-size: 20px; border-radius: 60px; border: 2px solid #40e0d0; font-weight: 700;">خیام</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================ بخش نیشابور - عکس ================ -->
+    <section id="neyshabur" class="blog-pp single-pp" style="position: relative; z-index: 3; background: #f0fff0; padding: 130px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-neyshabur">
+                    <div class="neyshabur-image-frame">
+                        <img src="img/neyshabor.jpg" 
+                             alt="نیشابور - آرامگاه خیام" 
+                             class="neyshabur-image img-fluid"
+                             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Khayyam_tomb.jpg/800px-Khayyam_tomb.jpg'">
+                        <div style="position: absolute; bottom: -20px; left: 30px; background: white; padding: 18px 35px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-right: 6px solid #008b8b; direction: ltr;">
+                            <span style="font-weight: 700; color: #006666; font-size: 18px;">آرامگاه خیام</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-neyshabur delay-2">
+                    <div class="neyshabur-card">
+                        <span class="neyshabur-badge">💎 شهر فیروزه ایران</span>
+                        <h2 class="neyshabur-title">نیشابور</h2>
+                        <div class="neyshabur-border"></div>
+                        <p style="font-size: 17px; line-height: 2.1; color: #004d4d; margin-bottom: 30px;">
+                            <span style="font-size: 32px; color: #008b8b; font-weight: 800; float: right; margin-left: 15px;">⚜️</span>
+                            نیشابور یکی از کهن‌ترین شهرهای ایران است که در استان خراسان رضوی قرار دارد. این شهر در طول تاریخ، مرکز علم، ادب و فرهنگ ایران زمین بوده است.
+                        </p>
+                        <p style="font-size: 17px; line-height: 2.1; color: #004d4d; margin-bottom: 35px;">
+                            فیروزه نیشابور شهرت جهانی دارد و با ارزش‌ترین سنگ فیروزه در جهان است. آرامگاه خیام، عطار، و کهن‌دژ از مهم‌ترین آثار تاریخی نیشابور هستند.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <div class="stat-neyshabur">
+                                    <span class="stat-number-neyshabur">۲۵۰۰</span>
+                                    <p style="font-size: 15px; color: #008b8b; margin-top: 12px; font-weight: 600;">سال قدمت</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-neyshabur">
+                                    <span class="stat-number-neyshabur">۹۰۰</span>
+                                    <p style="font-size: 15px; color: #008b8b; margin-top: 12px; font-weight: 600;">سال شکوفایی</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-neyshabur">
+                                    <span class="stat-number-neyshabur">۱۰۰۰</span>
+                                    <p style="font-size: 15px; color: #008b8b; margin-top: 12px; font-weight: 600;">سال عرفان</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش خیام ================ -->
+    <section id="khayyam" style="position: relative; z-index: 3; background: #e6f7f0; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-neyshabur text-center">
+                    <div class="poetry-icon">📜</div>
+                </div>
+                <div class="col-lg-6 fade-up-neyshabur">
+                    <span style="color: #008b8b; font-size: 18px; letter-spacing: 3px;">👨‍🎓 حکیم عمر خیام</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #006666; margin-top: 20px; margin-bottom: 25px;">خیام نیشابوری</h2>
+                    <div style="width: 100px; height: 3px; background: #008b8b; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #004d4d; margin-bottom: 25px;">
+                        حکیم عمر خیام، ریاضیدان، ستاره‌شناس و شاعر بزرگ ایرانی در قرن ۵ هجری در نیشابور می‌زیست. رباعیات او شهرت جهانی دارد و تقویم جلالی از شاهکارهای علمی اوست.
+                    </p>
+                    <div class="rubaiyat mt-4">
+                        "ای دوست بیا تا غم فردا نخوریم<br>
+                        وین یکدم عمر را غنیمت شمریم"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش عطار ================ -->
+    <section id="attar" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-neyshabur order-lg-2 text-center">
+                    <div style="font-size: 80px; color: #008b8b; opacity: 0.3;">🕊️</div>
+                </div>
+                <div class="col-lg-6 fade-up-neyshabur order-lg-1">
+                    <span style="color: #008b8b; font-size: 18px; letter-spacing: 3px;">🕊️ شیخ عطار</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #006666; margin-top: 20px; margin-bottom: 25px;">عطار نیشابوری</h2>
+                    <div style="width: 100px; height: 3px; background: #008b8b; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #004d4d; margin-bottom: 25px;">
+                        فریدالدین عطار نیشابوری، شاعر و عارف بزرگ ایرانی در قرن ۶ و ۷ هجری بود. کتاب منطق‌الطیر (منطق پرندگان) و تذکرةالاولیاء از آثار ارزشمند اوست.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #004d4d;">
+                        آرامگاه عطار در نیشابور، یکی از زیارتگاه‌های عاشقان ادب و عرفان است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تاریخچه نیشابور ================ -->
+    <section id="history" style="position: relative; z-index: 3; background: #f0fff0; padding: 120px 0;">
+        <div class="container">
+            <div class="section-title fade-up-neyshabur">
+                <span style="color: #008b8b;">📜 دو هزار و پانصد سال تاریخ</span>
+                <h2 style="font-size: 58px; font-weight: 800; color: #006666; margin-top: 20px;">گاهشمار نیشابور</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto; font-size: 20px;">از کهن‌دژ تا شهر علم و ادب</p>
+                <div style="width: 120px; height: 4px; background: #008b8b; margin: 25px auto;"></div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up-neyshabur">
+                    <div class="timeline-neyshabur">
+                        <h3>۵۰۰ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">دوران هخامنشی</h4>
+                        <p style="line-height: 1.9;">نیشابور در دوره هخامنشیان یکی از شهرهای مهم خراسان بود.</p>
+                    </div>
+                    <div class="timeline-neyshabur">
+                        <h3>۶۴۳ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">فتح اسلامی</h4>
+                        <p style="line-height: 1.9;">نیشابور به دست مسلمانان فتح شد و به مرکز علم و فرهنگ تبدیل گشت.</p>
+                    </div>
+                    <div class="timeline-neyshabur">
+                        <h3>۸۲۰ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">پایتخت طاهریان</h4>
+                        <p style="line-height: 1.9;">نیشابور پایتخت سلسله طاهریان و یکی از بزرگترین شهرهای جهان اسلام شد.</p>
+                    </div>
+                    <div class="timeline-neyshabur">
+                        <h3>۱۰۴۸ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">تولد خیام</h4>
+                        <p style="line-height: 1.9;">حکیم عمر خیام در نیشابور متولد شد.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-neyshabur delay-2">
+                    <div class="timeline-neyshabur">
+                        <h3>۱۱۴۵ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">تولد عطار</h4>
+                        <p style="line-height: 1.9;">فریدالدین عطار نیشابوری متولد شد.</p>
+                    </div>
+                    <div class="timeline-neyshabur">
+                        <h3>۱۲۲۱ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">حمله مغول</h4>
+                        <p style="line-height: 1.9;">نیشابور در حمله مغول‌ها ویران شد و عطار به شهادت رسید.</p>
+                    </div>
+                    <div class="timeline-neyshabur">
+                        <h3>۱۹۳۴ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">ساختن آرامگاه خیام</h4>
+                        <p style="line-height: 1.9;">آرامگاه جدید خیام توسط انجمن آثار ملی ساخته شد.</p>
+                    </div>
+                    <div class="timeline-neyshabur">
+                        <h3>۲۰۲۶ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #006666; margin-bottom: 15px;">شهر فیروزه و ادب</h4>
+                        <p style="line-height: 1.9;">نیشابور به عنوان شهر جهانی فیروزه و پایتخت ادب ایران شناخته می‌شود.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش فیروزه نیشابور ================ -->
+    <section style="position: relative; z-index: 3; background: #004d4d; padding: 100px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-neyshabur">
+                    <span style="font-size: 80px; color: #40e0d0; display: block; margin-bottom: 20px;" class="turquoise-glow">💎</span>
+                    <span style="background: #40e0d0; color: #004d4d; padding: 8px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 2px; font-weight: 700;">فیروزه نیشابور</span>
+                    <h2 style="font-size: 42px; font-weight: 800; color: #ffd700; margin-top: 35px; margin-bottom: 30px;">مرغوب‌ترین فیروزه جهان</h2>
+                    <p style="font-size: 20px; line-height: 1.9; color: rgba(255,255,255,0.9); max-width: 800px; margin: 0 auto;">
+                        فیروزه نیشابور به دلیل رنگ آبی بی‌نظیر و کیفیت عالی، مشهورترین فیروزه جهان است. این سنگ قیمتی از دیرباز در جواهرات سلطنتی و آثار هنری ایران به کار رفته است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش رباعیات خیام ================ -->
+    <section class="quote-section-neyshabur" style="position: relative; z-index: 3; padding: 120px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-neyshabur">
+                    <span style="font-size: 80px; line-height: 0.6; color: rgba(64,224,208,0.3); display: block; margin-bottom: 30px;">📜</span>
+                    <p class="persian-poem">
+                        "از دیـدن کـس نگشت خرم دل من<br>
+                        وز خوردن غم نگشت خالی دل من<br>
+                        شادی به تو می‌کنم که هر ذره که هست<br>
+                        در دایرهٔ امکان شود حاصل من"
+                    </p>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.8); margin-top: 40px;">— حکیم عمر خیام نیشابوری</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: #f0fff0; padding: 120px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="neyshabur-card fade-up-neyshabur" style="background: white;">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <div style="width: 100px; height: 100px; background: rgba(0,139,139,0.08); border-radius: 50%; line-height: 100px; font-size: 55px; color: #008b8b; margin: 0 auto 25px; border: 2px dashed #008b8b;">
+                                💎
+                            </div>
+                            <span style="background: #008b8b; color: white; padding: 10px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 3px; display: inline-block; margin-bottom: 25px;">⚜️ نیشابور ⚜️</span>
+                            <h2 style="font-size: 48px; font-weight: 800; color: #006666; margin-top: 15px;">هانیه کریمی</h2>
+                            <p style="font-size: 20px; color: #008b8b; margin-top: 15px; font-weight: 600;">پژوهشگر تاریخ و ادب ایران | طراح و توسعه‌دهنده وب</p>
+                            <div style="width: 100px; height: 3px; background: linear-gradient(90deg, #008b8b, #40e0d0, #008b8b); margin: 30px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #f0fff0; padding: 45px 30px; border-radius: 35px; height: 100%; border: 1px solid rgba(0,139,139,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #008b8b; margin-bottom: 20px;">📬</div>
+                                    <div style="direction: ltr; text-align: left; font-size: 18px; color: #006666; margin: 25px 0 15px; font-family: monospace; background: white; padding: 15px 20px; border-radius: 15px; border: 1px solid rgba(0,139,139,0.15);">
+                                        hanieh.karimii1389@gmail.com
+                                    </div>
+                                    <div style="direction: ltr; text-align: left; font-size: 26px; color: #008b8b; margin: 20px 0; font-weight: 800; background: rgba(0,139,139,0.03); padding: 12px; border-radius: 15px;">
+                                        ۰۹۹۳۲۳۰۹۴۹۲
+                                    </div>
+                                    <div style="font-size: 20px; color: #006666; font-weight: 600;">
+                                        مشهد، ایران
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #f0fff0; padding: 45px 35px; border-radius: 35px; height: 100%; border: 1px solid rgba(0,139,139,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #008b8b; margin-bottom: 20px;">🏺</div>
+                                    <p style="font-size: 18px; line-height: 2; color: #004d4d; margin-top: 25px; text-align: justify;">
+                                        این وبسایت به پاس گرامیداشت میراث فرهنگی و ادبی ایران زمین طراحی شده است. نیشابور، شهر خیام و عطار، مهد علم و عرفان و نگین فیروزه ایران است.
+                                    </p>
+                                    <div style="margin-top: 35px; padding: 15px; background: rgba(0,139,139,0.06); border-radius: 15px; border: 1px dashed #008b8b;">
+                                        <span style="color: #006666; font-weight: 700; font-size: 20px;">⚜️ نیشابور شهر فیروزه ⚜️</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر -->
+                        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(0,139,139,0.2);">
+                            <div style="background: #008b8b; color: white; padding: 15px 35px; border-radius: 50px; display: inline-block; font-weight: 700; box-shadow: 0 10px 25px rgba(0,139,139,0.4); border: 2px solid #40e0d0; margin-bottom: 25px;">
+                                💎 نیشابور - شهر جهانی فیروزه
+                            </div>
+                            <p style="color: #008b8b; margin-top: 25px; font-size: 18px; font-weight: 600;">
+                                طراحی شده با افتخار و عشق به ایران زمین توسط هانیه کریمی © ۲۰۲۶
+                            </p>
+                            <div style="margin-top: 30px;">
+                                <span style="color: #008b8b; font-size: 24px;">⚜️ نیشابور⚜️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>

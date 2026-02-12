@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقبره کوروش بزرگ | پاسارگاد</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ انیمیشن‌های آرام و باشکوه ================ */
+        @keyframes fadeUpStone {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes stoneGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(169,169,169,0.3)); }
+            50% { filter: drop-shadow(0 0 25px rgba(218,165,32,0.4)); }
+            100% { filter: drop-shadow(0 0 5px rgba(169,169,169,0.3)); }
+        }
+        
+        @keyframes gentleWave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .fade-up-stone {
+            animation: fadeUpStone 1.2s ease forwards;
+        }
+        
+        .stone-glow {
+            animation: stoneGlow 4s infinite;
+        }
+        
+        .gentle-float {
+            animation: gentleWave 5s ease-in-out infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-6 { animation-delay: 1.2s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی کوروش ================ */
+        .cyrus-logo {
+            width: 80px;
+            height: 80px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 10px rgba(218,165,32,0.3));
+        }
+        
+        .cyrus-logo:hover {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 0 25px rgba(218,165,32,0.7));
+        }
+        
+        /* ================ استایل‌های اختصاصی مقبره کوروش ================ */
+        .cyrus-tomb {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyrus-tomb:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139,69,19,0.05), rgba(218,165,32,0.03));
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .stone-card {
+            background: linear-gradient(145deg, #faf7f2, #f5f0e6);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(100,70,40,0.12);
+            border: 1px solid rgba(169,169,169,0.25);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        
+        .stone-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 80px rgba(139,69,19,0.15);
+            border-color: rgba(218,165,32,0.3);
+        }
+        
+        .stone-card:after {
+            content: '𐎤𐎢𐎽𐎢𐏁';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.03;
+            color: #8b5a2b;
+            font-family: 'Times New Roman', serif;
+            transform: rotate(-5deg);
+        }
+        
+        .cyrus-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #8b5a2b, #654321);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(101,67,33,0.4);
+            border: 1px solid rgba(218,165,32,0.5);
+            margin-bottom: 25px;
+        }
+        
+        .cyrus-title {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #8b5a2b, #5a3a1e, #3a2a1a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 20px rgba(139,69,19,0.2);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .stone-border {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #8b5a2b, #c99a3b, #8b5a2b);
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(201,154,59,0.3);
+        }
+        
+        .stat-stone {
+            background: rgba(139,69,19,0.03);
+            padding: 30px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(139,69,19,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-stone:hover {
+            background: rgba(139,69,19,0.06);
+            border-color: rgba(218,165,32,0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(139,69,19,0.1);
+        }
+        
+        .stat-number-cyrus {
+            font-size: 48px;
+            font-weight: 900;
+            color: #8b5a2b;
+            display: block;
+            line-height: 1.2;
+            text-shadow: 0 5px 15px rgba(139,69,19,0.1);
+        }
+        
+        .timeline-stone {
+            position: relative;
+            padding: 35px;
+            background: white;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border-right: 6px solid #8b5a2b;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+            border-left: 1px solid rgba(139,69,19,0.1);
+            border-top: 1px solid rgba(139,69,19,0.1);
+            border-bottom: 1px solid rgba(139,69,19,0.1);
+        }
+        
+        .timeline-stone:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 20px 50px rgba(139,69,19,0.1);
+            border-right-width: 10px;
+        }
+        
+        .timeline-stone h3 {
+            color: #8b5a2b;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .tomb-image-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+            border: 8px solid rgba(218,165,32,0.2);
+            transition: all 0.6s ease;
+            background: #f5f0e6;
+        }
+        
+        .tomb-image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 90px rgba(139,69,19,0.25);
+            border-color: rgba(218,165,32,0.4);
+        }
+        
+        .tomb-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.8s ease;
+        }
+        
+        .tomb-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .pillar-cyrus {
+            background: linear-gradient(to bottom, #faf5ea, #fff9f0);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            height: 100%;
+            border-bottom: 5px solid #8b5a2b;
+            transition: all 0.4s ease;
+        }
+        
+        .pillar-cyrus:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139,69,19,0.1);
+        }
+        
+        .cyrus-icon {
+            font-size: 60px;
+            color: #8b5a2b;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: gentleWave 5s infinite;
+        }
+        
+        .cuneiform-cyrus {
+            font-family: 'Times New Roman', serif;
+            font-size: 22px;
+            color: #8b5a2b;
+            letter-spacing: 6px;
+            background: rgba(139,69,19,0.05);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(139,69,19,0.15);
+        }
+        
+        .contact-stone {
+            background: linear-gradient(145deg, #faf5ea, #fff9f2);
+            border-radius: 50px;
+            padding: 70px;
+            box-shadow: 0 35px 80px rgba(100,70,40,0.08);
+            border: 1px solid rgba(139,69,19,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-stone:before {
+            content: '𐎤𐎢𐎽𐎢𐏁𐎣𐎠𐎼𐎫𐎠';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            font-size: 90px;
+            opacity: 0.03;
+            color: #8b5a2b;
+            transform: rotate(-5deg);
+            white-space: nowrap;
+        }
+        
+        .heritage-seal-cyrus {
+            background: #8b5a2b;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(139,69,19,0.4);
+            border: 2px solid #c99a3b;
+        }
+        
+        .quote-section-cyrus {
+            background: linear-gradient(135deg, #2a1a0a, #5a3a1a, #2a1a0a);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-section-cyrus:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(45deg, rgba(218,165,32,0.05) 0px, rgba(218,165,32,0.05) 5px, transparent 5px, transparent 20px);
+            opacity: 0.2;
+        }
+        
+        .cyrus-pattern {
+            background: repeating-linear-gradient(45deg, 
+                rgba(139,69,19,0.02) 0px, 
+                rgba(139,69,19,0.02) 10px,
+                transparent 10px, 
+                transparent 30px);
+        }
+    </style>
+</head>
+<body class="inner-pag" style="background: #fdfaf7;">
+
+    <!-- ================ هدر با عکس مقبره کوروش ================ -->
+    <header id="inner-header" class="inner-header parallax cyrus-tomb" style="height: 100vh; position: relative; z-index: 2;">
+        <!-- ✅ بکگراند سنگی - خاکی - گرم -->
+        <div class="overlay" style="background: radial-gradient(circle at 30% 50%, #3a2a1a, #2a1e0e, #1a120a); opacity: 0.88; box-shadow: inset 0 0 180px rgba(139,69,19,0.4);"></div>
+        
+        <!-- ✅ لایه بافت سنگی -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                    background: repeating-linear-gradient(45deg, rgba(218,165,32,0.04) 0px, rgba(218,165,32,0.04) 2px, transparent 2px, transparent 15px);
+                    z-index: 1;"></div>
+        
+        <!-- ✅ لایه نقش برجسته هخامنشی -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.08"><circle cx="50" cy="50" r="20" fill="%23c99a3b"/><circle cx="150" cy="150" r="20" fill="%23c99a3b"/><rect x="20" y="100" width="10" height="60" fill="%23c99a3b"/><rect x="170" y="100" width="10" height="60" fill="%23c99a3b"/></svg>');
+                    background-size: 150px 150px;
+                    z-index: 1;
+                    opacity: 0.1;
+                    "></div>
+        
+        <!-- ناوبری با لوگوی کوروش -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up-stone">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <!-- لوگوی اختصاصی کوروش بزرگ - نماد شیر و خورشید هخامنشی -->
+                    <svg width="80" height="80" viewBox="0 0 100 100" class="cyrus-logo">
+                        <!-- دایره بیرونی سنگی -->
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="#8b5a2b" stroke-width="2" stroke-dasharray="6 4"/>
+                        
+                        <!-- پایه مقبره -->
+                        <rect x="35" y="65" width="30" height="15" fill="#8b5a2b" rx="3"/>
+                        
+                        <!-- بدنه مقبره -->
+                        <rect x="40" y="30" width="20" height="40" fill="#a0522d" rx="2"/>
+                        <rect x="42" y="32" width="16" height="36" fill="#c99a3b" opacity="0.7"/>
+                        
+                        <!-- سقف شیروانی -->
+                        <polygon points="50,15 35,30 65,30" fill="#8b5a2b"/>
+                        <polygon points="50,12 30,30 70,30" fill="#c99a3b" opacity="0.6"/>
+                        
+                        <!-- نماد فروهر -->
+                        <circle cx="50" cy="45" r="5" fill="white" opacity="0.9"/>
+                        <path d="M50 40 L50 30" stroke="white" stroke-width="2"/>
+                        <path d="M45 43 L35 38" stroke="white" stroke-width="2"/>
+                        <path d="M55 43 L65 38" stroke="white" stroke-width="2"/>
+                    </svg>
+                    <span style="color: white; font-weight: 800; margin-right: 15px; font-size: 22px; text-shadow: 0 0 20px rgba(139,69,19,0.7); letter-spacing: 2px;">مقبره کوروش</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="#home" style="font-weight: 600; text-shadow: 0 0 10px black;">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#tomb" style="font-weight: 600; text-shadow: 0 0 10px black;">مقبره</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#cyrus" style="font-weight: 600; text-shadow: 0 0 10px black;">کوروش</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#history" style="font-weight: 600; text-shadow: 0 0 10px black;">تاریخچه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact" style="font-weight: 600; text-shadow: 0 0 10px black;">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر - مقبره کوروش -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up-stone" style="position: relative; z-index: 4;">
+                    <div class="cuneiform-cyrus" style="color: white; border-color: rgba(255,255,255,0.3); background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); margin-bottom: 25px;">
+                        𐎤𐎢𐎽𐎢𐏁 𐎣𐎠𐎼𐎫𐎠
+                    </div>
+                    <h1 style="font-size: 100px; font-weight: 900; color: white; text-shadow: 0 0 50px #8b5a2b, 0 0 100px rgba(139,69,19,0.5), 2px 2px 20px black; margin-top: 15px; letter-spacing: 6px;" class="fade-up-stone delay-1">
+                        کوروش بزرگ
+                    </h1>
+                    <p style="font-size: 38px; color: rgba(255,255,255,0.98); font-weight: 400; letter-spacing: 8px; text-shadow: 0 0 35px #8b5a2b, 2px 2px 15px black;" class="fade-up-stone delay-2">
+                        پاسارگاد، آرامگاه جاودان
+                    </p>
+                    <div style="width: 200px; height: 6px; background: linear-gradient(90deg, #c99a3b, #8b5a2b, #5a3a1e, #8b5a2b, #c99a3b); margin: 40px auto; box-shadow: 0 0 40px #c99a3b; border-radius: 10px;" class="fade-up-stone delay-3"></div>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.95); max-width: 1000px; margin: 40px auto; line-height: 1.8; text-shadow: 2px 2px 20px black; font-weight: 500; background: rgba(0,0,0,0.2); padding: 20px 40px; border-radius: 80px; backdrop-filter: blur(5px); border: 1px solid rgba(218,165,32,0.3);" class="fade-up-stone delay-4">
+                        «ای انسان، هر که هستی و از هر کجا می‌آیی، بدان که من کوروشم، پادشاه جهان، شاه بزرگ، شاه چهار گوشه جهان... به تو اجازه می‌دهم بر آرامگاه من بنشینی»
+                    </p>
+                    <div class="mt-5 fade-up-stone delay-5">
+                        <a href="#tomb" class="bttn" style="background: linear-gradient(135deg, #8b5a2b, #5a3a1e); color: white; padding: 18px 50px; font-size: 20px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); border: 2px solid #c99a3b; margin-left: 20px; font-weight: 700;">زیارت آرامگاه</a>
+                        <a href="#history" class="bttn" style="background: transparent; color: white; padding: 18px 45px; font-size: 20px; border-radius: 60px; border: 2px solid #c99a3b; font-weight: 700;">تاریخچه</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================ بخش مقبره کوروش - عکس اصلی ================ -->
+    <section id="tomb" class="blog-pp single-pp" style="position: relative; z-index: 3; background: #fdfaf7; padding: 130px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-stone">
+                    <div class="tomb-image-frame">
+                        <img src="img/maghbare.jpeg" 
+                             alt="مقبره کوروش بزرگ - پاسارگاد" 
+                             class="tomb-image img-fluid"
+                             onerror="this.src='img/cyrus-tomb.jpg'; this.onerror='this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Tomb_of_Cyrus_the_Great_in_Pasargadae.jpg/800px-Tomb_of_Cyrus_the_Great_in_Pasargadae.jpg''">
+                        <div style="position: absolute; bottom: -20px; left: 30px; background: white; padding: 18px 35px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-right: 6px solid #8b5a2b; direction: ltr;">
+                            <span style="font-weight: 700; color: #5a3a1e; font-size: 18px;">𐎤𐎢𐎽𐎢𐏁</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-stone delay-2">
+                    <div class="stone-card">
+                        <span class="cyrus-badge">🏛️ آرامگاه پدر ایران</span>
+                        <h2 class="cyrus-title">مقبره کوروش</h2>
+                        <div class="stone-border"></div>
+                        <p style="font-size: 17px; line-height: 2.1; color: #4a3a2a; margin-bottom: 30px;">
+                            <span style="font-size: 32px; color: #8b5a2b; font-weight: 800; float: right; margin-left: 15px;">𐎤</span>
+                            مقبره کوروش بزرگ در پاسارگاد، ساده‌ترین و در عین حال باشکوه‌ترین بنای تاریخ ایران است. این آرامگاه سنگی با معماری منحصر به فرد، یادآور فروتنی و عظمت شاهنشاهی است که نخستین منشور حقوق بشر جهان را صادر کرد.
+                        </p>
+                        <p style="font-size: 17px; line-height: 2.1; color: #4a3a2a; margin-bottom: 35px;">
+                            این بنا از سنگ‌های عظیم آهکی ساخته شده و بر روی سکویی هفت پله‌ای قرار دارد. کوروش بزرگ در سال ۵۳۰ پیش از میلاد در این آرامگاه جاودانه شد.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <div class="stat-stone">
+                                    <span class="stat-number-cyrus">۵۳۰</span>
+                                    <p style="font-size: 15px; color: #8b5a2b; margin-top: 12px; font-weight: 600;">پ.م درگذشت</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-stone">
+                                    <span class="stat-number-cyrus">۷</span>
+                                    <p style="font-size: 15px; color: #8b5a2b; margin-top: 12px; font-weight: 600;">پله سنگی</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-stone">
+                                    <span class="stat-number-cyrus">۲۵۵۰</span>
+                                    <p style="font-size: 15px; color: #8b5a2b; margin-top: 12px; font-weight: 600;">سال جاودانگی</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش منشور کوروش ================ -->
+    <section class="cyrus-pattern" style="position: relative; z-index: 3; background: #f5efe6; padding: 100px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-stone">
+                    <div style="font-size: 70px; color: #8b5a2b; margin-bottom: 30px;" class="gentle-float">📜</div>
+                    <span style="background: #8b5a2b; color: white; padding: 8px 25px; border-radius: 50px; font-size: 14px; letter-spacing: 3px;">نخستین منشور حقوق بشر</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #5a3a1e; margin-top: 35px; margin-bottom: 30px;">منشور کوروش</h2>
+                    <div style="width: 100px; height: 3px; background: #8b5a2b; margin: 0 auto 40px;"></div>
+                    <p style="font-size: 20px; line-height: 2; color: #4a3a2a; font-style: italic; padding: 0 30px;">
+                        «من کوروش، شاه جهان، شاه بزرگ، شاه چهار گوشه جهان... اعلام می‌کنم که همه مردم در انتخاب دین خود آزادند و هیچ‌کس را نباید به خاطر عقیده‌اش مجازات کرد.»
+                    </p>
+                    <div style="margin-top: 50px;">
+                        <span style="font-size: 40px; color: #c99a3b;">⚜️</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش زندگی‌نامه کوروش ================ -->
+    <section id="cyrus" class="random-post" style="position: relative; z-index: 3; background: white; padding: 120px 0;">
+        <div class="container">
+            <div class="section-title fade-up-stone">
+                <span style="color: #8b5a2b;">👑 پدر ایران</span>
+                <h2 style="font-size: 58px; font-weight: 800; color: #5a3a1e; margin-top: 20px;">کوروش بزرگ</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto; font-size: 20px;">بنیانگذار امپراتوری هخامنشی</p>
+                <div style="width: 120px; height: 4px; background: #8b5a2b; margin: 25px auto;"></div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 fade-up-stone delay-1">
+                    <div class="pillar-cyrus">
+                        <div class="cyrus-icon">👑</div>
+                        <h3 style="color: #5a3a1e; font-size: 24px; font-weight: 800; margin-bottom: 20px;">۵۵۹ پ.م</h3>
+                        <p style="color: #5a4a3a; line-height: 1.9;">آغاز پادشاهی کوروش دوم در انشان و پارس</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up-stone delay-2">
+                    <div class="pillar-cyrus">
+                        <div class="cyrus-icon">🏛️</div>
+                        <h3 style="color: #5a3a1e; font-size: 24px; font-weight: 800; margin-bottom: 20px;">۵۵۰ پ.م</h3>
+                        <p style="color: #5a4a3a; line-height: 1.9;">فتح ماد و تشکیل امپراتوری هخامنشی</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up-stone delay-3">
+                    <div class="pillar-cyrus">
+                        <div class="cyrus-icon">📜</div>
+                        <h3 style="color: #5a3a1e; font-size: 24px; font-weight: 800; margin-bottom: 20px;">۵۳۹ پ.م</h3>
+                        <p style="color: #5a4a3a; line-height: 1.9;">فتح بابل و صدور منشور حقوق بشر</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تاریخچه کامل ================ -->
+    <section id="history" class="services cyrus-pattern" style="position: relative; z-index: 3; background: #faf5ea; padding: 120px 0;">
+        <div class="container">
+            <div class="section-title fade-up-stone">
+                <span style="color: #8b5a2b;">📜 گاهشمار زندگی</span>
+                <h2 style="font-size: 58px; font-weight: 800; color: #5a3a1e; margin-top: 20px;">از تولد تا جاودانگی</h2>
+                <div style="width: 120px; height: 4px; background: #8b5a2b; margin: 25px auto;"></div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up-stone">
+                    <div class="timeline-stone">
+                        <h3>۵۷۶ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #5a3a1e; margin-bottom: 15px;">تولد کوروش</h4>
+                        <p style="line-height: 1.9;">کوروش در خاندان سلطنتی هخامنشی متولد شد. پدرش کمبوجیه یکم و مادرش ماندانا، دختر آستیاگ پادشاه ماد بود.</p>
+                    </div>
+                    <div class="timeline-stone">
+                        <h3>۵۵۹ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #5a3a1e; margin-bottom: 15px;">شاه انشان و پارس</h4>
+                        <p style="line-height: 1.9;">کوروش پس از پدرش به پادشاهی رسید و سرزمین‌های پارس و انشان را متحد کرد.</p>
+                    </div>
+                    <div class="timeline-stone">
+                        <h3>۵۵۰ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #5a3a1e; margin-bottom: 15px;">فتح ماد</h4>
+                        <p style="line-height: 1.9;">کوروش علیه آستیاگ قیام کرد و پاسارگاد را به عنوان پایتخت برگزید. امپراتوری هخامنشی متولد شد.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-stone delay-2">
+                    <div class="timeline-stone">
+                        <h3>۵۴۷ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #5a3a1e; margin-bottom: 15px;">فتح لیدیه</h4>
+                        <p style="line-height: 1.9;">کوروش کرزوس، ثروتمندترین پادشاه جهان را شکست داد و لیدیه را به امپراتوری خود افزود.</p>
+                    </div>
+                    <div class="timeline-stone">
+                        <h3>۵۳۹ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #5a3a1e; margin-bottom: 15px;">فتح بابل</h4>
+                        <p style="line-height: 1.9;">بابل بدون جنگ سقوط کرد. کوروش منشور معروف خود را صادر کرد و یهودیان تبعیدی را آزاد نمود.</p>
+                    </div>
+                    <div class="timeline-stone">
+                        <h3>۵۳۰ پ.م</h3>
+                        <h4 style="font-size: 24px; color: #5a3a1e; margin-bottom: 15px;">جاودانگی در پاسارگاد</h4>
+                        <p style="line-height: 1.9;">کوروش بزرگ در نبرد با ماساژت‌ها در شرق ایران جان باخت و در آرامگاه سنگی پاسارگاد به خاک سپرده شد.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش معماری مقبره ================ -->
+    <section style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up-stone">
+                <span style="color: #8b5a2b;">🏛️ معماری جاودان</span>
+                <h2 style="font-size: 52px; font-weight: 800; color: #5a3a1e; margin-top: 20px;">ساختار آرامگاه</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto;">ساده و باشکوه، چون خود کوروش</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-3 col-sm-6 mb-4 fade-up-stone delay-1">
+                    <div style="background: #fdfaf5; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(139,69,19,0.1); transition: all 0.4s ease;">
+                        <div style="font-size: 55px; color: #8b5a2b; margin-bottom: 20px;">🪨</div>
+                        <h4 style="color: #5a3a1e; font-size: 22px; font-weight: 800;">سکوی هفت‌پله</h4>
+                        <p style="color: #666;">هفت پله سنگی که یادآور هفت دین باستانی ایران است</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4 fade-up-stone delay-2">
+                    <div style="background: #fdfaf5; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(139,69,19,0.1); transition: all 0.4s ease;">
+                        <div style="font-size: 55px; color: #8b5a2b; margin-bottom: 20px;">🏺</div>
+                        <h4 style="color: #5a3a1e; font-size: 22px; font-weight: 800;">اتاق آرامگاه</h4>
+                        <p style="color: #666;">اتاقی کوچک به ابعاد ۳×۲ متر با سقفی شیروانی</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4 fade-up-stone delay-3">
+                    <div style="background: #fdfaf5; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(139,69,19,0.1); transition: all 0.4s ease;">
+                        <div style="font-size: 55px; color: #8b5a2b; margin-bottom: 20px;">⛰️</div>
+                        <h4 style="color: #5a3a1e; font-size: 22px; font-weight: 800;">سنگ‌های آهکی</h4>
+                        <p style="color: #666;">قطعات عظیم سنگ که با مهارت کنار هم چیده شده‌اند</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4 fade-up-stone delay-4">
+                    <div style="background: #fdfaf5; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(139,69,19,0.1); transition: all 0.4s ease;">
+                        <div style="font-size: 55px; color: #8b5a2b; margin-bottom: 20px;">🌅</div>
+                        <h4 style="color: #5a3a1e; font-size: 22px; font-weight: 800;">جهت‌گیری</h4>
+                        <p style="color: #666;">ورودی آرامگاه رو به غروب خورشید است</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش نقل قول ================ -->
+    <section class="quote-section-cyrus" style="position: relative; z-index: 3; padding: 120px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-stone">
+                    <span style="font-size: 130px; line-height: 0.6; color: rgba(218,165,32,0.25); display: block; margin-bottom: 30px;">👑</span>
+                    <h2 style="font-size: 44px; font-weight: 700; line-height: 1.7; margin-bottom: 50px; color: #ffd700; text-shadow: 0 0 30px rgba(0,0,0,0.5); font-style: italic;">
+                        «کوروش نماد ایران‌زمین است؛ او به ما یاد داد که قدرت را با بخشش می‌توان جاودانه کرد»
+                    </h2>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.8);">— هانیه کریمی، پژوهشگر تاریخ هخامنشی</p>
+                    <div style="margin-top: 50px;">
+                        <span class="cuneiform-cyrus" style="background: rgba(0,0,0,0.3); color: #ffd700; border-color: #8b5a2b; font-size: 28px;">𐎤𐎢𐎽𐎢𐏁 𐎣𐎠𐎼𐎫𐎠</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: #fdfaf7; padding: 120px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="contact-stone fade-up-stone">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <div style="width: 100px; height: 100px; background: rgba(139,69,19,0.08); border-radius: 50%; line-height: 100px; font-size: 55px; color: #8b5a2b; margin: 0 auto 25px; border: 2px dashed #8b5a2b;">
+                                🏛️
+                            </div>
+                            <span style="background: #5a3a1e; color: white; padding: 10px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 3px; display: inline-block; margin-bottom: 25px;">𐎤𐎢𐎽𐎢𐏁</span>
+                            <h2 style="font-size: 48px; font-weight: 800; color: #3a2a1a; margin-top: 15px;">هانیه کریمی</h2>
+                            <p style="font-size: 20px; color: #8b5a2b; margin-top: 15px; font-weight: 600;">پژوهشگر تاریخ هخامنشی | طراح و توسعه‌دهنده وب</p>
+                            <div style="width: 100px; height: 3px; background: linear-gradient(90deg, #8b5a2b, #c99a3b, #8b5a2b); margin: 30px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #fff9f2; padding: 45px 30px; border-radius: 35px; height: 100%; border: 1px solid rgba(139,69,19,0.2); box-shadow: 0 20px 40px rgba(100,70,40,0.03); text-align: center;">
+                                    <div style="font-size: 60px; color: #8b5a2b; margin-bottom: 20px; animation: gentleWave 5s infinite;">📬</div>
+                                    <div style="direction: ltr; text-align: left; font-size: 18px; color: #5a3a1e; margin: 25px 0 15px; font-family: monospace; background: white; padding: 15px 20px; border-radius: 15px; border: 1px solid rgba(139,69,19,0.15); font-weight: 600; box-shadow: inset 0 2px 5px rgba(0,0,0,0.01);">
+                                        hanieh.karimii1389@gmail.com
+                                    </div>
+                                    <div style="direction: ltr; text-align: left; font-size: 26px; color: #8b5a2b; margin: 20px 0; font-weight: 800; letter-spacing: 2px; background: rgba(139,69,19,0.03); padding: 12px; border-radius: 15px;">
+                                        ۰۹۹۳۲۳۰۹۴۹۲
+                                    </div>
+                                    <div style="font-size: 20px; color: #5a3a1e; font-weight: 600;">
+                                        مشهد، ایران
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #fff9f2; padding: 45px 35px; border-radius: 35px; height: 100%; border: 1px solid rgba(139,69,19,0.2); box-shadow: 0 20px 40px rgba(100,70,40,0.03); text-align: center;">
+                                    <div style="font-size: 60px; color: #8b5a2b; margin-bottom: 20px;">🏺</div>
+                                    <p style="font-size: 18px; line-height: 2; color: #4a3a2a; margin-top: 25px; text-align: justify; padding: 0 15px;">
+                                        این وبسایت به پاس گرامیداشت یاد و نام کوروش بزرگ، پدر ایران‌زمین، طراحی شده است. آرامگاه او در پاسارگاد جاودانه‌ترین یادگار فروتنی و عظمت ایرانیان است.
+                                    </p>
+                                    <div style="margin-top: 35px; padding: 15px; background: rgba(139,69,19,0.06); border-radius: 15px; border: 1px dashed #8b5a2b;">
+                                        <span style="color: #5a3a1e; font-weight: 700; font-size: 20px;">𐎤𐎢𐎽𐎢𐏁 𐎣𐎠𐎼𐎫𐎠</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر با افتخار -->
+                        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(139,69,19,0.2);">
+                            <div class="heritage-seal-cyrus" style="margin-bottom: 25px;">
+                                🏛️ پاسارگاد - آرامگاه کوروش بزرگ
+                            </div>
+                            <p style="color: #8b5a2b; margin-top: 25px; font-size: 18px; font-weight: 600;">
+                                طراحی شده با افتخار و عشق به ایران باستان توسط هانیه کریمی © ۲۰۲۶
+                            </p>
+                            <div style="margin-top: 30px;">
+                                <span style="color: #8b5a2b; font-size: 24px;">𐎤𐎢𐎽𐎢𐏁 𐎺𐏀𐎼𐎣</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>

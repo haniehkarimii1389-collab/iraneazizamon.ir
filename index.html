@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ایران مقدس | ۵۴ گنجینه طلایی</title>
+        <!-- ================ کد تأیید گوگل ================ -->
+<meta name="google-site-verification" content="NQO82Er4zi00ajhaS8Mp_GU8wA01yothRj8kjvOsioY" />
+    <!-- ✅ فاوآیکون - حذف هاتان -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    
+    <!-- ✅ فونت‌های سلطنتی -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ استایل مقدس - سیاه و طلایی اکلیلی ================ */
+        
+        /* متغیرهای طلایی مقدس */
+        :root {
+            --gold: #FFD700;
+            --gold-light: #FFF8E7;
+            --gold-dark: #B8860B;
+            --gold-royal: #D4AF37;
+            --black: #050505;
+            --black-light: #121212;
+            --black-lighter: #1E1E1E;
+            --white: #FFFFFF;
+            --white-off: #FAF9F6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rajdhani', 'Poppins', sans-serif;
+            overflow-y: auto !important;
+            background: var(--black);
+            color: var(--white);
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255,215,0,0.03) 0%, transparent 30%),
+                radial-gradient(circle at 90% 70%, rgba(255,215,0,0.03) 0%, transparent 30%),
+                radial-gradient(circle at 40% 80%, rgba(255,215,0,0.02) 0%, transparent 40%),
+                radial-gradient(circle at 80% 30%, rgba(255,215,0,0.02) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .persian-title, .sacred-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* ================ هنر اکلیلی سیاه و طلایی ================ */
+        .gold-dust {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255,215,0,0.08) 1px, transparent 1px),
+                radial-gradient(circle at 80% 60%, rgba(255,215,0,0.08) 1px, transparent 1px),
+                radial-gradient(circle at 40% 90%, rgba(255,215,0,0.08) 1px, transparent 1px),
+                radial-gradient(circle at 70% 20%, rgba(255,215,0,0.08) 1px, transparent 1px),
+                radial-gradient(circle at 10% 70%, rgba(255,215,0,0.08) 1px, transparent 1px);
+            background-size: 150px 150px;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        
+        /* ================ هیرو سکشن - شاهکار هنری ایران ================ */
+        .iran-sacred-hero {
+            position: relative;
+            height: 110vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--black);
+        }
+        
+        .hero-gold-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(45deg, rgba(255,215,0,0.02) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255,215,0,0.02) 25%, transparent 25%);
+            background-size: 60px 60px;
+            animation: movePattern 20s linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes movePattern {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
+        }
+        
+        .hero-royal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.95) 100%);
+            z-index: 2;
+        }
+        
+        .hero-iran-art {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Persepolis_relief_iran.jpg/800px-Persepolis_relief_iran.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 100;
+            max-width: 1300px;
+            padding: 0 30px;
+        }
+        
+        .gold-crown {
+            font-size: 80px;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(255,215,0,0.6);
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: crownFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes crownFloat {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        
+        .sacred-pre-title {
+            font-size: 22px;
+            letter-spacing: 20px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-shadow: 0 0 30px rgba(255,215,0,0.4);
+            word-spacing: 25px;
+        }
+        
+        .hero-title-iran {
+            font-size: 180px;
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 
+                0 0 50px rgba(255,215,0,0.6),
+                3px 3px 0 var(--gold-dark),
+                6px 6px 0 rgba(0,0,0,0.9);
+            margin-bottom: 10px;
+            line-height: 0.9;
+            letter-spacing: 25px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-title-iran span {
+            color: var(--white);
+            text-shadow: 
+                0 0 50px rgba(255,255,255,0.3),
+                2px 2px 0 rgba(0,0,0,0.8);
+        }
+        
+        .hero-sacred-subtitle {
+            font-size: 60px;
+            font-weight: 900;
+            color: var(--white);
+            text-shadow: 0 0 30px rgba(0,0,0,0.9);
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 15px;
+        }
+        
+        .hero-sacred-subtitle .gold {
+            color: var(--gold);
+            border-bottom: 4px solid var(--gold);
+            padding-bottom: 15px;
+        }
+        
+        .hero-desc-sacred {
+            font-size: 24px;
+            color: rgba(255,255,255,0.85);
+            max-width: 1000px;
+            margin: 50px auto;
+            line-height: 1.9;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+        
+        .hero-statue {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin: 60px 0;
+        }
+        
+        .hero-statue-item {
+            text-align: center;
+        }
+        
+        .hero-statue-number {
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--gold);
+            display: block;
+            line-height: 1;
+            text-shadow: 0 0 40px rgba(255,215,0,0.5);
+        }
+        
+        .hero-statue-text {
+            font-size: 20px;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 4px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+        
+        .hero-gold-line {
+            width: 300px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-royal), var(--gold), transparent);
+            margin: 40px auto;
+            box-shadow: 0 0 40px rgba(255,215,0,0.6);
+        }
+        
+        /* ================ منوی ناوبری - حذف هاتان ================ */
+        .navbar {
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255,215,0,0.25);
+            padding: 12px 0;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+            z-index: 1000;
+        }
+        
+        .navbar .navbar-nav .nav-link {
+            color: var(--white);
+            font-weight: 600;
+            padding: 12px 28px;
+            margin: 0 5px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .navbar .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.2), transparent);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+        
+        .navbar .navbar-nav .nav-link:hover::before {
+            left: 100%;
+        }
+        
+        .navbar .navbar-nav .nav-link:hover {
+            color: var(--gold);
+            border-color: rgba(255,215,0,0.4);
+            background: rgba(255,215,0,0.05);
+            transform: scale(1.05);
+        }
+        
+        /* لوگوی اختصاصی ایران - حذف کامل هاتان */
+        .navbar-brand {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .iran-gold-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--gold);
+            box-shadow: 0 0 60px rgba(255,215,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .iran-gold-logo::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+            animation: rotateLogo 10s linear infinite;
+        }
+        
+        @keyframes rotateLogo {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .iran-gold-logo span {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 0 0 30px var(--gold);
+            z-index: 10;
+        }
+        
+        .brand-text {
+            color: var(--gold);
+            font-size: 22px;
+            font-weight: 900;
+            margin-left: 15px;
+            letter-spacing: 5px;
+            text-shadow: 0 0 20px rgba(255,215,0,0.5);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* ================ دراپ‌داون طلایی مقدس ================ */
+        .dropdown-menu.dropdown-grid {
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255,215,0,0.4);
+            border-radius: 30px;
+            padding: 35px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9);
+            width: 850px !important;
+        }
+        
+        .dropdown-item {
+            background: transparent;
+            color: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 16px 25px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            font-weight: 600;
+            font-size: 17px;
+            border: 1px solid transparent;
+            margin-bottom: 5px;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(255,215,0,0.1);
+            color: var(--gold);
+            border-color: rgba(255,215,0,0.3);
+            transform: translateX(12px);
+            letter-spacing: 2px;
+        }
+        
+        /* ================ بخش مقدس ۵۴ گنجینه ================ */
+        .sacred-treasures-section {
+            background: var(--black);
+            padding: 150px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sacred-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path d="M50 10 L90 50 L50 90 L10 50 Z" fill="%23FFD700"/><circle cx="50" cy="50" r="20" fill="%23FFD700"/></svg>');
+            background-size: 120px 120px;
+            opacity: 0.1;
+            animation: moveSacredPattern 30s linear infinite;
+        }
+        
+        @keyframes moveSacredPattern {
+            0% { background-position: 0 0; }
+            100% { background-position: 120px 120px; }
+        }
+        
+        .sacred-title-section {
+            text-align: center;
+            margin-bottom: 100px;
+            position: relative;
+        }
+        
+        .sacred-title-main {
+            font-size: 80px;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 30px;
+            text-shadow: 0 15px 30px rgba(0,0,0,0.8);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .sacred-title-main span {
+            color: var(--gold);
+            font-size: 100px;
+            text-shadow: 0 0 60px rgba(255,215,0,0.6);
+        }
+        
+        .sacred-subtitle {
+            font-size: 28px;
+            color: rgba(255,255,255,0.8);
+            max-width: 900px;
+            margin: 0 auto 40px;
+            letter-spacing: 4px;
+            line-height: 1.9;
+        }
+        
+        .sacred-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .sacred-line {
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-royal), var(--gold), transparent);
+        }
+        
+        .sacred-icon-large {
+            font-size: 50px;
+            color: var(--gold);
+            animation: sacredPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes sacredPulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); text-shadow: 0 0 50px var(--gold); }
+        }
+        
+        /* ================ کارت‌های مقدس ۵۴ گنجینه ================ */
+        .sacred-card {
+            position: relative;
+            background: linear-gradient(165deg, #0F0F0F, #080808);
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            height: 100%;
+            border: 1px solid rgba(255,215,0,0.15);
+            margin-bottom: 30px;
+        }
+        
+        .sacred-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--gold), transparent, var(--gold-dark), transparent, var(--gold));
+            border-radius: 42px;
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.7s ease;
+        }
+        
+        .sacred-card:hover::before {
+            opacity: 0.7;
+        }
+        
+        .sacred-card:hover {
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: 0 50px 100px rgba(255,215,0,0.2);
+            border-color: rgba(255,215,0,0.4);
+        }
+        
+        .sacred-card-img {
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+        }
+        
+        .sacred-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            filter: grayscale(50%) brightness(0.9);
+        }
+        
+        .sacred-card:hover .sacred-card-img img {
+            transform: scale(1.25);
+            filter: grayscale(0%) brightness(1.1);
+        }
+        
+        .sacred-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.3));
+            opacity: 0;
+            transition: all 0.6s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 35px;
+        }
+        
+        .sacred-card:hover .sacred-card-overlay {
+            opacity: 1;
+        }
+        
+        .sacred-card-icon {
+            font-size: 70px;
+            color: var(--gold);
+            text-shadow: 0 0 40px rgba(255,215,0,0.7);
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .sacred-card:hover .sacred-card-icon {
+            transform: translateY(0);
+        }
+        
+        .sacred-card-content {
+            padding: 35px;
+            position: relative;
+        }
+        
+        .sacred-card-number {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 24px;
+            font-weight: 900;
+            color: rgba(255,215,0,0.2);
+            font-family: 'Playfair Display', serif;
+            z-index: 5;
+        }
+        
+        .sacred-card-title {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 0 20px rgba(255,215,0,0.3);
+            letter-spacing: 1px;
+        }
+        
+        .sacred-card-sub {
+            font-size: 16px;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+        
+        .sacred-card-text {
+            color: rgba(255,255,255,0.75);
+            font-size: 15px;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+        
+        .btn-sacred-gold {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: 700;
+            transition: all 0.5s ease;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-sacred-gold::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .btn-sacred-gold:hover::before {
+            left: 100%;
+        }
+        
+        .btn-sacred-gold:hover {
+            background: var(--gold);
+            color: var(--black);
+            box-shadow: 0 0 50px rgba(255,215,0,0.7);
+            border-color: var(--gold);
+            transform: scale(1.05);
+        }
+        
+        /* ================ بخش آمار مقدس ================ */
+        .sacred-stats {
+            background: linear-gradient(135deg, #0A0A0A, #000000);
+            padding: 100px 0;
+            margin: 80px 0;
+            position: relative;
+            border-top: 1px solid rgba(255,215,0,0.2);
+            border-bottom: 1px solid rgba(255,215,0,0.2);
+        }
+        
+        .stat-sacred-item {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .stat-sacred-number {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--gold);
+            display: block;
+            line-height: 1;
+            text-shadow: 0 0 60px rgba(255,215,0,0.5);
+            margin-bottom: 15px;
+        }
+        
+        .stat-sacred-text {
+            font-size: 22px;
+            color: var(--white);
+            letter-spacing: 4px;
+            font-weight: 600;
+        }
+        
+        .stat-sacred-desc {
+            font-size: 16px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 15px;
+        }
+        
+        /* ================ فوتر مقدس ================ */
+        .sacred-footer {
+            background: #020202;
+            position: relative;
+            padding: 120px 0 50px;
+            border-top: 3px solid rgba(255,215,0,0.2);
+        }
+        
+        .sacred-footer::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-royal), var(--gold), transparent);
+            box-shadow: 0 0 60px rgba(255,215,0,0.6);
+        }
+        
+        .footer-sacred-logo {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .footer-iran-gold {
+            width: 120px;
+            height: 120px;
+            background: var(--black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid var(--gold);
+            box-shadow: 0 0 80px rgba(255,215,0,0.5);
+            margin: 0 auto 30px;
+        }
+        
+        .footer-iran-gold span {
+            font-size: 60px;
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 0 0 50px var(--gold);
+        }
+        
+        .footer-sacred-title {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 10px;
+            text-shadow: 0 0 40px rgba(255,215,0,0.4);
+        }
+        
+        .footer-sacred-text {
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            font-size: 20px;
+            line-height: 2;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            letter-spacing: 2px;
+        }
+        
+        .footer-sacred-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 70px;
+        }
+        
+        .footer-sacred-links span {
+            color: var(--gold);
+            font-size: 18px;
+            letter-spacing: 4px;
+            font-weight: 600;
+            padding: 0 20px;
+            border-right: 2px solid var(--gold);
+            border-left: 2px solid var(--gold);
+        }
+        
+        .footer-copyright-sacred {
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 18px;
+            border-top: 1px solid rgba(255,215,0,0.15);
+            padding-top: 40px;
+            margin-top: 50px;
+        }
+        
+        .footer-copyright-sacred a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 900;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-copyright-sacred a:hover {
+            text-shadow: 0 0 30px var(--gold);
+            letter-spacing: 2px;
+        }
+        
+        /* ================ دکمه بازگشت به بالا ================ */
+        #scroll-top {
+            background: var(--gold);
+            color: var(--black);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            bottom: 40px;
+            right: 40px;
+            box-shadow: 0 0 60px rgba(255,215,0,0.7);
+            border: 2px solid var(--white);
+            transition: all 0.5s ease;
+        }
+        
+        #scroll-top i {
+            color: var(--black);
+            font-size: 35px;
+        }
+        
+        #scroll-top:hover {
+            transform: scale(1.2) rotate(360deg);
+            box-shadow: 0 0 100px rgba(255,215,0,0.9);
+        }
+        
+        /* ================ انیمیشن‌های مقدس ================ */
+        @keyframes sacredGlow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(255,215,0,0.4)); }
+            50% { filter: drop-shadow(0 0 60px rgba(255,215,0,0.8)); }
+        }
+        
+        .sacred-glow {
+            animation: sacredGlow 4s ease-in-out infinite;
+        }
+        
+        /* ================ لودر سیاه و طلایی ================ */
+        #loading-mask {
+            background: var(--black);
+        }
+        
+        .loader .roller:before {
+            background: var(--gold) !important;
+            box-shadow: 0 0 30px var(--gold) !important;
+        }
+        
+        /* ================ ریسپانسیو ================ */
+        @media (max-width: 1200px) {
+            .hero-title-iran { font-size: 130px; letter-spacing: 20px; }
+            .hero-sacred-subtitle { font-size: 48px; }
+            .sacred-title-main { font-size: 60px; }
+            .sacred-title-main span { font-size: 80px; }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-title-iran { font-size: 90px; letter-spacing: 15px; }
+            .hero-sacred-subtitle { font-size: 36px; }
+            .sacred-pre-title { letter-spacing: 15px; }
+            .dropdown-menu.dropdown-grid { width: 100% !important; }
+            .stat-sacred-number { font-size: 52px; }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title-iran { font-size: 60px; letter-spacing: 10px; }
+            .hero-sacred-subtitle { font-size: 28px; }
+            .sacred-pre-title { font-size: 16px; letter-spacing: 8px; }
+            .hero-desc-sacred { font-size: 18px; }
+            .sacred-title-main { font-size: 42px; }
+            .sacred-title-main span { font-size: 60px; }
+            .footer-sacred-title { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================ ذرات طلایی اکلیلی ================ -->
+    <div class="gold-dust"></div>
+
+    <!-- ================ هیرو سکشن - ایران مقدس ================ -->
+    <section class="iran-sacred-hero">
+        <div class="hero-gold-pattern"></div>
+        <div class="hero-iran-art"></div>
+        <div class="hero-royal-overlay"></div>
+        
+        <!-- منوی ناوبری - بدون هاتان -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <div class="iran-gold-logo">
+                        <span>🇮🇷</span>
+                    </div>
+                    <span class="brand-text">ایران مقدس</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSacred">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSacred">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown js-dropdown-links">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                هخامنشیان
+                            </a>
+                            <div class="dropdown-menu dropdown-grid">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a class="dropdown-item" href="Hakhamanesh.html">🏛️ شاهکار هخامنشی</a>
+                                        <a class="dropdown-item" href="dariuosh.html">📜 کتیبه داریوش</a>
+                                        <a class="dropdown-item" href="maghdare.html">👑 مقبره کوروش</a>
+                                        <a class="dropdown-item" href="takht-jamsid.html">🏺 تخت جمشید</a>
+                                        <a class="dropdown-item" href="shosh.html">⚱️ شوش</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a class="dropdown-item" href="hamedan.html">🏔️ همدان</a>
+                                        <a class="dropdown-item" href="rey.html">🏺 ری</a>
+                                        <a class="dropdown-item" href="neyshabor.html">📚 نیشابور</a>
+                                        <a class="dropdown-item" href="gorgan.html">🧱 گرگان</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown js-dropdown-links">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                طبیعت مقدس
+                            </a>
+                            <div class="dropdown-menu dropdown-grid">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a class="dropdown-item" href="koh-sar-be-falak-keshide.html">⛰️ البرز & دماوند</a>
+                                        <a class="dropdown-item" href="dasht-hay-vasie.html">🏜️ دشت کویر & مغان</a>
+                                        <a class="dropdown-item" href="darya-che-soraty.html">💗 دریاچه صورتی</a>
+                                        <a class="dropdown-item" href="jangal-anboh.html">🌳 هیرکانی</a>
+                                        <a class="dropdown-item" href="byiaban-vasie.html">☀️ بیابان لوت</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a class="dropdown-item" href="abshar-ziba.html">💧 آبشار بیشه</a>
+                                        <a class="dropdown-item" href="ghar.html">🕳️ غار علیصدر</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown js-dropdown-links">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                اماکن متبرکه
+                            </a>
+                            <div class="dropdown-menu dropdown-grid">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a class="dropdown-item" href="haram-emam-reza.html">🕌 حرم امام رضا (ع)</a>
+                                        <a class="dropdown-item" href="haram-hazrat.html">🕊️ حرم حضرت معصومه (س)</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a class="dropdown-item" href="aramgah-saedi.html">✍️ آرامگاه سعدی</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="hero-content">
+            <div class="gold-crown">👑</div>
+            <div class="sacred-pre-title">سرزمین نور و شکوه جاودان</div>
+            <h1 class="hero-title-iran"><span>ای</span>ران</h1>
+            <div class="hero-sacred-subtitle">
+                <span class="gold">مقدس</span>
+            </div>
+            
+            <div class="hero-statue">
+                <div class="hero-statue-item">
+                    <span class="hero-statue-number">۷۰۰۰</span>
+                    <span class="hero-statue-text">سال تمدن</span>
+                </div>
+                <div class="hero-statue-item">
+                    <span class="hero-statue-number">۲۶</span>
+                    <span class="hero-statue-text">اثر یونسکو</span>
+                </div>
+                <div class="hero-statue-item">
+                    <span class="hero-statue-number">۵۴</span>
+                    <span class="hero-statue-text">گنجینه مقدس</span>
+                </div>
+            </div>
+            
+            <div class="hero-gold-line"></div>
+            
+            <p class="hero-desc-sacred">
+                ایران؛ گهواره تمدن، سرزمین کوروش و داریوش، بهشت طبیعت‌گردان جهان<br>
+                از بلندای دماوند تا ژرفای غار علیصدر، از طلای تخت جمشید تا فیروزهٔ قم<br>
+                ۵۴ گنجینه که هر کدام داستانی از شکوه، عرفان و جاودانگی دارند.
+            </p>
+            
+            <a href="#sacred-treasures" class="btn-sacred-gold" style="padding: 18px 60px; font-size: 20px;">زیارت ۵۴ گنجینه</a>
+        </div>
+    </section>
+
+    <!-- ================ بخش ۵۴ گنجینه مقدس ایران ================ -->
+    <section id="sacred-treasures" class="sacred-treasures-section">
+        <div class="sacred-bg-pattern"></div>
+        <div class="container">
+            <div class="sacred-title-section">
+                <h2 class="sacred-title-main">
+                    <span>۵۴</span> گنجینه مقدس
+                </h2>
+                <div class="sacred-divider">
+                    <div class="sacred-line"></div>
+                    <i class='bx bxs-star sacred-icon-large'></i>
+                    <div class="sacred-line"></div>
+                </div>
+                <p class="sacred-subtitle">
+                    از پاسارگاد تا پاسارگاد، از بیستون تا هیرکانی، از مشهد تا شیراز<br>
+                    ۵۴ یادگار مقدس که هر ایرانی باید یکبار در زندگی خود ببیند.
+                </p>
+            </div>
+            
+            <div class="row">
+                <!-- ================ گروه اول: آثار هخامنشی (۱-۱۲) ================ -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۰۱</div>
+                        <div class="sacred-card-img">
+                            <img src="img/takht-jamsid.jpg" alt="تخت جمشید">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">🏛️</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">شاهکار هخامنشی</div>
+                            <h3 class="sacred-card-title">تخت جمشید</h3>
+                            <p class="sacred-card-text">پایتخت باشکوه هخامنشیان، نماد قدرت و هنر ایرانی. در سال ۵۱۸ پ.م به دستور داریوش بزرگ ساخته شد.</p>
+                            <a href="takht-jamsid.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۰۲</div>
+                        <div class="sacred-card-img">
+                            <img src="img/blog/dariuoshh.png" alt="کتیبه بیستون">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">📜</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">نخستین سند حقوق بشر</div>
+                            <h3 class="sacred-card-title">کتیبه داریوش</h3>
+                            <p class="sacred-card-text">کتیبه بیستون در کرمانشاه، به سه زبان پارسی باستان، عیلامی و بابلی. روایت پیروزی داریوش بزرگ بر دروغ.</p>
+                            <a href="dariuosh.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۰۳</div>
+                        <div class="sacred-card-img">
+                            <img src="img/maghbare.jpeg" alt="مقبره کوروش">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">👑</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">پدر ایران</div>
+                            <h3 class="sacred-card-title">مقبره کوروش</h3>
+                            <p class="sacred-card-text">پاسارگاد، آرامگاه کوروش بزرگ. ساده و باشکوه، نماد فروتنی و عظمت. «ای انسان، هر که هستی...»</p>
+                            <a href="maghdare.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۰۴</div>
+                        <div class="sacred-card-img">
+                            <img src="img/shosh.jpg" alt="شوش">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">⚱️</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">کهن‌ترین شهر جهان</div>
+                            <h3 class="sacred-card-title">شوش</h3>
+                            <p class="sacred-card-text">۶۰۰۰ سال تمدن، پایتخت عیلام و هخامنشیان. کاخ آپادانا، زیگورات چغازنبیل و آرامگاه دانیال نبی.</p>
+                            <a href="shosh.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۰۵</div>
+                        <div class="sacred-card-img">
+                            <img src="img/hamedan.jpg" alt="همدان">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">🏔️</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">پایتخت مادها</div>
+                            <h3 class="sacred-card-title">هگمتانه</h3>
+                            <p class="sacred-card-text">همدان، یکی از قدیمی‌ترین شهرهای ایران. تپه هگمتانه، شیر سنگی، گنبد علویان و آرامگاه بوعلی سینا.</p>
+                            <a href="hamedan.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۰۶</div>
+                        <div class="sacred-card-img">
+                            <img src="img/Rey.jpg" alt="ری">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">🏺</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">چشمه تاریخ</div>
+                            <h3 class="sacred-card-title">ری باستان</h3>
+                            <p class="sacred-card-text">چشمه علی با ۸۰۰۰ سال قدمت، برج طغرل، دژ رشکان و آرامگاه ابن‌بابویه. گهواره تمدن در کنار تهران.</p>
+                            <a href="rey.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۰۷</div>
+                        <div class="sacred-card-img">
+                            <img src="img/neyshabor.jpg" alt="نیشابور">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">📚</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">شهر عرفان و ادب</div>
+                            <h3 class="sacred-card-title">نیشابور</h3>
+                            <p class="sacred-card-text">زادگاه خیام و عطار. آرامگاه شاعرانی که جهان را با رباعیات و منطق‌الطیر خود متحول کردند. شهر فیروزهٔ جهان.</p>
+                            <a href="neyshabor.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۰۸</div>
+                        <div class="sacred-card-img">
+                            <img src="img/gorgan.jpg" alt="گرگان">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">🧱</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">مار سرخ</div>
+                            <h3 class="sacred-card-title">دیوار گرگان</h3>
+                            <p class="sacred-card-text">دیوار بزرگ گرگان، پس از دیوار چین، طولانی‌ترین دیوار دفاعی جهان. برج قابوس، بلندترین برج آجری جهان.</p>
+                            <a href="gorgan.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ================ گروه دوم: طبیعت مقدس (۹-۲۱) ================ -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۰۹</div>
+                        <div class="sacred-card-img">
+                            <img src="img/koh-sar-be-falak-keshide.jpg" alt="دماوند">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">⛰️</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">بام ایران</div>
+                            <h3 class="sacred-card-title">قله دماوند</h3>
+                            <p class="sacred-card-text">بلندترین قله ایران با ۵۶۱۰ متر ارتفاع. اسطوره‌های ایرانی، جایگاه اژدهاک و کاوه آهنگر. آتشفشان خاموش و نماد استواری.</p>
+                            <a href="koh-sar-be-falak-keshide.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۱۰</div>
+                        <div class="sacred-card-img">
+                            <img src="img/dasht-hay-vasie.jpg" alt="دشت کویر">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">🏜️</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">دریای آرامش</div>
+                            <h3 class="sacred-card-title">دشت کویر</h3>
+                            <p class="sacred-card-text">۲۰۰ هزار کیلومتر مربع سکوت و آرامش. کاروان‌سراهای تاریخی، آسمان پرستاره و کویرنوردی. تجربهٔ بی‌نهایت.</p>
+                            <a href="dasht-hay-vasie.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۱۱</div>
+                        <div class="sacred-card-img">
+                            <img src="img/darya-che-sorati.jpg" alt="دریاچه صورتی">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">💗</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">رویای صورتی</div>
+                            <h3 class="sacred-card-title">دریاچه مهارلو</h3>
+                            <p class="sacred-card-text">دریاچه صورتی شیراز، پدیده‌ای نادر از جلبک‌های قرمز. بهشت فلامینگوها و عکاسان جهان. رنگ عشق در دل کویر.</p>
+                            <a href="darya-che-soraty.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۱۲</div>
+                        <div class="sacred-card-img">
+                            <img src="img/jangal-anboh.webp" alt="جنگل هیرکانی">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">🌳</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">۴۰ میلیون سال قدمت</div>
+                            <h3 class="sacred-card-title">جنگل هیرکانی</h3>
+                            <p class="sacred-card-text">قدیمی‌ترین جنگل‌های جهان، میراث یونسکو. زیستگاه پلنگ ایرانی، خرس قهوه‌ای و مرال. بهشت گمشده ایران.</p>
+                            <a href="jangal-anboh.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۱۳</div>
+                        <div class="sacred-card-img">
+                            <img src="img/kavir-vasie.webp" alt="بیابان لوت">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">☀️</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">گرمترین نقطه زمین</div>
+                            <h3 class="sacred-card-title">بیابان لوت</h3>
+                            <p class="sacred-card-text">۸۰/۸ درجه، رکورددار گرمای زمین. کلوت‌های مریخی، ریگ‌های شگفت‌انگیز و نبکاها. نخستین میراث طبیعی ایران.</p>
+                            <a href="byiaban-vasie.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۱۴</div>
+                        <div class="sacred-card-img">
+                            <img src="img/abshar-ziba.jpg" alt="آبشار بیشه">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">💧</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">عروس آبشارها</div>
+                            <h3 class="sacred-card-title">آبشار بیشه</h3>
+                            <p class="sacred-card-text">۴۸ متر ارتفاع، در مسیر راه‌آهن سراسری ایران. قطاری که از کنار آبشار می‌گذرد. زیباترین آبشار ایران.</p>
+                            <a href="abshar-ziba.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۱۵</div>
+                        <div class="sacred-card-img">
+                            <img src="img/ghar.jpg" alt="غار علیصدر">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">🕳️</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">بزرگترین غار آبی جهان</div>
+                            <h3 class="sacred-card-title">علیصدر</h3>
+                            <p class="sacred-card-text">۱۳۶ میلیون سال قدمت، ۲۳۰۰ متر قایقرانی در دل کوه. قندیل‌های بلورین و آب زلال. شگفتی زمین‌شناسی.</p>
+                            <a href="ghar.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ================ گروه سوم: اماکن متبرکه (۱۶-۲۴) ================ -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۱۶</div>
+                        <div class="sacred-card-img">
+                            <img src="img/haram.jpg" alt="حرم امام رضا">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">🕌</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">نگین خراسان</div>
+                            <h3 class="sacred-card-title">حرم امام رضا (ع)</h3>
+                            <p class="sacred-card-text">۳۰ میلیون زائر سالانه، بزرگترین مرکز زیارتی ایران. گنبد طلایی با ۶۶۲۴ خشت طلا، ضریح هفتم و صحن‌های بی‌نظیر.</p>
+                            <a href="haram-emam-reza.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۱۷</div>
+                        <div class="sacred-card-img">
+                            <img src="img/haram-hazrat.jpg" alt="حرم حضرت معصومه">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">🕊️</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">کریمه اهل بیت</div>
+                            <h3 class="sacred-card-title">حرم حضرت معصومه (س)</h3>
+                            <p class="sacred-card-text">قم مقدس، حرم فاطمه معصومه، خواهر امام رضا. گنبد فیروزه‌ای و ضریح نقره‌ای. «هر کس او را زیارت کند، بهشت برای اوست».</p>
+                            <a href="haram-hazrat.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="sacred-card">
+                        <div class="sacred-card-number">۱۸</div>
+                        <div class="sacred-card-img">
+                            <img src="img/aramgah-saedi.jpg" alt="آرامگاه سعدی">
+                            <div class="sacred-card-overlay">
+                                <span class="sacred-card-icon">✍️</span>
+                            </div>
+                        </div>
+                        <div class="sacred-card-content">
+                            <div class="sacred-card-sub">استاد سخن</div>
+                            <h3 class="sacred-card-title">آرامگاه سعدی</h3>
+                            <p class="sacred-card-text">سعدیه شیراز، آرامگاه شیخ اجل. «بنی‌آدم اعضای یک پیکرند». حوض فیروزه‌ای، کاشی‌کاری و باغ ایرانی.</p>
+                            <a href="aramgah-saedi.html" class="btn-sacred-gold">زیارت</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ================ هشدار: ۳۶ گنجینه دیگر در صفحات بعدی ================ -->
+            <div style="text-align: center; margin-top: 80px;">
+                <div style="background: linear-gradient(145deg, #0F0F0F, #050505); border-radius: 60px; padding: 50px; border: 1px solid rgba(255,215,0,0.3); max-width: 900px; margin: 0 auto;">
+                    <span style="font-size: 60px; color: var(--gold); display: block; margin-bottom: 30px;">✨</span>
+                    <h3 style="font-size: 42px; color: var(--gold); margin-bottom: 30px; font-family: 'Playfair Display', serif;">۳۶ گنجینه دیگر</h3>
+                    <p style="font-size: 24px; color: var(--white); margin-bottom: 30px;">
+                        ارگ بم، چغازنبیل، تپه سیلک، کاخ ساسانی، اورامانات، قشم، کیش،<br>
+                        تالاب انزلی، ارسباران، تالش، سبزوار، کاشان، یزد، اصفهان، تبریز،...
+                    </p>
+                    <p style="font-size: 20px; color: rgba(255,255,255,0.7); letter-spacing: 3px;">
+                        هر کدام یک داستان، هر کدام یک افتخار
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش آمار مقدس ================ -->
+    <section class="sacred-stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="stat-sacred-item">
+                        <span class="stat-sacred-number">۵۴</span>
+                        <span class="stat-sacred-text">گنجینه مقدس</span>
+                        <p class="stat-sacred-desc">از شمال تا جنوب، از غرب تا شرق</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-sacred-item">
+                        <span class="stat-sacred-number">۲۶</span>
+                        <span class="stat-sacred-text">میراث یونسکو</span>
+                        <p class="stat-sacred-desc">در انتظار ثبت بیشتر</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-sacred-item">
+                        <span class="stat-sacred-number">۱۰۰۰+</span>
+                        <span class="stat-sacred-text">اثر ملی</span>
+                        <p class="stat-sacred-desc">هر کدام داستانی برای گفتن</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ فوتر مقدس ================ -->
+    <footer class="sacred-footer">
+        <div class="container">
+            <div class="footer-sacred-logo">
+                <div class="footer-iran-gold">
+                    <span>🇮🇷</span>
+                </div>
+                <h3 class="footer-sacred-title">ایران مقدس</h3>
+            </div>
+            
+            <p class="footer-sacred-text">
+                این وبسایت یک زیارتگاه مجازی است برای تمام کسانی که ایران را دوست دارند.<br>
+                برای تمام مادرانی که نام کوروش را به فرزندان خود آموختند،<br>
+                برای تمام پدرانی که دماوند را به دخترانشان شناساندند،<br>
+                برای تو، برای من، برای همه ما.
+            </p>
+            
+            <div class="footer-sacred-links">
+                <span>هخامنشیان</span>
+                <span>طبیعت</span>
+                <span>اماکن متبرکه</span>
+                <span>شاعران</span>
+                <span>کویر</span>
+                <span>جنگل</span>
+            </div>
+            
+            <div class="footer-copyright-sacred">
+                <span>© ۲۰۲۶ - ایران مقدس | به وسعت تاریخ، به عمق عشق</span><br>
+                <span>طراحی شده با طلا و افتخار توسط <a href="#">هانیه کریمی</a> در مشهد الرضا</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================ لودر ================ -->
+    <div id="loading-mask">
+        <div class="loader-wrapper">
+            <div class="loader">
+                <div class="roller"></div>
+                <div class="roller"></div>
+            </div>
+            <div id="loader2" class="loader">
+                <div class="roller"></div>
+                <div class="roller"></div>
+            </div>
+            <div id="loader3" class="loader">
+                <div class="roller"></div>
+                <div class="roller"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ================ دکمه بازگشت به بالا ================ -->
+    <div id="scroll-top">
+        <i class='bx bxs-chevron-up'></i>
+    </div>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+    <script>
+        // هدر شناور
+        window.addEventListener('scroll', function() {
+            var navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.98)';
+                navbar.style.backdropFilter = 'blur(30px)';
+                navbar.style.borderBottom = '1px solid rgba(255,215,0,0.4)';
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.92)';
+                navbar.style.borderBottom = '1px solid rgba(255,215,0,0.25)';
+            }
+        });
+        
+        // لودر
+        window.addEventListener('load', function() {
+            document.getElementById('loading-mask').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

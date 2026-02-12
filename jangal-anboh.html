@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جنگل‌های انبوه | هیرکانی - ارسباران</title>
+    
+    <!-- ✅ CSS اصلی -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <style>
+        /* ================ فیکس مشکل اسکرول ================ */
+        html, body {
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            height: auto !important;
+            min-height: 100vh;
+        }
+        
+        body {
+            position: relative !important;
+            overflow-y: auto !important;
+        }
+        
+        /* ================ انیمیشن‌های جنگل ================ */
+        @keyframes fadeUpForest {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes leafFloat {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+            50% { transform: translateY(-20px) rotate(10deg); opacity: 0.8; }
+            100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+        }
+        
+        @keyframes forestGreen {
+            0% { filter: drop-shadow(0 0 5px rgba(34,139,34,0.4)); }
+            50% { filter: drop-shadow(0 0 30px rgba(76,175,80,0.7)); }
+            100% { filter: drop-shadow(0 0 5px rgba(34,139,34,0.4)); }
+        }
+        
+        @keyframes birdFly {
+            0% { transform: translateX(-10px) translateY(-5px); }
+            50% { transform: translateX(10px) translateY(5px); }
+            100% { transform: translateX(-10px) translateY(-5px); }
+        }
+        
+        .fade-up-forest {
+            animation: fadeUpForest 1.2s ease forwards;
+        }
+        
+        .leaf-float {
+            animation: leafFloat 8s ease-in-out infinite;
+        }
+        
+        .forest-glow {
+            animation: forestGreen 5s infinite;
+        }
+        
+        .bird-flight {
+            animation: birdFly 12s ease-in-out infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+        .delay-6 { animation-delay: 1.2s; opacity: 0; animation-fill-mode: forwards; }
+        
+        /* ================ لوگوی اختصاصی جنگل ================ */
+        .forest-logo {
+            width: 80px;
+            height: 80px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 10px rgba(34,139,34,0.5));
+        }
+        
+        .forest-logo:hover {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 0 30px rgba(76,175,80,0.8));
+        }
+        
+        /* ================ استایل‌های اختصاصی جنگل ================ */
+        .forest-pattern {
+            background: repeating-linear-gradient(45deg, 
+                rgba(34,139,34,0.03) 0px, 
+                rgba(34,139,34,0.03) 10px,
+                transparent 10px, 
+                transparent 30px);
+        }
+        
+        .forest-card {
+            background: linear-gradient(145deg, #e8f5e9, #c8e6c9);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(27,94,32,0.1);
+            border: 1px solid rgba(76,175,80,0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        
+        .forest-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 80px rgba(46,125,50,0.2);
+            border-color: rgba(76,175,80,0.6);
+        }
+        
+        .forest-card:after {
+            content: '🌳';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.03;
+            color: #2e7d32;
+            transform: rotate(-5deg);
+        }
+        
+        .forest-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(46,125,50,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 25px;
+        }
+        
+        .forest-title {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #2e7d32, #4caf50, #1b5e20);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 20px rgba(76,175,80,0.3);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .forest-border {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #2e7d32, #81c784, #2e7d32);
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(76,175,80,0.3);
+        }
+        
+        .stat-forest {
+            background: rgba(46,125,50,0.04);
+            padding: 30px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(46,125,50,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .stat-forest:hover {
+            background: rgba(76,175,80,0.08);
+            border-color: rgba(76,175,80,0.3);
+            transform: translateY(-8px);
+        }
+        
+        .stat-number-forest {
+            font-size: 48px;
+            font-weight: 900;
+            color: #2e7d32;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .timeline-forest {
+            position: relative;
+            padding: 35px;
+            background: white;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border-right: 6px solid #2e7d32;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-forest:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 20px 50px rgba(46,125,50,0.1);
+            border-right-width: 10px;
+        }
+        
+        .timeline-forest h3 {
+            color: #2e7d32;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .forest-image-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+            border: 8px solid rgba(76,175,80,0.3);
+            transition: all 0.6s ease;
+            background: #c8e6c9;
+        }
+        
+        .forest-image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 90px rgba(46,125,50,0.3);
+            border-color: rgba(76,175,80,0.6);
+        }
+        
+        .forest-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.8s ease;
+        }
+        
+        .forest-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .tree-icon {
+            font-size: 70px;
+            color: #2e7d32;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: leafFloat 7s ease-in-out infinite;
+        }
+        
+        .leaf-icon {
+            font-size: 40px;
+            color: #4caf50;
+            display: inline-block;
+        }
+        
+        .hyrcanian-quote {
+            font-family: 'Times New Roman', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: #1b5e20;
+            line-height: 2;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .cuneiform-forest {
+            font-family: 'Times New Roman', serif;
+            font-size: 22px;
+            color: #2e7d32;
+            letter-spacing: 6px;
+            background: rgba(46,125,50,0.05);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(46,125,50,0.15);
+        }
+        
+        .quote-section-forest {
+            background: linear-gradient(135deg, #1a3b1a, #2e7d32, #1a3b1a);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .forest-canopy {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, 
+                rgba(46,125,50,0.03) 0px,
+                rgba(46,125,50,0.03) 20px,
+                transparent 20px,
+                transparent 40px);
+            pointer-events: none;
+        }
+        
+        .falling-leaf {
+            position: absolute;
+            color: #81c784;
+            font-size: 24px;
+            opacity: 0.3;
+            animation: leafFloat 10s infinite;
+            pointer-events: none;
+        }
+        
+        .hyrcanian-bg {
+            background: linear-gradient(to bottom, #1b4d1b, #2e7d32, #43a047);
+            position: relative;
+        }
+        
+        /* ================ فیکس موقعیت برگ‌ها ================ */
+        .leaf-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        /* ================ فیکس هدر ================ */
+        header {
+            overflow: hidden !important;
+            position: relative !important;
+        }
+        
+        section {
+            position: relative !important;
+            clear: both !important;
+        }
+    </style>
+</head>
+<body class="inner-pag forest-pattern" style="background: linear-gradient(to bottom, #e8f5e9, #c8e6c9); overflow-y: auto !important;">
+
+    <!-- ================ برگ‌های در حال سقوط (فیکس شده) ================ -->
+    <div class="leaf-container">
+        <div class="falling-leaf" style="top: 10%; left: 5%; animation-delay: 0s;">🍃</div>
+        <div class="falling-leaf" style="top: 20%; right: 10%; animation-delay: 2s;">🍂</div>
+        <div class="falling-leaf" style="top: 50%; left: 15%; animation-delay: 4s;">🌿</div>
+        <div class="falling-leaf" style="top: 70%; right: 20%; animation-delay: 6s;">🍃</div>
+        <div class="falling-leaf" style="top: 85%; left: 25%; animation-delay: 8s;">🍂</div>
+    </div>
+
+    <!-- ================ هدر با عکس جنگل ================ -->
+    <header id="inner-header" class="inner-header parallax" style="height: 100vh; position: relative; z-index: 2; overflow: hidden;">
+        <!-- ✅ بکگراند سبز جنگلی -->
+        <div class="overlay" style="background: radial-gradient(circle at 30% 50%, #1b4d1b, #2e7d32, #0a3a0a); opacity: 0.85; box-shadow: inset 0 0 180px rgba(46,125,50,0.5);"></div>
+        
+        <!-- ✅ سایه بان جنگل -->
+        <div class="forest-canopy" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; opacity: 0.1;"></div>
+        
+        <!-- ناوبری با لوگوی جنگل -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top fade-up-forest">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <!-- لوگوی اختصاصی جنگل‌های هیرکانی -->
+                    <svg width="80" height="80" viewBox="0 0 100 100" class="forest-logo">
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="#4caf50" stroke-width="2" stroke-dasharray="6 4"/>
+                        <path d="M25,60 L35,30 L45,60" fill="#2e7d32" opacity="0.8"/>
+                        <path d="M40,60 L50,20 L60,60" fill="#388e3c" opacity="0.9"/>
+                        <path d="M55,60 L65,25 L75,60" fill="#43a047" opacity="0.8"/>
+                        <circle cx="35" cy="30" r="8" fill="#4caf50" opacity="0.7"/>
+                        <circle cx="50" cy="20" r="10" fill="#66bb6a" opacity="0.8" class="forest-glow"/>
+                        <circle cx="65" cy="25" r="8" fill="#4caf50" opacity="0.7"/>
+                        <path d="M80,30 L88,25 L80,35" stroke="#ffd700" stroke-width="2" fill="none" class="bird-flight"/>
+                    </svg>
+                    <span style="color: white; font-weight: 800; margin-right: 15px; font-size: 22px; text-shadow: 0 0 20px rgba(76,175,80,0.7);">جنگل‌های هیرکانی</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">خانه</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#hyrcanian">هیرکانی</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#arasbaran">ارسباران</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#species">گونه‌ها</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای هدر - جنگل‌های انبوه -->
+        <div class="container" style="height: 100%; display: flex; align-items: center; position: relative; z-index: 3;">
+            <div class="row w-100">
+                <div class="col-lg-12 text-center fade-up-forest" style="position: relative; z-index: 4;">
+                    <div class="cuneiform-forest" style="color: white; border-color: rgba(255,255,255,0.4); background: rgba(0,0,0,0.2); backdrop-filter: blur(8px); margin-bottom: 25px;">
+                        🌳 جنگل‌های هیرکانی 🌳
+                    </div>
+                    <h1 style="font-size: 90px; font-weight: 900; color: white; text-shadow: 0 0 50px #4caf50, 0 0 100px rgba(76,175,80,0.5), 2px 2px 20px black; margin-top: 15px; letter-spacing: 6px;" class="fade-up-forest delay-1">
+                        جنگل‌های انبوه
+                    </h1>
+                    <p style="font-size: 38px; color: rgba(255,255,255,0.98); font-weight: 400; letter-spacing: 8px; text-shadow: 0 0 35px #81c784, 2px 2px 15px black;" class="fade-up-forest delay-2">
+                        هیرکانی - ارسباران - میراث یونسکو
+                    </p>
+                    <div style="width: 200px; height: 6px; background: linear-gradient(90deg, #a5d6a5, #4caf50, #2e7d32, #4caf50, #a5d6a5); margin: 40px auto; box-shadow: 0 0 40px #4caf50; border-radius: 10px;" class="fade-up-forest delay-3"></div>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.95); max-width: 1000px; margin: 40px auto; line-height: 1.8; text-shadow: 2px 2px 20px black; font-weight: 500; background: rgba(0,0,0,0.2); padding: 20px 40px; border-radius: 80px; backdrop-filter: blur(5px); border: 1px solid rgba(129,199,132,0.4);" class="fade-up-forest delay-4">
+                        «جنگل‌های هیرکانی، میراث ۴۰ میلیون ساله ایران؛ یکی از قدیمی‌ترین جنگل‌های جهان و زیستگاه گونه‌های کمیاب جانوری و گیاهی»
+                    </p>
+                    <div class="mt-5 fade-up-forest delay-5">
+                        <a href="#hyrcanian" class="bttn" style="background: linear-gradient(135deg, #2e7d32, #1b5e20); color: white; padding: 18px 50px; font-size: 20px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); border: 2px solid #81c784; margin-left: 20px; font-weight: 700;">جنگل هیرکانی</a>
+                        <a href="#arasbaran" class="bttn" style="background: transparent; color: white; padding: 18px 45px; font-size: 20px; border-radius: 60px; border: 2px solid #81c784; font-weight: 700;">جنگل ارسباران</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- سایه بان جنگل -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;">
+            <svg viewBox="0 0 1440 320" style="width: 100%; height: auto; opacity: 0.2;">
+                <path fill="#4caf50" fill-opacity="1" d="M0,224L60,213.3C120,203,240,181,360,181.3C480,181,600,203,720,208C840,213,960,203,1080,176C1200,149,1320,107,1380,85.3L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- ================ بخش جنگل هیرکانی - عکس ================ -->
+    <section id="hyrcanian" class="blog-pp single-pp" style="position: relative; z-index: 3; background: #e8f5e9; padding: 130px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-forest">
+                    <div class="forest-image-frame">
+                        <img src="img/jangal-anboh.jpg" 
+                             alt="جنگل‌های هیرکانی" 
+                             class="forest-image img-fluid"
+                             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Hyrcanian_forests.jpg/800px-Hyrcanian_forests.jpg'">
+                        <div style="position: absolute; bottom: -20px; left: 30px; background: white; padding: 18px 35px; border-radius: 60px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-right: 6px solid #2e7d32; direction: ltr;">
+                            <span style="font-weight: 700; color: #1b5e20; font-size: 18px;">جنگل‌های هیرکانی - میراث جهانی یونسکو</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-forest delay-2">
+                    <div class="forest-card">
+                        <span class="forest-badge">🌳 میراث جهانی یونسکو</span>
+                        <h2 class="forest-title">جنگل‌های هیرکانی</h2>
+                        <div class="forest-border"></div>
+                        <p style="font-size: 17px; line-height: 2.1; color: #1a3b1a; margin-bottom: 30px;">
+                            <span style="font-size: 32px; color: #2e7d32; font-weight: 800; float: right; margin-left: 15px;">🌳</span>
+                            جنگل‌های هیرکانی با قدمت ۴۰ میلیون سال، یکی از قدیمی‌ترین جنگل‌های جهان هستند. این جنگل‌ها در امتداد سواحل جنوبی دریای خزر از آستارا تا گلستان امتداد یافته‌اند.
+                        </p>
+                        <p style="font-size: 17px; line-height: 2.1; color: #1a3b1a; margin-bottom: 35px;">
+                            این جنگل‌ها در سال ۲۰۱۹ به عنوان میراث طبیعی جهانی یونسکو ثبت شدند و زیستگاه گونه‌های کمیابی چون پلنگ ایرانی، خرس قهوه‌ای، مرال و شوکا هستند.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <div class="stat-forest">
+                                    <span class="stat-number-forest">۴۰</span>
+                                    <p style="font-size: 15px; color: #2e7d32; margin-top: 12px; font-weight: 600;">میلیون سال قدمت</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-forest">
+                                    <span class="stat-number-forest">۸۵۰</span>
+                                    <p style="font-size: 15px; color: #2e7d32; margin-top: 12px; font-weight: 600;">کیلومتر طول</p>
+                                </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="stat-forest">
+                                    <span class="stat-number-forest">۱۵۰</span>
+                                    <p style="font-size: 15px; color: #2e7d32; margin-top: 12px; font-weight: 600;">گونه درخت بومی</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش درختان کهن ================ -->
+    <section style="position: relative; z-index: 3; background: #c8e6c9; padding: 80px 0;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 fade-up-forest">
+                    <div class="tree-icon">🌳🌲🌳</div>
+                    <h3 style="font-size: 36px; font-weight: 700; color: #1b5e20; margin-top: 20px;">درختان کهن‌سال</h3>
+                    <p style="font-size: 20px; color: #1a3b1a; max-width: 800px; margin: 20px auto;">
+                        درختان سرخدار، انجیلی، آزاد، بلوط و راش هیرکانی که قدمت برخی به ۵۰۰ سال می‌رسد، از میراث‌های زنده ایران زمین هستند.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش جنگل ارسباران ================ -->
+    <section id="arasbaran" style="position: relative; z-index: 3; background: white; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-up-forest text-center">
+                    <div style="font-size: 80px; color: #2e7d32; opacity: 0.5;">⛰️🌳⛰️</div>
+                </div>
+                <div class="col-lg-6 fade-up-forest">
+                    <span style="color: #2e7d32; font-size: 18px; letter-spacing: 3px;">🏞️ بهشت آذربایجان</span>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #1b5e20; margin-top: 20px; margin-bottom: 25px;">جنگل‌های ارسباران</h2>
+                    <div style="width: 100px; height: 3px; background: #2e7d32; margin-bottom: 30px;"></div>
+                    <p style="font-size: 18px; line-height: 2; color: #1a3b1a; margin-bottom: 25px;">
+                        جنگل‌های ارسباران در استان آذربایجان شرقی، با وسعت ۱۶۴ هزار هکتار، به عنوان ذخیره‌گاه زیست‌کره یونسکو ثبت شده است.
+                    </p>
+                    <p style="font-size: 18px; line-height: 2; color: #1a3b1a;">
+                        این منطقه با ۲۱۵ گونه پرنده، ۵۰ گونه پستاندار و ۱۰۰۰ گونه گیاهی، یکی از غنی‌ترین مناطق زیستی ایران است.
+                    </p>
+                    <div class="hyrcanian-quote mt-4">
+                        "ارسباران، بهشت گمشده ایران"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش گونه‌های جانوری ================ -->
+    <section id="species" style="position: relative; z-index: 3; background: #e8f5e9; padding: 100px 0;">
+        <div class="container">
+            <div class="section-title fade-up-forest">
+                <span style="color: #2e7d32;">🐻 گونه‌های جانوری</span>
+                <h2 style="font-size: 52px; font-weight: 800; color: #1b5e20; margin-top: 20px;">زیستگاه گونه‌های کمیاب</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto;">پلنگ ایرانی، خرس قهوه‌ای، مرال، شوکا و ...</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-forest delay-1">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(46,125,50,0.1);">
+                        <div style="font-size: 55px; color: #2e7d32; margin-bottom: 20px;">🐆</div>
+                        <h4 style="color: #1b5e20; font-size: 24px; font-weight: 800;">پلنگ ایرانی</h4>
+                        <p style="color: #666;">بزرگترین گربه‌سان ایران، در خطر انقراض</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-forest delay-2">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(46,125,50,0.1);">
+                        <div style="font-size: 55px; color: #2e7d32; margin-bottom: 20px;">🐻</div>
+                        <h4 style="color: #1b5e20; font-size: 24px; font-weight: 800;">خرس قهوه‌ای</h4>
+                        <p style="color: #666;">بزرگترین پستاندار گوشتخوار ایران</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-forest delay-3">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(46,125,50,0.1);">
+                        <div style="font-size: 55px; color: #2e7d32; margin-bottom: 20px;">🦌</div>
+                        <h4 style="color: #1b5e20; font-size: 24px; font-weight: 800;">مرال</h4>
+                        <p style="color: #666;">گوزن قرمز، بزرگترین گوزن ایران</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-forest delay-4">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(46,125,50,0.1);">
+                        <div style="font-size: 55px; color: #2e7d32; margin-bottom: 20px;">🦊</div>
+                        <h4 style="color: #1b5e20; font-size: 24px; font-weight: 800;">شوکا</h4>
+                        <p style="color: #666;">کوچکترین گوزن ایران</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-forest delay-5">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(46,125,50,0.1);">
+                        <div style="font-size: 55px; color: #2e7d32; margin-bottom: 20px;">🦅</div>
+                        <h4 style="color: #1b5e20; font-size: 24px; font-weight: 800;">عقاب طلایی</h4>
+                        <p style="color: #666;">شاه پرندگان ایران</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 fade-up-forest delay-6">
+                    <div style="background: white; border-radius: 30px; padding: 35px 20px; text-align: center; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02); border: 1px solid rgba(46,125,50,0.1);">
+                        <div style="font-size: 55px; color: #2e7d32; margin-bottom: 20px;">🐗</div>
+                        <h4 style="color: #1b5e20; font-size: 24px; font-weight: 800;">گراز</h4>
+                        <p style="color: #666;">از مهمترین گونه‌های جنگل</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تاریخچه ================ -->
+    <section id="history" style="position: relative; z-index: 3; background: white; padding: 120px 0;">
+        <div class="container">
+            <div class="section-title fade-up-forest">
+                <span style="color: #2e7d32;">📜 چهل میلیون سال تاریخ</span>
+                <h2 style="font-size: 58px; font-weight: 800; color: #1b5e20; margin-top: 20px;">گاهشمار جنگل‌های ایران</h2>
+                <p style="color: #5a4a3a; max-width: 700px; margin: 25px auto; font-size: 20px;">از دوران سوم زمین‌شناسی تا امروز</p>
+                <div style="width: 120px; height: 4px; background: #2e7d32; margin: 25px auto;"></div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 fade-up-forest">
+                    <div class="timeline-forest">
+                        <h3>۴۰ میلیون سال پیش</h3>
+                        <h4 style="font-size: 24px; color: #1b5e20; margin-bottom: 15px;">تکوین جنگل‌های هیرکانی</h4>
+                        <p style="line-height: 1.9;">جنگل‌های هیرکانی در دوران سوم زمین‌شناسی شکل گرفتند.</p>
+                    </div>
+                    <div class="timeline-forest">
+                        <h3>۱۹۷۶ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #1b5e20; margin-bottom: 15px;">ذخیره‌گاه زیست‌کره</h4>
+                        <p style="line-height: 1.9;">ارسباران به عنوان ذخیره‌گاه زیست‌کره یونسکو ثبت شد.</p>
+                    </div>
+                    <div class="timeline-forest">
+                        <h3>۲۰۱۹ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #1b5e20; margin-bottom: 15px;">ثبت هیرکانی در یونسکو</h4>
+                        <p style="line-height: 1.9;">جنگل‌های هیرکانی به عنوان میراث طبیعی جهانی ثبت شدند.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up-forest delay-2">
+                    <div class="timeline-forest">
+                        <h3>۲۰۲۰ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #1b5e20; margin-bottom: 15px;">گسترش منطقه حفاظت شده</h4>
+                        <p style="line-height: 1.9;">وسعت مناطق حفاظت شده هیرکانی افزایش یافت.</p>
+                    </div>
+                    <div class="timeline-forest">
+                        <h3>۲۰۲۳ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #1b5e20; margin-bottom: 15px;">احیای گونه‌های در معرض خطر</h4>
+                        <p style="line-height: 1.9;">برنامه‌های حفاظت از پلنگ ایرانی و مرال با موفقیت همراه بود.</p>
+                    </div>
+                    <div class="timeline-forest">
+                        <h3>۲۰۲۶ میلادی</h3>
+                        <h4 style="font-size: 24px; color: #1b5e20; margin-bottom: 15px;">مقصد اکوتوریسم</h4>
+                        <p style="line-height: 1.9;">جنگل‌های ایران به یکی از محبوب‌ترین مقاصد طبیعت‌گردی تبدیل شده است.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش نقل قول ================ -->
+    <section class="quote-section-forest" style="position: relative; z-index: 3; padding: 120px 0; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center fade-up-forest">
+                    <span style="font-size: 80px; line-height: 0.6; color: rgba(255,255,255,0.2); display: block; margin-bottom: 30px;">🌳</span>
+                    <h2 style="font-size: 44px; font-weight: 700; line-height: 1.7; margin-bottom: 50px; color: #ffd700; text-shadow: 0 0 30px rgba(0,0,0,0.5); font-style: italic;">
+                        «جنگل‌های هیرکانی، موزه زنده طبیعت؛ گنجینه‌ای که از ۴۰ میلیون سال پیش تا امروز برای ایران زمین به یادگار مانده است»
+                    </h2>
+                    <p style="font-size: 26px; color: rgba(255,255,255,0.8);">— هانیه کریمی، پژوهشگر طبیعت ایران</p>
+                    <div style="margin-top: 50px;">
+                        <span class="cuneiform-forest" style="background: rgba(0,0,0,0.3); color: #ffd700; border-color: #81c784; font-size: 28px;">🌳 جنگل‌های هیرکانی 🌳</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ بخش تماس ================ -->
+    <section id="contact" class="contact-us" style="position: relative; z-index: 3; background: #e8f5e9; padding: 120px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="forest-card fade-up-forest" style="background: white;">
+                        <!-- هدر بخش تماس -->
+                        <div class="text-center mb-5">
+                            <div style="width: 100px; height: 100px; background: rgba(46,125,50,0.08); border-radius: 50%; line-height: 100px; font-size: 55px; color: #2e7d32; margin: 0 auto 25px; border: 2px dashed #2e7d32;">
+                                🌳
+                            </div>
+                            <span style="background: #2e7d32; color: white; padding: 10px 30px; border-radius: 50px; font-size: 16px; letter-spacing: 3px; display: inline-block; margin-bottom: 25px;">🌳 جنگل‌های هیرکانی و ارسباران 🌳</span>
+                            <h2 style="font-size: 48px; font-weight: 800; color: #1b5e20; margin-top: 15px;">هانیه کریمی</h2>
+                            <p style="font-size: 20px; color: #2e7d32; margin-top: 15px; font-weight: 600;">پژوهشگر طبیعت ایران | طراح و توسعه‌دهنده وب</p>
+                            <div style="width: 100px; height: 3px; background: linear-gradient(90deg, #2e7d32, #81c784, #2e7d32); margin: 30px auto;"></div>
+                        </div>
+                        
+                        <!-- اطلاعات تماس -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #e8f5e9; padding: 45px 30px; border-radius: 35px; height: 100%; border: 1px solid rgba(46,125,50,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #2e7d32; margin-bottom: 20px;">📬</div>
+                                    <div style="direction: ltr; text-align: left; font-size: 18px; color: #1b5e20; margin: 25px 0 15px; font-family: monospace; background: white; padding: 15px 20px; border-radius: 15px; border: 1px solid rgba(46,125,50,0.15);">
+                                        hanieh.karimii1389@gmail.com
+                                    </div>
+                                    <div style="direction: ltr; text-align: left; font-size: 26px; color: #2e7d32; margin: 20px 0; font-weight: 800; background: rgba(46,125,50,0.03); padding: 12px; border-radius: 15px;">
+                                        ۰۹۹۳۲۳۰۹۴۹۲
+                                    </div>
+                                    <div style="font-size: 20px; color: #1b5e20; font-weight: 600;">
+                                        مشهد، ایران
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div style="background: #e8f5e9; padding: 45px 35px; border-radius: 35px; height: 100%; border: 1px solid rgba(46,125,50,0.2); text-align: center;">
+                                    <div style="font-size: 60px; color: #2e7d32; margin-bottom: 20px;">🌳</div>
+                                    <p style="font-size: 18px; line-height: 2; color: #1a3b1a; margin-top: 25px; text-align: justify;">
+                                        این وبسایت به پاس گرامیداشت میراث طبیعی و سبز ایران زمین طراحی شده است. جنگل‌های هیرکانی و ارسباران، ریه‌های تنفسی ایران و گنجینه‌ای از تنوع زیستی، هدیه‌ای از ۴۰ میلیون سال پیش تا امروز.
+                                    </p>
+                                    <div style="margin-top: 35px; padding: 15px; background: rgba(46,125,50,0.06); border-radius: 15px; border: 1px dashed #2e7d32;">
+                                        <span style="color: #1b5e20; font-weight: 700; font-size: 20px;">🌳 جنگل‌های انبوه ایران 🌳</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- فوتر -->
+                        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(46,125,50,0.2);">
+                            <div style="background: #2e7d32; color: white; padding: 15px 35px; border-radius: 50px; display: inline-block; font-weight: 700; box-shadow: 0 10px 25px rgba(46,125,50,0.4); border: 2px solid #81c784; margin-bottom: 25px;">
+                                🌳 جنگل‌های هیرکانی و ارسباران - میراث جهانی یونسکو 🌳
+                            </div>
+                            <p style="color: #2e7d32; margin-top: 25px; font-size: 18px; font-weight: 600;">
+                                طراحی شده با افتخار و عشق به ایران زمین توسط هانیه کریمی © ۲۰۲۶
+                            </p>
+                            <div style="margin-top: 30px;">
+                                <span style="color: #2e7d32; font-size: 24px;">🌳 ایران سرزمین جنگل‌های کهن 🌳</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ اسکریپت‌ها ================ -->
+    <script src="js/plugins.js"></script>
+    <script src="js/core_rtl.js"></script>
+</body>
+</html>
